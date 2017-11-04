@@ -98,7 +98,7 @@
     root: '/',
     scheme: 'Muse',
     version: '5.1.3',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -479,7 +479,7 @@
       
     </div>
     <div id="music163player">
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=200 src="//music.163.com/outchain/player?type=1&id=42927&auto=1&height=430">
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=200 src="//music.163.com/outchain/player?type=1&id=42927&auto=0&height=430">
         </iframe>
     </div>
   </aside>
@@ -681,7 +681,7 @@ class Circle {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.r = Math.random() * 10 ;
+        this.r = 5.5 ;
         this._mx = Math.random() ;
         this._my = Math.random() ;
 
@@ -724,7 +724,7 @@ class currentCirle extends Circle {
 
     drawCircle(ctx) {
         ctx.beginPath();
-        this.r = 8;
+        this.r = 7;
         ctx.arc(this.x, this.y, this.r, 0, 360);
         ctx.closePath();
         //ctx.fillStyle = 'rgba(0,0,0,' + (parseInt(Math.random() * 100) / 100) + ')'
@@ -766,7 +766,7 @@ let init = function (num) {
     }
     draw();
 }
-window.addEventListener('load', init(150));
+window.addEventListener('load', init(130));
 window.onmousemove = function (e) {
     e = e || window.event;
     current_circle.x = e.clientX;
@@ -778,5 +778,6 @@ window.onmouseout = function () {
 
 };
 </script>
+<script type="text/javascript" src="/js/src/love.js"></script>
 </body>
 </html>
