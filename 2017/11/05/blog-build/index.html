@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="本篇博客介绍在Windows平台下如何利用GitHub Page和静态博客生成工具Hexo搭建属于自己的博客">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows平台 GitHub + Hexo 搭建个人博客">
+<meta property="og:url" content="http://yoursite.com/2017/11/05/blog-build/index.html">
+<meta property="og:site_name" content="Xsc&#39;s Blog">
+<meta property="og:description" content="本篇博客介绍在Windows平台下如何利用GitHub Page和静态博客生成工具Hexo搭建属于自己的博客">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-05T05:17:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Windows平台 GitHub + Hexo 搭建个人博客">
+<meta name="twitter:description" content="本篇博客介绍在Windows平台下如何利用GitHub Page和静态博客生成工具Hexo搭建属于自己的博客">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/05/blog-build/"/>
+
+
+
+
+
+  <title>Windows平台 GitHub + Hexo 搭建个人博客 | Xsc's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+  
+  
+    
+  
+  <a href="https://github.com/xingsc" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;z-index:2" src="/images/forkme.png" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+  <canvas id="canvas" style="position:fixed;z-index:-1"></canvas>
+
+  <div class="container sidebar-position-left page-post-detail" stytle="position:absolute">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xsc's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">物联网研究员</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-iot">
+          <a href="/categories/IOT/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            物联网
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-algorithm">
+          <a href="/categories/algorithm/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-edit"></i> <br />
+            
+            算法
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-program">
+          <a href="/categories/program/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-briefcase"></i> <br />
+            
+            工程
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-life">
+          <a href="/categories/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-coffee"></i> <br />
+            
+            日常
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/categories/photo/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-image"></i> <br />
+            
+            图片
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/05/blog-build/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xing Shuchen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xsc's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Windows平台 GitHub + Hexo 搭建个人博客</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-05T13:17:01+08:00">
+                2017-11-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/program/" itemprop="url" rel="index">
+                    <span itemprop="name">program</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,587
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  本篇博客介绍在Windows平台下如何利用GitHub Page和静态博客生成工具Hexo搭建属于自己的博客
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="一、注册GitHub账号"><a href="#一、注册GitHub账号" class="headerlink" title="一、注册GitHub账号"></a>一、注册GitHub账号</h2><h2 id="二、创建GitHub仓库"><a href="#二、创建GitHub仓库" class="headerlink" title="二、创建GitHub仓库"></a>二、创建GitHub仓库</h2><p>创建git仓库时候，仓库的名称有格式要求，例如我的GitHub仓库用户名是xingsc,那么我创建的仓库名称就是xingsc.github.io。</p>
+<p>然后点击此页面下面的“Create repository”按钮即可创建。</p>
+<h2 id="三、下载node-js"><a href="#三、下载node-js" class="headerlink" title="三、下载node.js"></a>三、下载node.js</h2><p>下载node.js的网址<a href="https://nodejs.org/en/download/。Node.js主要用于安装hexo，npm开头的命令都依赖于Node.js" target="_blank" rel="external">https://nodejs.org/en/download/。Node.js主要用于安装hexo，npm开头的命令都依赖于Node.js</a><br>如果出现以下提示,则代表你的Node.js没有安装或者还未生效，如果已经安装了则重启电脑.<br>bash: nmp: command not found</p>
+<h2 id="四、安装git"><a href="#四、安装git" class="headerlink" title="四、安装git"></a>四、安装git</h2><p>Windows版本的git下载地址为<a href="https://git-for-windows.github.io/" target="_blank" rel="external">https://git-for-windows.github.io/</a><br>一步一步默认安装好了</p>
+<h2 id="五、安装hexo"><a href="#五、安装hexo" class="headerlink" title="五、安装hexo"></a>五、安装hexo</h2><p>官方中文文档<a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="external">https://hexo.io/zh-cn/docs/index.html</a></p>
+<p>让我们先了解了解 的命令解释 <br><br><figure class="highlight plain"><figcaption><span>hexo g``` #完整命令为hexo generate，用于生成静态文件 <br></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">```$ hexo s``` #完整命令为hexo server，用于启动服务器，主要用来本地预览&lt;br&gt; </div><div class="line">```$ hexo d``` #完整命令为hexo deploy，用于将本地文件发布到github上 &lt;br&gt;</div><div class="line">```$ hexo n``` #完整命令为hexo new，用于新建一篇文章</div><div class="line"></div><div class="line">##### （1）鼠标右键任意地方，选择Git Bash，使用以下命令安装hexo</div><div class="line">```bash</div><div class="line">npm  install  hexo-cli -g</div><div class="line">npm  install  hexo-deployer-git  --save</div></pre></td></tr></table></figure></p>
+<p>提示：如果后面出现“ERROR Deployer not found: git“这样的提示错误，则执行此步骤第二个命令 </p>
+<h5 id="（2）创建放置博客文件的文件夹：hexo文件夹，我放置在E盘，E-hexo-最好不要在中文路径下面，会出现莫名其妙的错误，我们都懂的。"><a href="#（2）创建放置博客文件的文件夹：hexo文件夹，我放置在E盘，E-hexo-最好不要在中文路径下面，会出现莫名其妙的错误，我们都懂的。" class="headerlink" title="（2）创建放置博客文件的文件夹：hexo文件夹，我放置在E盘，E:\hexo,最好不要在中文路径下面，会出现莫名其妙的错误，我们都懂的。"></a>（2）创建放置博客文件的文件夹：hexo文件夹，我放置在E盘，E:\hexo,最好不要在中文路径下面，会出现莫名其妙的错误，我们都懂的。</h5><p>注意：以后进行hexo操作都要进入到此文件夹中 </p>
+<h5 id="（3）进入E-hexo文件夹，鼠标右键选择“Git-Bash”-执行以下命令，初始化hexo，这时候会在该文件夹中创建网站所需要的文件"><a href="#（3）进入E-hexo文件夹，鼠标右键选择“Git-Bash”-执行以下命令，初始化hexo，这时候会在该文件夹中创建网站所需要的文件" class="headerlink" title="（3）进入E:\hexo文件夹，鼠标右键选择“Git Bash”,执行以下命令，初始化hexo，这时候会在该文件夹中创建网站所需要的文件"></a>（3）进入E:\hexo文件夹，鼠标右键选择“Git Bash”,执行以下命令，初始化hexo，这时候会在该文件夹中创建网站所需要的文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo init</div></pre></td></tr></table></figure>
+<h5 id="（4）安装依赖包"><a href="#（4）安装依赖包" class="headerlink" title="（4）安装依赖包"></a>（4）安装依赖包</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install</div></pre></td></tr></table></figure>
+<p>会在D:\Hexo目录中安装 node_modules </p>
+<h5 id="（5）生成静态文件"><a href="#（5）生成静态文件" class="headerlink" title="（5）生成静态文件"></a>（5）生成静态文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo g</div></pre></td></tr></table></figure>
+<h5 id="（6）此时最基本的网站已经搭建好了，只不过是在本地放着，我们可以先预览一下"><a href="#（6）此时最基本的网站已经搭建好了，只不过是在本地放着，我们可以先预览一下" class="headerlink" title="（6）此时最基本的网站已经搭建好了，只不过是在本地放着，我们可以先预览一下"></a>（6）此时最基本的网站已经搭建好了，只不过是在本地放着，我们可以先预览一下</h5><p>在git中执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo s</div></pre></td></tr></table></figure></p>
+<p>这时候，会在本地开启一个http服务，监听4000端口，我们在浏览器访问   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 六、部署本地文件到github</div><div class="line"></div><div class="line">本地文件要发布到github上面，则需要使本地git和互联网上的通信。怎么通信呢？ </div><div class="line">有两种方法，https和ssh公钥方式。使用https的话需要每次输入密码，不过配置起来简单。常用的是ssh公钥的方式。 </div><div class="line">先来在本地初始化一下git设置吧</div><div class="line"></div><div class="line">### 本机git初始设置</div><div class="line"></div><div class="line">##### 1、设置姓名和邮箱地址</div><div class="line"></div><div class="line">终端输入：任意目录中都可以</div><div class="line">`</div></pre></td></tr></table></figure></p>
+<p>$ git config  –global  user.name  “your name”<br>$ git config  –global  user.email  your_email@youremail.com<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">我用的是我的用户名和邮箱设置的，设置完成会在~/.gitconfig文件中生成如下配置 </div><div class="line"></div><div class="line"></div><div class="line">##### 2、本地生成ssh key</div></pre></td></tr></table></figure></p>
+<p>ssh-keygen -t rsa -C 13253641509@qq.com<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">和在linux生成的ssh一样，也可以生成的秘钥时候设置私钥密码</div><div class="line"></div><div class="line">##### 3、把本机生成的公开的秘钥添加到github中</div></pre></td></tr></table></figure></p>
+<p>cat ~/.ssh/id_rsa.pub<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">将公钥复制下来</div><div class="line"></div><div class="line">##### 4、将公钥放在github上。</div><div class="line"></div><div class="line">打开github登陆后，点击自己头像下箭头，找到settings（设置），在左边栏目里面选择SSH keys,然后点击Add SSH key，随便填一个Title，把上面把cat出来的内容全部添加到key文本框里，然后点击add key。 </div><div class="line"> </div><div class="line"> </div><div class="line">添加成功后，创建github时用到的邮箱会收到GitHub发的一个”A new public key was add to your account”的邮件。</div><div class="line"></div><div class="line">##### 5、使用私人密钥与GitHub进行认证和通信</div></pre></td></tr></table></figure></p>
+<p>ssh -T git@github.com<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">### 将hexo和github进行关联</div><div class="line"></div><div class="line">##### 1、编辑E：\hexo下的_config.yml文件，在_config.yml最下方，添加如下配置</div></pre></td></tr></table></figure></p>
+<p>$ cd e:/hexo<br>$ vi _config.yml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">````</div><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repository: git@github.com:xingsc/xingsc.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
+<p>说明：<br><br>(1)hexo的配置文件中任何’:’后面都是带一个空格的。 <br><br>(2)repository: 后面的地址其实在github上有生成。新建仓库时候，会有生成如下图<br>(3)这里发现还有HTTPS，其实HTTPS也可以和本地进行通信，只不过通信时候，每次要求输入GitHub账号密码。</p>
+<h5 id="2、将本地文件同步到GitHub"><a href="#2、将本地文件同步到GitHub" class="headerlink" title="2、将本地文件同步到GitHub"></a>2、将本地文件同步到GitHub</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo g</div><div class="line">$ hexo d</div></pre></td></tr></table></figure>
+<p>此时，我们的博客已经搭建起来，并发布到Github上了，这时可以登陆自己的Github查看代码是否已经推送到对应Repository，在浏览器访问<a href="http://xingsc.github.io就能看到自己的博客了。第一次访问地址，可能访问不了，您可以在几分钟后进行访问，一般不超过10分钟。" target="_blank" rel="external">http://xingsc.github.io就能看到自己的博客了。第一次访问地址，可能访问不了，您可以在几分钟后进行访问，一般不超过10分钟。</a></p>
+<h2 id="七、发表一篇文章"><a href="#七、发表一篇文章" class="headerlink" title="七、发表一篇文章"></a>七、发表一篇文章</h2><h5 id="1、在Git-Bash执行命令："><a href="#1、在Git-Bash执行命令：" class="headerlink" title="1、在Git Bash执行命令："></a>1、在Git Bash执行命令：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new “firstblog”</div></pre></td></tr></table></figure>
+<h5 id="2、这时候会在E-hexo-source-post文件夹中，生成一个firstblog-md文件，这时候，我们可以在里面编辑内容。"><a href="#2、这时候会在E-hexo-source-post文件夹中，生成一个firstblog-md文件，这时候，我们可以在里面编辑内容。" class="headerlink" title="2、这时候会在E:\hexo\source_post文件夹中，生成一个firstblog.md文件，这时候，我们可以在里面编辑内容。"></a>2、这时候会在E:\hexo\source_post文件夹中，生成一个firstblog.md文件，这时候，我们可以在里面编辑内容。</h5><h5 id="3、可以先在本地预览一下生成的博客"><a href="#3、可以先在本地预览一下生成的博客" class="headerlink" title="3、可以先在本地预览一下生成的博客"></a>3、可以先在本地预览一下生成的博客</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo g </div><div class="line">hexo s</div></pre></td></tr></table></figure>
+<h5 id="4、访问http-127-0-0-1-4000"><a href="#4、访问http-127-0-0-1-4000" class="headerlink" title="4、访问http://127.0.0.1:4000"></a>4、访问<a href="http://127.0.0.1:4000" target="_blank" rel="external">http://127.0.0.1:4000</a></h5><h5 id="5、同步到GitHub上"><a href="#5、同步到GitHub上" class="headerlink" title="5、同步到GitHub上"></a>5、同步到GitHub上</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo d</div></pre></td></tr></table></figure>
+<h5 id="6、访问自己的网址即可查看，https-xingsc-github-io"><a href="#6、访问自己的网址即可查看，https-xingsc-github-io" class="headerlink" title="6、访问自己的网址即可查看，https://xingsc.github.io"></a>6、访问自己的网址即可查看，<a href="https://xingsc.github.io" target="_blank" rel="external">https://xingsc.github.io</a></h5><p>注意：<br><br>首页中，默认是把整篇文章显示出来，怎么在首页显示文章的缩略呢？<br>在想要显示缩略文章的内容中，缩略内容的后面添加如下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;!--more--&gt;</div></pre></td></tr></table></figure></p>
+<p>这样这段代码前面部分，将以缩略形式显示到首页，后面的内容将不会显示。</p>
+<h2 id="八、绑定自己的域名"><a href="#八、绑定自己的域名" class="headerlink" title="八、绑定自己的域名."></a>八、绑定自己的域名.</h2><h5 id="1、在source文件中新建一个CNAME文件，然后里面添加自己的网站域名，如walker123-cn"><a href="#1、在source文件中新建一个CNAME文件，然后里面添加自己的网站域名，如walker123-cn" class="headerlink" title="1、在source文件中新建一个CNAME文件，然后里面添加自己的网站域名，如walker123.cn"></a>1、在source文件中新建一个CNAME文件，然后里面添加自己的网站域名，如walker123.cn</h5><p>可以在setting中查看是否发布成功，默认发布到<a href="http://walker123.cn上面了，可以在下面添加自定义主机名。" target="_blank" rel="external">http://walker123.cn上面了，可以在下面添加自定义主机名。</a> </p>
+<h5 id="2、到自己的域名解析中添加CNAME值，主机记录www-解析到username-github-io-注意最后面有点，我用的腾讯云，如果没有加点，保存时候自动加上了点-，为了让只输入一个二级域名也可以访问到，加上自己的域名记录输入-或者walker123-cn-cn后面有点-，如下图"><a href="#2、到自己的域名解析中添加CNAME值，主机记录www-解析到username-github-io-注意最后面有点，我用的腾讯云，如果没有加点，保存时候自动加上了点-，为了让只输入一个二级域名也可以访问到，加上自己的域名记录输入-或者walker123-cn-cn后面有点-，如下图" class="headerlink" title="2、到自己的域名解析中添加CNAME值，主机记录www,解析到username.github.io.(注意最后面有点，我用的腾讯云，如果没有加点，保存时候自动加上了点)，为了让只输入一个二级域名也可以访问到，加上自己的域名记录输入@或者walker123.cn.(cn后面有点)，如下图"></a>2、到自己的域名解析中添加CNAME值，主机记录www,解析到username.github.io.(注意最后面有点，我用的腾讯云，如果没有加点，保存时候自动加上了点)，为了让只输入一个二级域名也可以访问到，加上自己的域名记录输入@或者walker123.cn.(cn后面有点)，如下图</h5><h5 id="3、使用hexo-g-hexo-d进行部署"><a href="#3、使用hexo-g-hexo-d进行部署" class="headerlink" title="3、使用hexo g  hexo d进行部署"></a>3、使用<code>hexo g  hexo d</code>进行部署</h5><h5 id="4、等十分钟左右，用自己域名访问下试试"><a href="#4、等十分钟左右，用自己域名访问下试试" class="headerlink" title="4、等十分钟左右，用自己域名访问下试试"></a>4、等十分钟左右，用自己域名访问下试试</h5>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/03/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="Xing Shuchen" />
+            
+              <p class="site-author-name" itemprop="name">Xing Shuchen</p>
+              <p class="site-description motion-element" itemprop="description">既入江湖 生死为疆</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/xingsc" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://plus.google.com/yourname" target="_blank" title="Google">
+                    
+                      <i class="fa fa-fw fa-google"></i>Google</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、注册GitHub账号"><span class="nav-number">1.</span> <span class="nav-text">一、注册GitHub账号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、创建GitHub仓库"><span class="nav-number">2.</span> <span class="nav-text">二、创建GitHub仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、下载node-js"><span class="nav-number">3.</span> <span class="nav-text">三、下载node.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、安装git"><span class="nav-number">4.</span> <span class="nav-text">四、安装git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、安装hexo"><span class="nav-number">5.</span> <span class="nav-text">五、安装hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（2）创建放置博客文件的文件夹：hexo文件夹，我放置在E盘，E-hexo-最好不要在中文路径下面，会出现莫名其妙的错误，我们都懂的。"><span class="nav-number">5.0.0.1.</span> <span class="nav-text">（2）创建放置博客文件的文件夹：hexo文件夹，我放置在E盘，E:\hexo,最好不要在中文路径下面，会出现莫名其妙的错误，我们都懂的。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（3）进入E-hexo文件夹，鼠标右键选择“Git-Bash”-执行以下命令，初始化hexo，这时候会在该文件夹中创建网站所需要的文件"><span class="nav-number">5.0.0.2.</span> <span class="nav-text">（3）进入E:\hexo文件夹，鼠标右键选择“Git Bash”,执行以下命令，初始化hexo，这时候会在该文件夹中创建网站所需要的文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（4）安装依赖包"><span class="nav-number">5.0.0.3.</span> <span class="nav-text">（4）安装依赖包</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（5）生成静态文件"><span class="nav-number">5.0.0.4.</span> <span class="nav-text">（5）生成静态文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（6）此时最基本的网站已经搭建好了，只不过是在本地放着，我们可以先预览一下"><span class="nav-number">5.0.0.5.</span> <span class="nav-text">（6）此时最基本的网站已经搭建好了，只不过是在本地放着，我们可以先预览一下</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、将本地文件同步到GitHub"><span class="nav-number">5.0.0.6.</span> <span class="nav-text">2、将本地文件同步到GitHub</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、发表一篇文章"><span class="nav-number">6.</span> <span class="nav-text">七、发表一篇文章</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、在Git-Bash执行命令："><span class="nav-number">6.0.0.1.</span> <span class="nav-text">1、在Git Bash执行命令：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、这时候会在E-hexo-source-post文件夹中，生成一个firstblog-md文件，这时候，我们可以在里面编辑内容。"><span class="nav-number">6.0.0.2.</span> <span class="nav-text">2、这时候会在E:\hexo\source_post文件夹中，生成一个firstblog.md文件，这时候，我们可以在里面编辑内容。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、可以先在本地预览一下生成的博客"><span class="nav-number">6.0.0.3.</span> <span class="nav-text">3、可以先在本地预览一下生成的博客</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4、访问http-127-0-0-1-4000"><span class="nav-number">6.0.0.4.</span> <span class="nav-text">4、访问http://127.0.0.1:4000</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5、同步到GitHub上"><span class="nav-number">6.0.0.5.</span> <span class="nav-text">5、同步到GitHub上</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6、访问自己的网址即可查看，https-xingsc-github-io"><span class="nav-number">6.0.0.6.</span> <span class="nav-text">6、访问自己的网址即可查看，https://xingsc.github.io</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#八、绑定自己的域名"><span class="nav-number">7.</span> <span class="nav-text">八、绑定自己的域名.</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、在source文件中新建一个CNAME文件，然后里面添加自己的网站域名，如walker123-cn"><span class="nav-number">7.0.0.1.</span> <span class="nav-text">1、在source文件中新建一个CNAME文件，然后里面添加自己的网站域名，如walker123.cn</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、到自己的域名解析中添加CNAME值，主机记录www-解析到username-github-io-注意最后面有点，我用的腾讯云，如果没有加点，保存时候自动加上了点-，为了让只输入一个二级域名也可以访问到，加上自己的域名记录输入-或者walker123-cn-cn后面有点-，如下图"><span class="nav-number">7.0.0.2.</span> <span class="nav-text">2、到自己的域名解析中添加CNAME值，主机记录www,解析到username.github.io.(注意最后面有点，我用的腾讯云，如果没有加点，保存时候自动加上了点)，为了让只输入一个二级域名也可以访问到，加上自己的域名记录输入@或者walker123.cn.(cn后面有点)，如下图</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、使用hexo-g-hexo-d进行部署"><span class="nav-number">7.0.0.3.</span> <span class="nav-text">3、使用hexo g  hexo d进行部署</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4、等十分钟左右，用自己域名访问下试试"><span class="nav-number">7.0.0.4.</span> <span class="nav-text">4、等十分钟左右，用自己域名访问下试试</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+    </div>
+    <object type="application/x-shockwave-flash" title="小白饿了，请大哥大姐施舍点吧。。。" style="outline: none;border:3px" data="https://cdn.abowman.com/widgets/hamster/hamster.swf?" width="330" height="290">
+            <param name="movie" value="http://cdn.abowman.com/widgets/hamster/hamster.swf?">
+            <param name="AllowScriptAccess" value="always">
+            <param name="wmode" value="opaque">
+    </object>
+    <div id="music163player">
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=300 src="//music.163.com/outchain/player?type=1&id=42927&auto=0&height=430">
+        </iframe>
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xing Shuchen</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+var ca = document.getElementById("canvas");
+ca.style.width = window.innerWidth + "px";
+ca.style.height = window.innerHeight + "px";
+class Circle {
+
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.r = 5.5 ;
+        this._mx = Math.random() ;
+        this._my = Math.random() ;
+
+    }
+
+
+    drawCircle(ctx) {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.r, 0, 360)
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(204, 204, 204, 0.3)';
+        ctx.fill();
+    }
+
+    drawLine(ctx, _circle) {
+        let dx = this.x - _circle.x;
+        let dy = this.y - _circle.y;
+        let d = Math.sqrt(dx * dx + dy * dy)
+        if (d < 150) {
+            ctx.beginPath();
+            ctx.moveTo(this.x, this.y);   //???
+            ctx.lineTo(_circle.x, _circle.y);   //??
+            ctx.closePath();
+            ctx.strokeStyle = 'rgba(204, 204, 204, 0.3)';
+            ctx.stroke();
+        }
+    }
+
+    move(w, h) {
+        this._mx = (this.x < w && this.x > 0) ? this._mx : (-this._mx);
+        this._my = (this.y < h && this.y > 0) ? this._my : (-this._my);
+        this.x += this._mx / 2;
+        this.y += this._my / 2;
+    }
+}
+class currentCirle extends Circle {
+    constructor(x, y) {
+        super(x, y)
+    }
+
+    drawCircle(ctx) {
+        ctx.beginPath();
+        this.r = 7;
+        ctx.arc(this.x, this.y, this.r, 0, 360);
+        ctx.closePath();
+        //ctx.fillStyle = 'rgba(0,0,0,' + (parseInt(Math.random() * 100) / 100) + ')'
+        ctx.fillStyle = 'rgba(255, 77, 54, 0.3)'
+        ctx.fill();
+
+    }
+}
+window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+
+let canvas = document.getElementById('canvas');
+let ctx = canvas.getContext('2d');
+let w = canvas.width = canvas.offsetWidth;
+let h = canvas.height = canvas.offsetHeight;
+let circles = [];
+let current_circle = new currentCirle(0, 0)
+
+let draw = function () {
+    ctx.clearRect(0, 0, w, h);
+    for (let i = 0; i < circles.length; i++) {
+        circles[i].move(w, h);
+        circles[i].drawCircle(ctx);
+        for (j = i + 1; j < circles.length; j++) {
+            circles[i].drawLine(ctx, circles[j])
+        }
+    }
+    if (current_circle.x) {
+        current_circle.drawCircle(ctx);
+        for (var k = 1; k < circles.length; k++) {
+            current_circle.drawLine(ctx, circles[k])
+        }
+    }
+    requestAnimationFrame(draw)
+}
+
+let init = function (num) {
+    for (var i = 0; i < num; i++) {
+        circles.push(new Circle(Math.random() * w, Math.random() * h));
+    }
+    draw();
+}
+window.addEventListener('load', init(130));
+window.onmousemove = function (e) {
+    e = e || window.event;
+    current_circle.x = e.clientX;
+    current_circle.y = e.clientY;
+}
+window.onmouseout = function () {
+    current_circle.x = null;
+    current_circle.y = null;
+
+};
+</script>
+<script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>
