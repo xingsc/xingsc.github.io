@@ -87,7 +87,7 @@
 <meta property="og:description" content="记录下异常抛出的过程和注意的地方">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/exception.png">
-<meta property="og:updated_time" content="2017-11-06T07:03:10.576Z">
+<meta property="og:updated_time" content="2017-11-06T07:15:39.623Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JAVA 异常抛出及捕获">
 <meta name="twitter:description" content="记录下异常抛出的过程和注意的地方">
@@ -325,7 +325,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-06T15:03:10+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-06T15:15:39+08:00">
                 2017-11-06
               </time>
             
@@ -379,7 +379,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  825
+                  855
                 </span>
               
 
@@ -456,6 +456,7 @@ finally is begin
     return 2 ;
 }
 </code></pre><p>在b代码中输出结果跟a是一样的，然而返回的是return 2 ； 原因很明显，就是执行了finally后已经return了，所以catch里面的return不会被执行到。也就是说finally永远都会在catch的return前被执行。（这个是面试经常问到的问题哦！）</p>
+<p><em><strong>finally不一定被执行 ,例如 catch 块中有退出系统的语句 System.exit(-1); finally就不会被执行</strong></em></p>
 <h5 id="6、对于异常的捕获不应该觉得方便而将几个异常合成一个Exception进行捕获，比如有IO的异常跟SQL的异常，这样完全不同的两个异常应该分开处理！而且在catch里处理异常的时候不要简单的e-printStackTrace-，而是应该进行详细的处理。比如进行console打印详情或者进行日志记录。"><a href="#6、对于异常的捕获不应该觉得方便而将几个异常合成一个Exception进行捕获，比如有IO的异常跟SQL的异常，这样完全不同的两个异常应该分开处理！而且在catch里处理异常的时候不要简单的e-printStackTrace-，而是应该进行详细的处理。比如进行console打印详情或者进行日志记录。" class="headerlink" title="6、对于异常的捕获不应该觉得方便而将几个异常合成一个Exception进行捕获，比如有IO的异常跟SQL的异常，这样完全不同的两个异常应该分开处理！而且在catch里处理异常的时候不要简单的e.printStackTrace()，而是应该进行详细的处理。比如进行console打印详情或者进行日志记录。"></a>6、对于异常的捕获不应该觉得方便而将几个异常合成一个Exception进行捕获，比如有IO的异常跟SQL的异常，这样完全不同的两个异常应该分开处理！而且在catch里处理异常的时候不要简单的e.printStackTrace()，而是应该进行详细的处理。比如进行console打印详情或者进行日志记录。</h5>
       
     </div>
