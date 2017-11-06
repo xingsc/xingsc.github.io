@@ -79,16 +79,19 @@
 
 
 
-<meta name="description" content="既入江湖 生死为疆">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Xsc&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2017/index.html">
+<meta name="description" content="记录下异常抛出的过程和注意的地方">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA 异常抛出及捕获">
+<meta property="og:url" content="http://yoursite.com/2017/11/06/java-exception/index.html">
 <meta property="og:site_name" content="Xsc&#39;s Blog">
-<meta property="og:description" content="既入江湖 生死为疆">
+<meta property="og:description" content="记录下异常抛出的过程和注意的地方">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/exception.png">
+<meta property="og:updated_time" content="2017-11-06T06:45:31.035Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Xsc&#39;s Blog">
-<meta name="twitter:description" content="既入江湖 生死为疆">
+<meta name="twitter:title" content="JAVA 异常抛出及捕获">
+<meta name="twitter:description" content="记录下异常抛出的过程和注意的地方">
+<meta name="twitter:image" content="http://yoursite.com/images/exception.png">
 
 
 
@@ -118,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2017/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/06/java-exception/"/>
 
 
 
 
 
-  <title>归档 | Xsc's Blog</title>
+  <title>JAVA 异常抛出及捕获 | Xsc's Blog</title>
   
 
 
@@ -145,7 +148,7 @@
   <a href="https://github.com/xingsc" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;z-index:2" src="/images/forkme.png" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
   <canvas id="canvas" style="position:fixed;z-index:-1"></canvas>
 
-  <div class="container sidebar-position-left page-archive" stytle="position:absolute">
+  <div class="container sidebar-position-left page-post-detail" stytle="position:absolute">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -279,185 +282,233 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/06/java-exception/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xing Shuchen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xsc's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">JAVA 异常抛出及捕获</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-06T14:45:31+08:00">
+                2017-11-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 4 篇日志。 继续努力。
-      </span>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/program/" itemprop="url" rel="index">
+                    <span itemprop="name">program</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2017">2017</h1>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/11/06/java-exception/" itemprop="url">
+          
+
+          
+            <div class="post-wordcount">
               
-                <span itemprop="name">JAVA 异常抛出及捕获</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  825
+                </span>
               
-            </a>
-        
-      </h2>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-11-06T14:45:31+08:00"
-              content="2017-11-06" >
-          11-06
-        </time>
-      </div>
+              
+                <span class="post-meta-divider">|</span>
+              
 
-    </header>
-  </article>
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
 
+          
+              <div class="post-description">
+                  记录下异常抛出的过程和注意的地方
+              </div>
+          
 
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/11/06/blog-build/" itemprop="url">
-              
-                <span itemprop="name">Windows平台 GitHub + Hexo 搭建个人博客</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-11-06T08:54:11+08:00"
-              content="2017-11-06" >
-          11-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/11/05/MarkDown/" itemprop="url">
-              
-                <span itemprop="name">MarkDown语言学习</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-11-05T17:52:35+08:00"
-              content="2017-11-05" >
-          11-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/11/03/hello-world/" itemprop="url">
-              
-                <span itemprop="name">Hello World</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-11-03T19:11:32+08:00"
-              content="2017-11-03" >
-          11-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
+        <p><img src="/images/exception.png" alt="异常分类"><br>如图可以看出所有的异常跟错误都继承与Throwable类，也就是说所有的异常都是一个对象。</p>
+<p><strong>从大体来分异常为两块：</strong></p>
+<h5 id="1、error—错误-："><a href="#1、error—错误-：" class="headerlink" title="1、error—错误 ："></a>1、error—错误 ：</h5><p>是指程序无法处理的错误，表示应用程序运行时出现的重大错误。例如jvm运行时出现的OutOfMemoryError以及Socket编程时出现的端口占用等程序无法处理的错误。</p>
+<h5 id="2、Exception-—-异常-："><a href="#2、Exception-—-异常-：" class="headerlink" title="2、Exception — 异常 ："></a>2、Exception — 异常 ：</h5><p>异常可分为运行时异常跟编译异常</p>
+<p><strong>1）运行时异常</strong><br>即RuntimeException及其之类的异常。这类异常在代码编写的时候不会被编译器所检测出来，是可以不需要被捕获，但是程序员也可以根据需要进行捕获抛出。常见的RUNtimeException有：NullpointException（空指针异常），ClassCastException（类型转换异常），IndexOutOfBoundsException（数组越界异常）等。</p>
+<p><strong>2）编译异常</strong><br>RuntimeException以外的异常。这类异常在编译时编译器会提示需要捕获，如果不进行捕获则编译错误。常见编译异常有：IOException（流传输异常），SQLException（数据库操作异常）等。</p>
+<h5 id="3、java处理异常的机制："><a href="#3、java处理异常的机制：" class="headerlink" title="3、java处理异常的机制："></a>3、java处理异常的机制：</h5><p>抛出异常以及捕获异常 ，一个方法所能捕捉的异常，一定是Java代码在某处所抛出的异常。简单地说，异常总是先被抛出，后被捕捉的。</p>
+<h5 id="4、throw跟throws的区别"><a href="#4、throw跟throws的区别" class="headerlink" title="4、throw跟throws的区别:"></a>4、throw跟throws的区别:</h5><pre><code>public void test thorws Exception(){
+throw new Exception();
+}
+</code></pre><p>从上面这一段代码可以明显的看出两者的区别。throws表示一个方法声明可能抛出一个异常，throw表示此处抛出一个已定义的异常（可以是自定义需继承Exception，也可以是java自己给出的异常类）。</p>
+<h5 id="5、接下来看一下如何捕获异常："><a href="#5、接下来看一下如何捕获异常：" class="headerlink" title="5、接下来看一下如何捕获异常："></a>5、接下来看一下如何捕获异常：</h5><p>首先java对于异常捕获使用的是try—catch或try — catch — finally 代码块，程序会捕获try代码块里面的代码，若捕获到异常则进行catch代码块处理。若有finally则在catch处理后执行finally里面的代码。然而存在这样两个问题：</p>
+<p><strong>a.看如下代码：</strong></p>
+<pre><code>try{
+    //待捕获代码
+}catch（Exception e）{
+    System.out.println(&quot;catch is begin&quot;);
+    return 1 ；
+}finally{
+    System.out.println(&quot;finally is begin&quot;);
+}
+</code></pre><p>在catch里面有一个return，那么finally会不会被执行呢？答案是肯定的，上面代码的执行结果为：</p>
+<pre><code>catch is begin
+finally is begin  
+</code></pre><p>也就是说会先执行catch里面的代码后执行finally里面的代码最后才return1 </p>
+<p><strong>b.看如下代码：</strong></p>
+<pre><code>try{
+    //待捕获代码    
+}catch（Exception e）{
+    System.out.println(&quot;catch is begin&quot;);
+    return 1 ；
+}finally{
+    System.out.println(&quot;finally is begin&quot;);
+    return 2 ;
+}
+</code></pre><p>在b代码中输出结果跟a是一样的，然而返回的是return 2 ； 原因很明显，就是执行了finally后已经return了，所以catch里面的return不会被执行到。也就是说finally永远都会在catch的return前被执行。（这个是面试经常问到的问题哦！）</p>
+<h5 id="6、对于异常的捕获不应该觉得方便而将几个异常合成一个Exception进行捕获，比如有IO的异常跟SQL的异常，这样完全不同的两个异常应该分开处理！而且在catch里处理异常的时候不要简单的e-printStackTrace-，而是应该进行详细的处理。比如进行console打印详情或者进行日志记录。"><a href="#6、对于异常的捕获不应该觉得方便而将几个异常合成一个Exception进行捕获，比如有IO的异常跟SQL的异常，这样完全不同的两个异常应该分开处理！而且在catch里处理异常的时候不要简单的e-printStackTrace-，而是应该进行详细的处理。比如进行console打印详情或者进行日志记录。" class="headerlink" title="6、对于异常的捕获不应该觉得方便而将几个异常合成一个Exception进行捕获，比如有IO的异常跟SQL的异常，这样完全不同的两个异常应该分开处理！而且在catch里处理异常的时候不要简单的e.printStackTrace()，而是应该进行详细的处理。比如进行console打印详情或者进行日志记录。"></a>6、对于异常的捕获不应该觉得方便而将几个异常合成一个Exception进行捕获，比如有IO的异常跟SQL的异常，这样完全不同的两个异常应该分开处理！而且在catch里处理异常的时候不要简单的e.printStackTrace()，而是应该进行详细的处理。比如进行console打印详情或者进行日志记录。</h5>
       
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/06/blog-build/" rel="next" title="Windows平台 GitHub + Hexo 搭建个人博客">
+                <i class="fa fa-chevron-left"></i> Windows平台 GitHub + Hexo 搭建个人博客
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -465,6 +516,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -485,8 +540,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -557,6 +621,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、error—错误-："><span class="nav-number">1.</span> <span class="nav-text">1、error—错误 ：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、Exception-—-异常-："><span class="nav-number">2.</span> <span class="nav-text">2、Exception — 异常 ：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、java处理异常的机制："><span class="nav-number">3.</span> <span class="nav-text">3、java处理异常的机制：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4、throw跟throws的区别"><span class="nav-number">4.</span> <span class="nav-text">4、throw跟throws的区别:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5、接下来看一下如何捕获异常："><span class="nav-number">5.</span> <span class="nav-text">5、接下来看一下如何捕获异常：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6、对于异常的捕获不应该觉得方便而将几个异常合成一个Exception进行捕获，比如有IO的异常跟SQL的异常，这样完全不同的两个异常应该分开处理！而且在catch里处理异常的时候不要简单的e-printStackTrace-，而是应该进行详细的处理。比如进行console打印详情或者进行日志记录。"><span class="nav-number">6.</span> <span class="nav-text">6、对于异常的捕获不应该觉得方便而将几个异常合成一个Exception进行捕获，比如有IO的异常跟SQL的异常，这样完全不同的两个异常应该分开处理！而且在catch里处理异常的时候不要简单的e.printStackTrace()，而是应该进行详细的处理。比如进行console打印详情或者进行日志记录。</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -696,6 +776,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
