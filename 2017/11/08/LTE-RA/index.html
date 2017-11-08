@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="介绍LTE-TDD随机接入过程的分类情况以及各类的具体接入步骤">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LTE-TDD随机接入过程">
+<meta property="og:url" content="http://yoursite.com/2017/11/08/LTE-RA/index.html">
+<meta property="og:site_name" content="Xsc&#39;s Blog">
+<meta property="og:description" content="介绍LTE-TDD随机接入过程的分类情况以及各类的具体接入步骤">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/LTE-RA1.jpg">
+<meta property="og:image" content="http://yoursite.com/images/LTE-RA2.jpg">
+<meta property="og:image" content="http://yoursite.com/images/LTE-RA3.jpg">
+<meta property="og:updated_time" content="2017-11-08T07:52:06.433Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LTE-TDD随机接入过程">
+<meta name="twitter:description" content="介绍LTE-TDD随机接入过程的分类情况以及各类的具体接入步骤">
+<meta name="twitter:image" content="http://yoursite.com/images/LTE-RA1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/08/LTE-RA/"/>
+
+
+
+
+
+  <title>LTE-TDD随机接入过程 | Xsc's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+  
+  
+    
+  
+  <a href="https://github.com/xingsc" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;z-index:2" src="/images/forkme.png" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+  <canvas id="canvas" style="position:fixed;z-index:-1"></canvas>
+
+  <div class="container sidebar-position-left page-post-detail" stytle="position:absolute">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xsc's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">物联网研究员</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-iot">
+          <a href="/categories/IOT/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            物联网
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-algorithm">
+          <a href="/categories/algorithm/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-edit"></i> <br />
+            
+            算法
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-program">
+          <a href="/categories/program/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-briefcase"></i> <br />
+            
+            工程
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-life">
+          <a href="/categories/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-coffee"></i> <br />
+            
+            日常
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/categories/photo/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-image"></i> <br />
+            
+            图片
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/08/LTE-RA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xing Shuchen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xsc's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">LTE-TDD随机接入过程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-08T15:52:06+08:00">
+                2017-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/IOT/" itemprop="url" rel="index">
+                    <span itemprop="name">IOT</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,222
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  13
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  介绍LTE-TDD随机接入过程的分类情况以及各类的具体接入步骤
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-随机接入的目的"><a href="#1-随机接入的目的" class="headerlink" title="1.随机接入的目的"></a>1.随机接入的目的</h2><p>随机接入是UE和网络之间建立无线链路的必经过程，只有在随机接入完成之后，eNB和UE之间才能正常进行数据互操作（Normal DL/UL transmission can take place after the random access procedure）。UE可以通过随机接入实现两个基本的功能：<br><strong>（1）取得与eNB之间的上行同步（TA）。一旦上行失步，UE只能在PRACH中传输数据。（as long as the L1 is non-synchronised, uplink transmission can only take place on PRACH.）</strong><br><strong>（2）申请上行资源（UL_GRANT）。</strong></p>
+<h2 id="2-随机接入的种类"><a href="#2-随机接入的种类" class="headerlink" title="2.随机接入的种类"></a>2.随机接入的种类</h2><p>根据业务触发方式的不同，可以将随机接入分为<strong>基于竞争的随机接入</strong>（Contention based random access procedure）和<strong>基于非竞争的随机接入</strong>（Non-Contention based random access procedure）。所谓“竞争”，就是说可能存在这么一种情况，UE-A/B/C/D多个终端，在同个子帧、使用同样的PRACH资源，向eNB发送了同样的前导码序列，希望得到eNB的资源授权，但此时eNB无法知道这个请求是哪个UE发出的，因此后续各UE需要通过发送一条只与自己本UE相关的、独一无二的消息（MSG3），以及eNB收到这条消息后的回传（MSG4）到UE，来确认当前接入成功的UE是哪一个。这种机制就是竞争解决机制。类似GSM系统的SABM/UA帧的握手机制。</p>
+<h4 id="2-1-竞争随机接入的场景"><a href="#2-1-竞争随机接入的场景" class="headerlink" title="2.1.竞争随机接入的场景"></a>2.1.竞争随机接入的场景</h4><p>当eNB不知道UE的业务或者状态，而UE又必须申请上行资源或上行TA同步的时候，UE就需要发起竞争随机接入。这种情况下，eNB没有为UE分配专用的Preamble码，而是由UE在指定范围内（以后博文会具体介绍这个范围）随机选择Preamble码并发起随机接入过程。发生竞争接入的具体场景有（36300-10.1.5）：<br><strong>（1）UE的初始接入（Initial access from RRC_IDLE）。</strong>此时RRC层的状态为RRC_IDLE，UE需要CONNECTION REQUEST，而eNB无法知道，因此需要UE执行竞争接入过程。<br><strong>（2）UE的重建（RRC Connection Re-establishment procedure）。</strong>重建的原因有多种，比如UE侧的RLC上行重传达到最大次数，就会触发重建，此时eNB也不知道UE的重建状态，也需要UE执行竞争接入过程。<br><strong>（3）UE有上行数据发送，但检测到上行失步（UL data arrival during RRC_CONNECTED requiring random access procedure when UL synchronisation status is “non-synchronised”）。</strong>这个情况与初始接入类似，eNB无法知道UE什么时候有上行业务要做，因此需要UE执行竞争接入过程。<br><strong>（4）UE有上行数据发送，但没有SR资源（UL data arrival during RRC_CONNECTED requiring random access procedure when there are no PUCCH resources for SR available”）。</strong>一般的，如果没有UL_GRANT用于发送BSR，UE会通过SR发送上行资源申请，但如果也没有SR资源，则只能通过竞争接入过程申请UL_GRANT。此时，eNB显然也不知道UE是否有上行数据发送。<br><strong>（5）如果非竞争接入过程中，eNB发现没有了非竞争资源，此时也会转到竞争接入过程（定位过程除外）。</strong>（非竞争接入过程的具体定义和消息交互过程见后文描述）包括：<br>（5.1）切换（Handover）。切换是由eNB侧发起的，因此优先执行非竞争接入过程。<br>（5.2）eNB有下行数据发送，但检测到上行失步（DL data arrival during RRC_CONNECTED requiring random access procedure when UL synchronisation status is “non-synchronised”）。eNB侧可以由MAC和RRC配合处理，优先执行非竞争接入过程。<br>（5.3）RRC连接态下需要执行定位过程但UE此时并没有TA（For positioning purpose during RRC_CONNECTED requiring random access procedure when timing advance is needed for UE positioning）。本过程只能进行非竞争接入。<br><img src="/images/LTE-RA1.jpg" alt="场景分类"></p>
+<h4 id="2-2-非竞争随机接入的场景"><a href="#2-2-非竞争随机接入的场景" class="headerlink" title="2.2.非竞争随机接入的场景"></a>2.2.非竞争随机接入的场景</h4><p>非竞争随机接入是UE根据eNB的指示，在指定的PRACH信道资源上使用指定的Preamble码发起的随机接入，适用于<br><strong>（1）切换（Handover）。</strong><br><strong>（2）eNB有下行数据发送，但检测到上行失步（DL data arrival during RRC_CONNECTED requiring random access procedure when UL synchronisation status is “non-synchronised”）。</strong><br><strong>（3）定位过程。</strong><br>等场景。</p>
+<h2 id="3-竞争随机接入的主要流程"><a href="#3-竞争随机接入的主要流程" class="headerlink" title="3.竞争随机接入的主要流程"></a>3.竞争随机接入的主要流程</h2><p>本文仅描述主要流程，一些细节内容以后会分不同的主题再描述。<br>下图是36300给出的竞争随机接入的四步过程，包括Random Access Preamble （MSG1）和Random Access Response（MSG2）、Scheduled Transmission（MSG3）和Contention Resolution（MSG4）。<br><img src="/images/LTE-RA2.jpg" alt="基于竞争的随机接入"></p>
+<h4 id="A-UE向eNB发送前导码-Random-Access-Preamble-on-RACH-in-uplink-。"><a href="#A-UE向eNB发送前导码-Random-Access-Preamble-on-RACH-in-uplink-。" class="headerlink" title="A.UE向eNB发送前导码(Random Access Preamble on RACH in uplink)。"></a>A.UE向eNB发送前导码(Random Access Preamble on RACH in uplink)。</h4><p>随机接入前导序列码集合是由物理层生成的最大数目为64个Zadoff-Chu序列及其移位序列组成。eNB侧的RRC分配部分或全部Preamble序列的索引值用于竞争随机接入，并通过系统信息SIB2广播到UE。UE随机接入需要的PRACH物理信道资源如PRACH个数和时频位置等也由RRC通过系统消息SIB2广播到UE。UE侧的RRC收到SIB2后，解析出其中的Preamble信息并配置到MAC，由MAC根据路损等信息在Preamble集合中随机选择一个Preamble索引配置给物理层，物理层根据MAC的Preamble索引，通过查表/公式生成有效的Preamble ZC序列并发送到eNB。关于前导码时频位置更详细的内容，请参考我的另一篇文章《LTE-TDD随机接入过程（2）-前导码Preamble的格式与时频位置》。<br>每个小区可用的Preamble码总数不超过64个，在所有用于竞争随机接入的Preamble码中，eNB侧的RRC可以选择性的将其分为2组：Group A和Group B。UE触发随机接入的时候，需要根据待发的MSG3大小和路损大小确定Preamble码集合(If both groups are configured the size of message 3 and the pathloss are used to determine which group a preamble is selected from)。其中，Group B用于MSG3较大而路损较小的场景，Group A用于其它不适合Group B的场合。那么如何衡量MSG3和路损是大还是小，这些值衡量的门限参数是由eNB在SIB2信息中通知给UE的。UE确定Preamble码使用集合A或B后，从该集合中随机选择一个Preamble码发送。关于前导码分组的更详细内容，请参考我的另一篇文章《LTE-TDD随机接入过程（4）-RIV的解析和Preamble资源的选择》。<br>如果eNB将小区内所有的Preamble码都划归为Group A（即SIB2中配置的总SIZE=Group A SIZE），则UE直接从Group A中随机选择一个Preamble码发送。eNB侧RRC配置的Group A SIZE和Group total SIZE一般可以由管理工具配置，不需要RRC代码静态分配，UE侧RRC根据Group A SIZE和total SIZE即可计算出Group B的SIZE。<br>UE根据从SIB2中获取到的信息，生成随机接入前导Preamble序列，并在PRACH信道的相应随机接入资源上发起随机接入。 此时UE并不知道eNB与UE之间的距离，为避免对其它用户干扰，Preamble序列设计时，后面会有一个GT保护间隔。</p>
+<h4 id="B-eNB向UE发送MSG2（Random-Access-Response-generated-by-MAC-on-DL-SCH）。"><a href="#B-eNB向UE发送MSG2（Random-Access-Response-generated-by-MAC-on-DL-SCH）。" class="headerlink" title="B.eNB向UE发送MSG2（Random Access Response generated by MAC on DL-SCH）。"></a>B.eNB向UE发送MSG2（Random Access Response generated by MAC on DL-SCH）。</h4><p>eNB会在PRACH中盲检测前导码，如果eNB检测到了随机接入前导序列码Radom Access Preamble，则上报给MAC，后续会在随机接入响应窗口内，在下行共享信道PDSCH中反馈MAC的随机接入响应Radom Access Response。解码PDSCH信道内容，需要UE先通过RA-RNTI解码出PDCCH资源分配信息，然后继续解码PDSCH信道内容。而RA-RNTI是由承载MSG1的PRACH时频资源位置确定的，UE和eNB均可以计算出RA-RNTI值，因此空口中并不需要传输RA-RNTI。关于RAR的更详细内容，请参考我的另一篇文章《LTE-TDD随机接入过程（3）-RAR（MSG2）以及MSG1的重传》。<br>随机接入响应窗口的起点是与MSG1（RA Preamble）间隔3个子帧，长度为2-10ms，由eNB的RRC配置，并通过系统信息SIB2发送到UE。<br>RA Response（MSG2）消息中包含：MSG1中的RA Preamble（供UE匹配操作）、UE上行定时提前量TA（11位，粗调）、backoff回退参数（重新发起Preamble码应延迟再次接入的时间）、为传输MSG3分配的PUSCH上行调度信息UL_Grant（包括是否跳频、调制编码率、接入资源和接入时刻等内容）、Temple C-RNTI（供MSG3加扰使用）。<br>RA response（MSG2）是一个独立的MAC PDU，在DL-SCH中承载。一个MSG2中可以包含多个UE的Preamble，即响应多个UE的随机接入请求。UE通过检测MSG2中是否携带了其发送的Preamble码来标识是否收到了eNB的随机接入响应，但此时还没有完成竞争解决，并不表示此次eNB侧的应答就是针对本UE的应答。</p>
+<h4 id="C-UE向eNB发送MSG3（First-scheduled-UL-transmission-on-UL-SCH）。"><a href="#C-UE向eNB发送MSG3（First-scheduled-UL-transmission-on-UL-SCH）。" class="headerlink" title="C.UE向eNB发送MSG3（First scheduled UL transmission on UL-SCH）。"></a>C.UE向eNB发送MSG3（First scheduled UL transmission on UL-SCH）。</h4><p>UE根据RA Response中的TA调整量可以获得上行同步，并在eNB为其分配的上行资源中传输MSG3，以便进行后续的数据传输。<br>Msg3的初始传输是唯一通过MAC层MSG2消息指示的上行数据动态调度传输，当随机接入过程完成后，其他动态调度上行初始传输都是通过DCI0进行资源分配指示。MSG3消息开始支持HARQ过程，重传的资源和位置通过Temple C-RNTI加扰的DCI0告诉UE。<br>MSG3可能携带RRC建链消息（RRC Connection Request），也可能携带RRC重建消息（RRC Connection Re-establishment Request ）。如果有层3消息，那么MAC需要保存该CCCH SDU信息，因为eNB MAC发送MSG4的时候需要将UE的这个CCCH SDU信息回发给UE，当做竞争解决标识（UE Contention Resolution Identity）使用，以便完成最终的竞争解决。</p>
+<h4 id="D-eNB向UE发送MSG4（Contention-Resolution-on-DL）。"><a href="#D-eNB向UE发送MSG4（Contention-Resolution-on-DL）。" class="headerlink" title="D.eNB向UE发送MSG4（Contention Resolution on DL）。"></a>D.eNB向UE发送MSG4（Contention Resolution on DL）。</h4><p>eNB和UE最终通过MSG4完成竞争解决：<br>（1）对于初始接入和重建的情况，MSG4中的MAC PDU会携带竞争解决标识（UE Contention Resolution Identity，即MSG3中的CCCH SDU，RRC Connection Request、RRC Connection Re-establishment Request 等消息）。UE在解码TC-RNTI加扰的PDCCH信道后（The Temporary C-RNTI on PDCCH for initial access and after radio link failure），继续在PDSCH信道中获取MSG4的MAC PDU内容，解码成功后，与UE之前在MSG3中发送的CCCH SDU进行比较，二者相同则竞争解决成功（因为不同的UE，其标识不同）。此时MSG3的MAC-CE中不会携带CRNTI字段，对于重建而言，CCCH SDU中则会携带CRNTI信息，RRC据此区分不同的UE。竞争解决后，TCRNTI转正为CRNTI(The Temporary C-RNTI is promoted to C-RNTI for a UE which detects RA success and does not already have a C-RNTI; it is dropped by others. )<br>（2）对于切换、上/下行数据传输但失步等其他场景进行的竞争随机接入场景，此时因为UE已经分配了C-RNTI，在MSG3的MAC-CE中会将C-RNTI通知到eNB，因此eNB使用旧的C-RNTI加扰的PDCCH调度MSG4，而不使用TCRNTI加扰MSG4(The C-RNTI on PDCCH for UE in RRC_CONNECTED)。UE解码出PDCCH调度命令的时候表示完成竞争解决，MSG4中的具体内容已经与竞争解决无关。这时，MSG2中由eNB分配的TC-RNTI失效，后续由eNB继续分配给其它UE使用(A UE which detects RA success and already has a C-RNTI, resumes using its C-RNTI.)。因此，此种场景MSG4中不包括UE竞争解决标识。<br>MSG4消息也支持HARQ过程，UE通过PUCCH指示ACK，eNB PHY收到ACK后报给MAC。只有成功完成竞争解决的UE才反馈ACK。</p>
+<h2 id="4-非竞争随机接入的主要过程"><a href="#4-非竞争随机接入的主要过程" class="headerlink" title="4.非竞争随机接入的主要过程"></a>4.非竞争随机接入的主要过程</h2><p>非竞争随机接入是UE根据eNB的指示，在指定的PRACH信道资源上使用指定的Preamble码发起的随机接入，适用于切换、下行数据到达但失步、定位的场景。<br><img src="/images/LTE-RA3.jpg" alt="基于非竞争的随机接入"></p>
+<h4 id="A-eNB向UE发送RA-Preamble-assignment（Random-Access-Preamble-assignment-via-dedicated-signalling-in-DL）"><a href="#A-eNB向UE发送RA-Preamble-assignment（Random-Access-Preamble-assignment-via-dedicated-signalling-in-DL）" class="headerlink" title="A.eNB向UE发送RA Preamble assignment（Random Access Preamble assignment via dedicated signalling in DL）"></a>A.eNB向UE发送RA Preamble assignment（Random Access Preamble assignment via dedicated signalling in DL）</h4><p>eNB向UE发送非竞争随机接入过程需要的Preamble码和PRACH信道接入资源。若此时前导码资源不够，eNB只能通知UE发起竞争随机接入，方式是将PDCCH格式1a中的Preamble index设置为全0，UE解码出的Preamble Index全0后，会执行基于竞争的随机接入过程。<br>对于切换，非竞争前导码通过切换命令发到UE；而其他的两种场景，需要通过CRNTI加扰的DCI1A发到UE。</p>
+<h4 id="B-UE向eNB发送Preamble码（Random-Access-Preamble-on-RACH-in-uplink）"><a href="#B-UE向eNB发送Preamble码（Random-Access-Preamble-on-RACH-in-uplink）" class="headerlink" title="B.UE向eNB发送Preamble码（Random Access Preamble on RACH in uplink）"></a>B.UE向eNB发送Preamble码（Random Access Preamble on RACH in uplink）</h4><p>如果指定了多个PRACH信道资源，UE在连续三个可用的、有PRACH信道资源的子帧中随机选择一个指定的PRACH信道资源用于承载MSG1。eNB侧MAC处理过程同基于竞争的随机接入过程。</p>
+<h4 id="C-eNB向UE反馈随机接入响应Radom-Access-Response（Random-Access-Response-on-DL-SCH）"><a href="#C-eNB向UE反馈随机接入响应Radom-Access-Response（Random-Access-Response-on-DL-SCH）" class="headerlink" title="C.eNB向UE反馈随机接入响应Radom Access Response（Random Access Response on DL-SCH）"></a>C.eNB向UE反馈随机接入响应Radom Access Response（Random Access Response on DL-SCH）</h4><p>eNB侧MAC处理过程同基于竞争的随机接入过程。</p>
+<h2 id="5-参考文献"><a href="#5-参考文献" class="headerlink" title="5.参考文献"></a>5.参考文献</h2><p><em>（1）3GPP TS 36.300 V9.10.0 (2012-12) Overall description</em></p>
+<p><strong>明原文链接（<a href="http://blog.csdn.net/m_052148）" target="_blank" rel="external">http://blog.csdn.net/m_052148）</a></strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/08/LTE-frame/" rel="next" title="LTE物理传输资源-帧结构简介">
+                <i class="fa fa-chevron-left"></i> LTE物理传输资源-帧结构简介
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="Xing Shuchen" />
+            
+              <p class="site-author-name" itemprop="name">Xing Shuchen</p>
+              <p class="site-description motion-element" itemprop="description">既入江湖 生死为疆</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/xingsc" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://plus.google.com/yourname" target="_blank" title="Google">
+                    
+                      <i class="fa fa-fw fa-google"></i>Google</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-随机接入的目的"><span class="nav-number">1.</span> <span class="nav-text">1.随机接入的目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-随机接入的种类"><span class="nav-number">2.</span> <span class="nav-text">2.随机接入的种类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-竞争随机接入的场景"><span class="nav-number">2.0.1.</span> <span class="nav-text">2.1.竞争随机接入的场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-非竞争随机接入的场景"><span class="nav-number">2.0.2.</span> <span class="nav-text">2.2.非竞争随机接入的场景</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-竞争随机接入的主要流程"><span class="nav-number">3.</span> <span class="nav-text">3.竞争随机接入的主要流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#A-UE向eNB发送前导码-Random-Access-Preamble-on-RACH-in-uplink-。"><span class="nav-number">3.0.1.</span> <span class="nav-text">A.UE向eNB发送前导码(Random Access Preamble on RACH in uplink)。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B-eNB向UE发送MSG2（Random-Access-Response-generated-by-MAC-on-DL-SCH）。"><span class="nav-number">3.0.2.</span> <span class="nav-text">B.eNB向UE发送MSG2（Random Access Response generated by MAC on DL-SCH）。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C-UE向eNB发送MSG3（First-scheduled-UL-transmission-on-UL-SCH）。"><span class="nav-number">3.0.3.</span> <span class="nav-text">C.UE向eNB发送MSG3（First scheduled UL transmission on UL-SCH）。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#D-eNB向UE发送MSG4（Contention-Resolution-on-DL）。"><span class="nav-number">3.0.4.</span> <span class="nav-text">D.eNB向UE发送MSG4（Contention Resolution on DL）。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-非竞争随机接入的主要过程"><span class="nav-number">4.</span> <span class="nav-text">4.非竞争随机接入的主要过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#A-eNB向UE发送RA-Preamble-assignment（Random-Access-Preamble-assignment-via-dedicated-signalling-in-DL）"><span class="nav-number">4.0.1.</span> <span class="nav-text">A.eNB向UE发送RA Preamble assignment（Random Access Preamble assignment via dedicated signalling in DL）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B-UE向eNB发送Preamble码（Random-Access-Preamble-on-RACH-in-uplink）"><span class="nav-number">4.0.2.</span> <span class="nav-text">B.UE向eNB发送Preamble码（Random Access Preamble on RACH in uplink）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C-eNB向UE反馈随机接入响应Radom-Access-Response（Random-Access-Response-on-DL-SCH）"><span class="nav-number">4.0.3.</span> <span class="nav-text">C.eNB向UE反馈随机接入响应Radom Access Response（Random Access Response on DL-SCH）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-参考文献"><span class="nav-number">5.</span> <span class="nav-text">5.参考文献</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+    </div>
+    <object type="application/x-shockwave-flash" title="小白饿了，请大哥大姐施舍点吧。。。" style="outline: none;border:3px" data="https://cdn.abowman.com/widgets/hamster/hamster.swf?" width="330" height="290">
+            <param name="movie" value="http://cdn.abowman.com/widgets/hamster/hamster.swf?">
+            <param name="AllowScriptAccess" value="always">
+            <param name="wmode" value="opaque">
+    </object>
+    <div id="xsc">
+        <embed src="//music.163.com/style/swf/widget.swf?sid=442760&type=2&auto=0&width=320&height=66" width="340" height="86"  allowNetworking="all"></embed>
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xing Shuchen</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+var ca = document.getElementById("canvas");
+ca.style.width = window.innerWidth + "px";
+ca.style.height = window.innerHeight + "px";
+class Circle {
+
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.r = 5.5 ;
+        this._mx = Math.random() ;
+        this._my = Math.random() ;
+
+    }
+
+
+    drawCircle(ctx) {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.r, 0, 360)
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(204, 204, 204, 0.3)';
+        ctx.fill();
+    }
+
+    drawLine(ctx, _circle) {
+        let dx = this.x - _circle.x;
+        let dy = this.y - _circle.y;
+        let d = Math.sqrt(dx * dx + dy * dy)
+        if (d < 150) {
+            ctx.beginPath();
+            ctx.moveTo(this.x, this.y);   //???
+            ctx.lineTo(_circle.x, _circle.y);   //??
+            ctx.closePath();
+            ctx.strokeStyle = 'rgba(204, 204, 204, 0.3)';
+            ctx.stroke();
+        }
+    }
+
+    move(w, h) {
+        this._mx = (this.x < w && this.x > 0) ? this._mx : (-this._mx);
+        this._my = (this.y < h && this.y > 0) ? this._my : (-this._my);
+        this.x += this._mx / 2;
+        this.y += this._my / 2;
+    }
+}
+class currentCirle extends Circle {
+    constructor(x, y) {
+        super(x, y)
+    }
+
+    drawCircle(ctx) {
+        ctx.beginPath();
+        this.r = 7;
+        ctx.arc(this.x, this.y, this.r, 0, 360);
+        ctx.closePath();
+        //ctx.fillStyle = 'rgba(0,0,0,' + (parseInt(Math.random() * 100) / 100) + ')'
+        ctx.fillStyle = 'rgba(255, 77, 54, 0.3)'
+        ctx.fill();
+
+    }
+}
+window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+
+let canvas = document.getElementById('canvas');
+let ctx = canvas.getContext('2d');
+let w = canvas.width = canvas.offsetWidth;
+let h = canvas.height = canvas.offsetHeight;
+let circles = [];
+let current_circle = new currentCirle(0, 0)
+
+let draw = function () {
+    ctx.clearRect(0, 0, w, h);
+    for (let i = 0; i < circles.length; i++) {
+        circles[i].move(w, h);
+        circles[i].drawCircle(ctx);
+        for (j = i + 1; j < circles.length; j++) {
+            circles[i].drawLine(ctx, circles[j])
+        }
+    }
+    if (current_circle.x) {
+        current_circle.drawCircle(ctx);
+        for (var k = 1; k < circles.length; k++) {
+            current_circle.drawLine(ctx, circles[k])
+        }
+    }
+    requestAnimationFrame(draw)
+}
+
+let init = function (num) {
+    for (var i = 0; i < num; i++) {
+        circles.push(new Circle(Math.random() * w, Math.random() * h));
+    }
+    draw();
+}
+window.addEventListener('load', init(130));
+window.onmousemove = function (e) {
+    e = e || window.event;
+    current_circle.x = e.clientX;
+    current_circle.y = e.clientY;
+}
+window.onmouseout = function () {
+    current_circle.x = null;
+    current_circle.y = null;
+
+};
+</script>
+<script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>
