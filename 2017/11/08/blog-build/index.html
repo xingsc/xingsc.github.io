@@ -82,11 +82,11 @@
 <meta name="description" content="本篇博客介绍在Windows平台下如何利用GitHub Page和静态博客生成工具Hexo搭建属于自己的博客">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Windows平台 GitHub + Hexo 搭建个人博客">
-<meta property="og:url" content="http://yoursite.com/2017/11/06/blog-build/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/11/08/blog-build/index.html">
 <meta property="og:site_name" content="Xsc&#39;s Blog">
 <meta property="og:description" content="本篇博客介绍在Windows平台下如何利用GitHub Page和静态博客生成工具Hexo搭建属于自己的博客">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-06T00:54:11.665Z">
+<meta property="og:updated_time" content="2017-11-08T08:15:02.938Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Windows平台 GitHub + Hexo 搭建个人博客">
 <meta name="twitter:description" content="本篇博客介绍在Windows平台下如何利用GitHub Page和静态博客生成工具Hexo搭建属于自己的博客">
@@ -119,7 +119,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/11/06/blog-build/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/08/blog-build/"/>
 
 
 
@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/06/blog-build/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/08/blog-build/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xing Shuchen">
@@ -323,8 +323,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-06T08:54:11+08:00">
-                2017-11-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-08T16:15:02+08:00">
+                2017-11-08
               </time>
             
 
@@ -443,7 +443,8 @@ npm  install  hexo-deployer-git  --save
 <h3>六、部署本地文件到github</h3>
 
 <p>本地文件要发布到github上面，则需要使本地git和互联网上的通信。怎么通信呢？<br>有两种方法，https和ssh公钥方式。使用https的话需要每次输入密码，不过配置起来简单。常用的是ssh公钥的方式。<br>先来在本地初始化一下git设置吧</p>
-<h5 id="本机git初始设置"><a href="#本机git初始设置" class="headerlink" title="本机git初始设置"></a>本机git初始设置</h5><p> 1、设置姓名和邮箱地址</p>
+<p><strong>本机git初始设置</strong></p>
+<p> 1、设置姓名和邮箱地址</p>
 <p>终端输入：任意目录中都可以<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git config  --global  user.name  &quot;your name&quot;  </div><div class="line">$ git config  --global  user.email  your_email@youremail.com</div></pre></td></tr></table></figure></p>
 <p>我用的是我的用户名和邮箱设置的，设置完成会在~/.gitconfig文件中生成如下配置 </p>
 <p> 2、本地生成ssh key<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -C 13253641509@qq.com</div></pre></td></tr></table></figure></p>
@@ -454,7 +455,8 @@ npm  install  hexo-deployer-git  --save
 <p>打开github登陆后，点击自己头像下箭头，找到settings（设置），在左边栏目里面选择SSH keys,然后点击Add SSH key，随便填一个Title，把上面把cat出来的内容全部添加到key文本框里，然后点击add key。 </p>
 <p>添加成功后，创建github时用到的邮箱会收到GitHub发的一个”A new public key was add to your account”的邮件。</p>
 <p> 5、使用私人密钥与GitHub进行认证和通信<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh -T git@github.com</div></pre></td></tr></table></figure></p>
-<h5 id="将hexo和github进行关联"><a href="#将hexo和github进行关联" class="headerlink" title="将hexo和github进行关联"></a>将hexo和github进行关联</h5><p> 1、编辑E：\hexo下的_config.yml文件，在_config.yml最下方，添加如下配置</p>
+<p><strong>将hexo和github进行关联</strong></p>
+<p> 1、编辑E：\hexo下的_config.yml文件，在_config.yml最下方，添加如下配置</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cd e:/hexo</div><div class="line">$ vi _config.yml</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repository: git@github.com:xingsc/xingsc.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
 <p>说明：<br><br>(1)hexo的配置文件中任何’:’后面都是带一个空格的。 <br><br>(2)repository: 后面的地址其实在github上有生成。新建仓库时候，会有生成如下图<br>(3)这里发现还有HTTPS，其实HTTPS也可以和本地进行通信，只不过通信时候，每次要求输入GitHub账号密码。</p>
@@ -499,8 +501,8 @@ npm  install  hexo-deployer-git  --save
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/05/MarkDown/" rel="next" title="MarkDown语言学习">
-                <i class="fa fa-chevron-left"></i> MarkDown语言学习
+              <a href="/2017/11/08/LTE-frame/" rel="next" title="LTE物理传输资源-帧结构简介">
+                <i class="fa fa-chevron-left"></i> LTE物理传输资源-帧结构简介
               </a>
             
           </div>
@@ -509,8 +511,8 @@ npm  install  hexo-deployer-git  --save
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/11/06/java-exception/" rel="prev" title="JAVA 异常抛出及捕获">
-                JAVA 异常抛出及捕获 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/11/08/LTE-RA/" rel="prev" title="LTE-TDD随机接入过程">
+                LTE-TDD随机接入过程 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -654,7 +656,7 @@ npm  install  hexo-deployer-git  --save
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、注册GitHub账号"><span class="nav-number">1.</span> <span class="nav-text">一、注册GitHub账号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、创建GitHub仓库"><span class="nav-number">2.</span> <span class="nav-text">二、创建GitHub仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、下载node-js"><span class="nav-number">3.</span> <span class="nav-text">三、下载node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、安装git"><span class="nav-number">4.</span> <span class="nav-text">四、安装git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、安装hexo"><span class="nav-number">5.</span> <span class="nav-text">五、安装hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">六、部署本地文件到github</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#本机git初始设置"><span class="nav-number">6.0.1.</span> <span class="nav-text">本机git初始设置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#将hexo和github进行关联"><span class="nav-number">6.0.2.</span> <span class="nav-text">将hexo和github进行关联</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">七、 发表一篇文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">8.</span> <span class="nav-text">八、 绑定自己的域名.</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、注册GitHub账号"><span class="nav-number">1.</span> <span class="nav-text">一、注册GitHub账号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、创建GitHub仓库"><span class="nav-number">2.</span> <span class="nav-text">二、创建GitHub仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、下载node-js"><span class="nav-number">3.</span> <span class="nav-text">三、下载node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、安装git"><span class="nav-number">4.</span> <span class="nav-text">四、安装git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、安装hexo"><span class="nav-number">5.</span> <span class="nav-text">五、安装hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">六、部署本地文件到github</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">七、 发表一篇文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">8.</span> <span class="nav-text">八、 绑定自己的域名.</span></a></li></ol></div>
             
 
           </div>
