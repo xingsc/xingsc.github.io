@@ -79,17 +79,21 @@
 
 
 
-<meta name="description" content="本篇博客介绍在Windows平台下如何利用GitHub Page和静态博客生成工具Hexo搭建属于自己的博客">
+<meta name="description" content="简单记录下LTE中FDD和TDD模式的帧结构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Windows平台 GitHub + Hexo 搭建个人博客">
-<meta property="og:url" content="http://yoursite.com/2017/11/06/blog-build/index.html">
+<meta property="og:title" content="LTE物理传输资源-帧结构简介">
+<meta property="og:url" content="http://yoursite.com/2017/11/08/LTE-frame/index.html">
 <meta property="og:site_name" content="Xsc&#39;s Blog">
-<meta property="og:description" content="本篇博客介绍在Windows平台下如何利用GitHub Page和静态博客生成工具Hexo搭建属于自己的博客">
+<meta property="og:description" content="简单记录下LTE中FDD和TDD模式的帧结构">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-06T00:54:11.665Z">
+<meta property="og:image" content="http://yoursite.com/images/frame.jpg">
+<meta property="og:image" content="http://yoursite.com/images/fdd.jpg">
+<meta property="og:image" content="http://yoursite.com/images/tdd.jpg">
+<meta property="og:updated_time" content="2017-11-08T03:32:16.421Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Windows平台 GitHub + Hexo 搭建个人博客">
-<meta name="twitter:description" content="本篇博客介绍在Windows平台下如何利用GitHub Page和静态博客生成工具Hexo搭建属于自己的博客">
+<meta name="twitter:title" content="LTE物理传输资源-帧结构简介">
+<meta name="twitter:description" content="简单记录下LTE中FDD和TDD模式的帧结构">
+<meta name="twitter:image" content="http://yoursite.com/images/frame.jpg">
 
 
 
@@ -119,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/11/06/blog-build/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/08/LTE-frame/"/>
 
 
 
 
 
-  <title>Windows平台 GitHub + Hexo 搭建个人博客 | Xsc's Blog</title>
+  <title>LTE物理传输资源-帧结构简介 | Xsc's Blog</title>
   
 
 
@@ -294,7 +298,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/06/blog-build/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/08/LTE-frame/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xing Shuchen">
@@ -311,7 +315,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Windows平台 GitHub + Hexo 搭建个人博客</h1>
+          <h1 class="post-title" itemprop="name headline">LTE物理传输资源-帧结构简介</h1>
         
 
         <div class="post-meta">
@@ -323,8 +327,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-06T08:54:11+08:00">
-                2017-11-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-08T11:32:16+08:00">
+                2017-11-08
               </time>
             
 
@@ -346,8 +350,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/program/" itemprop="url" rel="index">
-                    <span itemprop="name">program</span>
+                  <a href="/categories/IOT/" itemprop="url" rel="index">
+                    <span itemprop="name">IOT</span>
                   </a>
                 </span>
 
@@ -377,7 +381,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,591
+                  606
                 </span>
               
 
@@ -393,7 +397,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  6
+                  2
                 </span>
               
             </div>
@@ -401,7 +405,7 @@
 
           
               <div class="post-description">
-                  本篇博客介绍在Windows平台下如何利用GitHub Page和静态博客生成工具Hexo搭建属于自己的博客
+                  简单记录下LTE中FDD和TDD模式的帧结构
               </div>
           
 
@@ -418,63 +422,9 @@
       
 
       
-        <h3 id="一、注册GitHub账号"><a href="#一、注册GitHub账号" class="headerlink" title="一、注册GitHub账号"></a>一、注册GitHub账号</h3><h3 id="二、创建GitHub仓库"><a href="#二、创建GitHub仓库" class="headerlink" title="二、创建GitHub仓库"></a>二、创建GitHub仓库</h3><p>创建git仓库时候，仓库的名称有格式要求，例如我的GitHub仓库用户名是xingsc,那么我创建的仓库名称就是xingsc.github.io。</p>
-<p>然后点击此页面下面的“Create repository”按钮即可创建。</p>
-<h3 id="三、下载node-js"><a href="#三、下载node-js" class="headerlink" title="三、下载node.js"></a>三、下载node.js</h3><p>下载node.js的网址<a href="https://nodejs.org/en/download/。Node.js主要用于安装hexo，npm开头的命令都依赖于Node.js" target="_blank" rel="external">https://nodejs.org/en/download/。Node.js主要用于安装hexo，npm开头的命令都依赖于Node.js</a><br>如果出现以下提示,则代表你的Node.js没有安装或者还未生效，如果已经安装了则重启电脑.<br>bash: nmp: command not found</p>
-<h3 id="四、安装git"><a href="#四、安装git" class="headerlink" title="四、安装git"></a>四、安装git</h3><p>Windows版本的git下载地址为<a href="https://git-for-windows.github.io/" target="_blank" rel="external">https://git-for-windows.github.io/</a><br>一步一步默认安装好了</p>
-<h3 id="五、安装hexo"><a href="#五、安装hexo" class="headerlink" title="五、安装hexo"></a>五、安装hexo</h3><p>官方中文文档<a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="external">https://hexo.io/zh-cn/docs/index.html</a></p>
-<p>让我们先了解了解 的命令解释</p>
-<p><strong>$ hexo g</strong> #完整命令为hexo generate，用于生成静态文件 </p>
-<p><strong>$ hexo s</strong> #完整命令为hexo server，用于启动服务器，主要用来本地预览</p>
-<p><strong>$ hexo d</strong> #完整命令为hexo deploy，用于将本地文件发布到github上 </p>
-<p><strong>$ hexo n</strong> #完整命令为hexo new，用于新建一篇文章</p>
-<p>（1）鼠标右键任意地方，选择Git Bash，使用以下命令安装hexo</p>
-<pre><code>npm  install  hexo-cli -g
-npm  install  hexo-deployer-git  --save
-</code></pre><p>提示：如果后面出现“ERROR Deployer not found: git“这样的提示错误，则执行此步骤第二个命令 </p>
-<p>（2）创建放置博客文件的文件夹：hexo文件夹，我放置在E盘，E:\hexo,最好不要在中文路径下面，会出现莫名其妙的错误，我们都懂的。 </p>
-<p>注意：以后进行hexo操作都要进入到此文件夹中 </p>
-<p>（3）进入E:\hexo文件夹，鼠标右键选择“Git Bash”,执行以下命令，初始化hexo，这时候会在该文件夹中创建网站所需要的文件</p>
-<pre><code>hexo init
-</code></pre><p>（4）安装依赖包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install</div></pre></td></tr></table></figure></p>
-<p>会在D:\Hexo目录中安装 node_modules<br>（5）生成静态文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo g</div></pre></td></tr></table></figure></p>
-<p>（6）此时最基本的网站已经搭建好了，只不过是在本地放着，我们可以先预览一下<br>在git中执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo s</div></pre></td></tr></table></figure></p>
-<p>这时候，会在本地开启一个http服务，监听4000端口，我们在浏览器访问<a href="http://127.0.0.1:4000" target="_blank" rel="external">http://127.0.0.1:4000</a></p>
-<h3>六、部署本地文件到github</h3>
-
-<p>本地文件要发布到github上面，则需要使本地git和互联网上的通信。怎么通信呢？<br>有两种方法，https和ssh公钥方式。使用https的话需要每次输入密码，不过配置起来简单。常用的是ssh公钥的方式。<br>先来在本地初始化一下git设置吧</p>
-<h5 id="本机git初始设置"><a href="#本机git初始设置" class="headerlink" title="本机git初始设置"></a>本机git初始设置</h5><p> 1、设置姓名和邮箱地址</p>
-<p>终端输入：任意目录中都可以<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git config  --global  user.name  &quot;your name&quot;  </div><div class="line">$ git config  --global  user.email  your_email@youremail.com</div></pre></td></tr></table></figure></p>
-<p>我用的是我的用户名和邮箱设置的，设置完成会在~/.gitconfig文件中生成如下配置 </p>
-<p> 2、本地生成ssh key<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -C 13253641509@qq.com</div></pre></td></tr></table></figure></p>
-<p>和在linux生成的ssh一样，也可以生成的秘钥时候设置私钥密码</p>
-<p> 3、把本机生成的公开的秘钥添加到github中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat ~/.ssh/id_rsa.pub</div></pre></td></tr></table></figure></p>
-<p>将公钥复制下来</p>
-<p> 4、将公钥放在github上。</p>
-<p>打开github登陆后，点击自己头像下箭头，找到settings（设置），在左边栏目里面选择SSH keys,然后点击Add SSH key，随便填一个Title，把上面把cat出来的内容全部添加到key文本框里，然后点击add key。 </p>
-<p>添加成功后，创建github时用到的邮箱会收到GitHub发的一个”A new public key was add to your account”的邮件。</p>
-<p> 5、使用私人密钥与GitHub进行认证和通信<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh -T git@github.com</div></pre></td></tr></table></figure></p>
-<h5 id="将hexo和github进行关联"><a href="#将hexo和github进行关联" class="headerlink" title="将hexo和github进行关联"></a>将hexo和github进行关联</h5><p> 1、编辑E：\hexo下的_config.yml文件，在_config.yml最下方，添加如下配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cd e:/hexo</div><div class="line">$ vi _config.yml</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repository: git@github.com:xingsc/xingsc.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
-<p>说明：<br><br>(1)hexo的配置文件中任何’:’后面都是带一个空格的。 <br><br>(2)repository: 后面的地址其实在github上有生成。新建仓库时候，会有生成如下图<br>(3)这里发现还有HTTPS，其实HTTPS也可以和本地进行通信，只不过通信时候，每次要求输入GitHub账号密码。</p>
-<p> 2、将本地文件同步到GitHub<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo g</div><div class="line">$ hexo d</div></pre></td></tr></table></figure></p>
-<p>此时，我们的博客已经搭建起来，并发布到Github上了，这时可以登陆自己的Github查看代码是否已经推送到对应Repository，在浏览器访问<a href="http://xingsc.github.io就能看到自己的博客了。第一次访问地址，可能访问不了，您可以在几分钟后进行访问，一般不超过10分钟。" target="_blank" rel="external">http://xingsc.github.io就能看到自己的博客了。第一次访问地址，可能访问不了，您可以在几分钟后进行访问，一般不超过10分钟。</a></p>
-<h3>七、 发表一篇文章</h3>
-
-<p>1、在Git Bash执行命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new “firstblog”</div></pre></td></tr></table></figure></p>
-<p> 2、这时候会在E:\hexo\source_post文件夹中，生成一个firstblog.md文件，这时候，我们可以在里面编辑内容。</p>
-<p> 3、可以先在本地预览一下生成的博客<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo g </div><div class="line">hexo s</div></pre></td></tr></table></figure></p>
-<p> 4、访问<a href="http://127.0.0.1:4000" target="_blank" rel="external">http://127.0.0.1:4000</a><br> 5、同步到GitHub上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo d</div></pre></td></tr></table></figure></p>
-<p> 6、访问自己的网址即可查看，<a href="https://xingsc.github.io" target="_blank" rel="external">https://xingsc.github.io</a></p>
-<p>注意：<br><br>首页中，默认是把整篇文章显示出来，怎么在首页显示文章的缩略呢？<br>在想要显示缩略文章的内容中，缩略内容的后面添加如下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;!--more--&gt;</div></pre></td></tr></table></figure></p>
-<p>这样这段代码前面部分，将以缩略形式显示到首页，后面的内容将不会显示。</p>
-<h3>八、 绑定自己的域名.</h3>
-
-<p>1、在source文件中新建一个CNAME文件，然后里面添加自己的网站域名，如walker123.cn<br>可以在setting中查看是否发布成功，默认发布到<a href="http://walker123.cn上面了，可以在下面添加自定义主机名。" target="_blank" rel="external">http://walker123.cn上面了，可以在下面添加自定义主机名。</a> </p>
-<p> 2、到自己的域名解析中添加CNAME值，主机记录www,解析到username.github.io.(注意最后面有点，我用的腾讯云，如果没有加点，保存时候自动加上了点)，为了让只输入一个二级域名也可以访问到，加上自己的域名记录输入@或者walker123.cn.(cn后面有点)，如下图 </p>
-<p> 3、使用<code>hexo g  hexo d</code>进行部署 </p>
-<p> 4、等十分钟左右，用自己域名访问下试试</p>
+        <p>##1.基本时间单位<br>在LTE里，无论是FDD还是TDD，它的时间基本单位都是采样周期Ts，值固定等于：<br><img src="/images/frame.jpg" alt="frame"><br>其中，15000表示<strong>子载波的间隔</strong>是15KHz，2048表示<strong>采样点个数</strong>，因此采样率等于30.72MHz（15000*2048=30.72MHz）。除了15KHz的子载波间隔之外，3GPP协议实际上还定义了一个7.5KHz的载波间隔。这种降低的子载波间隔是专门针对MBSFN（Multimedia Broadcast multicast service Single Frequency Network）的多播/广播传输的，且在R9协议中只是部分给出了实现，因此本博客除非特别说明，都将默认子载波间隔是15KHz。</p>
+<p>##2.FDD帧结构<br>协议上对LTE-FDD的帧结构模式，一般又称为<strong>Frame structure type 1</strong>，这里为了指代明确，还是称呼为FDD帧结构。<br>在FDD里，每个无线系统帧的长度Tf=307200<em>Ts=10ms，由20个时隙（slot）组成，每个时隙长度Tslot=15360</em>Ts=0.5ms，按照0到19进行周期循环编号。每个子帧由2个连续的时隙组成，按照0到9进行周期循环编号，因此1个无线系统帧由10个子帧组成，无线帧的周期是1024。<br>在FDD里，每个系统帧的10个子帧都可以传输下行，也都可以传输上行，上下行在不同的频域中分别进行。在半双工的FDD模式下，UE不能在同一个子帧里既发送数据又接收数据，而在全双工的FDD模式下，UE则没有这个限制，在同个子帧里可以同时发送和接收数据。<br>下面是FDD制式的帧结构示意图。<br><img src="/images/fdd.jpg" alt="FDD"></p>
+<p>##3.TDD帧结构<br>协议上对LTE-TDD的帧结构模式，一般又称为<strong>Frame structure type 2</strong>，这里为了指代明确，还是称呼为TDD帧结构。<br>在TDD里，每个无线系统帧的长度Tf=307200*Ts=10ms，由2个“半帧”组成，每个“半帧”的长度等于5ms，由5个连续的子帧组成，每个子帧长度等于1ms。除了特殊子帧，每个子帧由2个连续的时隙组成。特殊子帧固定在1、6号子帧，由DwPTS（下行导频时隙）、GP、UpPTS（上行导频时隙）组成。同样的，1个无线系统帧由10个子帧组成，无线帧的周期是1024。<br>下面是TDD制式的帧结构示意图。<br><img src="/images/tdd.jpg" alt="TDD"></p>
 
       
     </div>
@@ -499,8 +449,8 @@ npm  install  hexo-deployer-git  --save
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/05/MarkDown/" rel="next" title="MarkDown语言学习">
-                <i class="fa fa-chevron-left"></i> MarkDown语言学习
+              <a href="/2017/11/06/java-exception/" rel="next" title="JAVA 异常抛出及捕获">
+                <i class="fa fa-chevron-left"></i> JAVA 异常抛出及捕获
               </a>
             
           </div>
@@ -508,10 +458,6 @@ npm  install  hexo-deployer-git  --save
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/06/java-exception/" rel="prev" title="JAVA 异常抛出及捕获">
-                JAVA 异常抛出及捕获 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -563,17 +509,8 @@ npm  install  hexo-deployer-git  --save
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -644,22 +581,6 @@ npm  install  hexo-deployer-git  --save
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、注册GitHub账号"><span class="nav-number">1.</span> <span class="nav-text">一、注册GitHub账号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、创建GitHub仓库"><span class="nav-number">2.</span> <span class="nav-text">二、创建GitHub仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、下载node-js"><span class="nav-number">3.</span> <span class="nav-text">三、下载node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、安装git"><span class="nav-number">4.</span> <span class="nav-text">四、安装git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、安装hexo"><span class="nav-number">5.</span> <span class="nav-text">五、安装hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">六、部署本地文件到github</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#本机git初始设置"><span class="nav-number">6.0.1.</span> <span class="nav-text">本机git初始设置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#将hexo和github进行关联"><span class="nav-number">6.0.2.</span> <span class="nav-text">将hexo和github进行关联</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">七、 发表一篇文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">8.</span> <span class="nav-text">八、 绑定自己的域名.</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
