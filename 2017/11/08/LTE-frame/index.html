@@ -89,7 +89,7 @@
 <meta property="og:image" content="http://yoursite.com/images/frame.jpg">
 <meta property="og:image" content="http://yoursite.com/images/fdd.jpg">
 <meta property="og:image" content="http://yoursite.com/images/tdd.jpg">
-<meta property="og:updated_time" content="2017-11-08T03:32:16.421Z">
+<meta property="og:updated_time" content="2017-11-08T06:21:12.502Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LTE物理传输资源-帧结构简介">
 <meta name="twitter:description" content="简单记录下LTE中FDD和TDD模式的帧结构">
@@ -327,7 +327,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-08T11:32:16+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-08T14:21:12+08:00">
                 2017-11-08
               </time>
             
@@ -422,9 +422,9 @@
       
 
       
-        <p>##1.基本时间单位<br>在LTE里，无论是FDD还是TDD，它的时间基本单位都是采样周期Ts，值固定等于：<br><img src="/images/frame.jpg" alt="frame"><br>其中，15000表示<strong>子载波的间隔</strong>是15KHz，2048表示<strong>采样点个数</strong>，因此采样率等于30.72MHz（15000*2048=30.72MHz）。除了15KHz的子载波间隔之外，3GPP协议实际上还定义了一个7.5KHz的载波间隔。这种降低的子载波间隔是专门针对MBSFN（Multimedia Broadcast multicast service Single Frequency Network）的多播/广播传输的，且在R9协议中只是部分给出了实现，因此本博客除非特别说明，都将默认子载波间隔是15KHz。</p>
-<p>##2.FDD帧结构<br>协议上对LTE-FDD的帧结构模式，一般又称为<strong>Frame structure type 1</strong>，这里为了指代明确，还是称呼为FDD帧结构。<br>在FDD里，每个无线系统帧的长度Tf=307200<em>Ts=10ms，由20个时隙（slot）组成，每个时隙长度Tslot=15360</em>Ts=0.5ms，按照0到19进行周期循环编号。每个子帧由2个连续的时隙组成，按照0到9进行周期循环编号，因此1个无线系统帧由10个子帧组成，无线帧的周期是1024。<br>在FDD里，每个系统帧的10个子帧都可以传输下行，也都可以传输上行，上下行在不同的频域中分别进行。在半双工的FDD模式下，UE不能在同一个子帧里既发送数据又接收数据，而在全双工的FDD模式下，UE则没有这个限制，在同个子帧里可以同时发送和接收数据。<br>下面是FDD制式的帧结构示意图。<br><img src="/images/fdd.jpg" alt="FDD"></p>
-<p>##3.TDD帧结构<br>协议上对LTE-TDD的帧结构模式，一般又称为<strong>Frame structure type 2</strong>，这里为了指代明确，还是称呼为TDD帧结构。<br>在TDD里，每个无线系统帧的长度Tf=307200*Ts=10ms，由2个“半帧”组成，每个“半帧”的长度等于5ms，由5个连续的子帧组成，每个子帧长度等于1ms。除了特殊子帧，每个子帧由2个连续的时隙组成。特殊子帧固定在1、6号子帧，由DwPTS（下行导频时隙）、GP、UpPTS（上行导频时隙）组成。同样的，1个无线系统帧由10个子帧组成，无线帧的周期是1024。<br>下面是TDD制式的帧结构示意图。<br><img src="/images/tdd.jpg" alt="TDD"></p>
+        <h2 id="1-基本时间单位"><a href="#1-基本时间单位" class="headerlink" title="1.基本时间单位"></a>1.基本时间单位</h2><p>在LTE里，无论是FDD还是TDD，它的时间基本单位都是采样周期Ts，值固定等于：<br><img src="/images/frame.jpg" alt="frame"><br>其中，15000表示<strong>子载波的间隔</strong>是15KHz，2048表示<strong>采样点个数</strong>，因此采样率等于30.72MHz（15000*2048=30.72MHz）。除了15KHz的子载波间隔之外，3GPP协议实际上还定义了一个7.5KHz的载波间隔。这种降低的子载波间隔是专门针对MBSFN（Multimedia Broadcast multicast service Single Frequency Network）的多播/广播传输的，且在R9协议中只是部分给出了实现，因此本博客除非特别说明，都将默认子载波间隔是15KHz。</p>
+<h2 id="2-FDD帧结构"><a href="#2-FDD帧结构" class="headerlink" title="2.FDD帧结构"></a>2.FDD帧结构</h2><p>协议上对LTE-FDD的帧结构模式，一般又称为<strong>Frame structure type 1</strong>，这里为了指代明确，还是称呼为FDD帧结构。<br>在FDD里，每个无线系统帧的长度Tf=307200<em>Ts=10ms，由20个时隙（slot）组成，每个时隙长度Tslot=15360</em>Ts=0.5ms，按照0到19进行周期循环编号。每个子帧由2个连续的时隙组成，按照0到9进行周期循环编号，因此1个无线系统帧由10个子帧组成，无线帧的周期是1024。<br>在FDD里，每个系统帧的10个子帧都可以传输下行，也都可以传输上行，上下行在不同的频域中分别进行。在半双工的FDD模式下，UE不能在同一个子帧里既发送数据又接收数据，而在全双工的FDD模式下，UE则没有这个限制，在同个子帧里可以同时发送和接收数据。<br>下面是FDD制式的帧结构示意图。<br><img src="/images/fdd.jpg" alt="FDD"></p>
+<h2 id="3-TDD帧结构"><a href="#3-TDD帧结构" class="headerlink" title="3.TDD帧结构"></a>3.TDD帧结构</h2><p>协议上对LTE-TDD的帧结构模式，一般又称为<strong>Frame structure type 2</strong>，这里为了指代明确，还是称呼为TDD帧结构。<br>在TDD里，每个无线系统帧的长度Tf=307200*Ts=10ms，由2个“半帧”组成，每个“半帧”的长度等于5ms，由5个连续的子帧组成，每个子帧长度等于1ms。除了特殊子帧，每个子帧由2个连续的时隙组成。特殊子帧固定在1、6号子帧，由DwPTS（下行导频时隙）、GP、UpPTS（上行导频时隙）组成。同样的，1个无线系统帧由10个子帧组成，无线帧的周期是1024。<br>下面是TDD制式的帧结构示意图。<br><img src="/images/tdd.jpg" alt="TDD"></p>
 
       
     </div>
@@ -509,8 +509,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -581,6 +590,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-基本时间单位"><span class="nav-number">1.</span> <span class="nav-text">1.基本时间单位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-FDD帧结构"><span class="nav-number">2.</span> <span class="nav-text">2.FDD帧结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-TDD帧结构"><span class="nav-number">3.</span> <span class="nav-text">3.TDD帧结构</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
