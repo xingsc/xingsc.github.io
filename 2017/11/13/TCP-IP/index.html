@@ -86,19 +86,17 @@
 
 
 
-<meta name="description" content="记录下异常抛出的过程和注意的地方">
+<meta name="description" content="简单介绍TCP/IP的定义以及常用的基础知识">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JAVA 异常抛出及捕获">
-<meta property="og:url" content="http://yoursite.com/2017/11/06/java-exception/index.html">
+<meta property="og:title" content="TCP&#x2F;IP协议基础知识">
+<meta property="og:url" content="http://yoursite.com/2017/11/13/TCP-IP/index.html">
 <meta property="og:site_name" content="Xsc&#39;s Blog">
-<meta property="og:description" content="记录下异常抛出的过程和注意的地方">
+<meta property="og:description" content="简单介绍TCP/IP的定义以及常用的基础知识">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/exception.png">
-<meta property="og:updated_time" content="2017-11-06T07:15:39.623Z">
+<meta property="og:updated_time" content="2017-11-13T03:03:54.045Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JAVA 异常抛出及捕获">
-<meta name="twitter:description" content="记录下异常抛出的过程和注意的地方">
-<meta name="twitter:image" content="http://yoursite.com/images/exception.png">
+<meta name="twitter:title" content="TCP&#x2F;IP协议基础知识">
+<meta name="twitter:description" content="简单介绍TCP/IP的定义以及常用的基础知识">
 
 
 
@@ -128,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/11/06/java-exception/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/13/TCP-IP/"/>
 
 
 
 
 
-  <title>JAVA 异常抛出及捕获 | Xsc's Blog</title>
+  <title>TCP/IP协议基础知识 | Xsc's Blog</title>
   
 
 
@@ -302,7 +300,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/06/java-exception/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/13/TCP-IP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xing Shuchen">
@@ -319,7 +317,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JAVA 异常抛出及捕获</h1>
+          <h1 class="post-title" itemprop="name headline">TCP/IP协议基础知识</h1>
         
 
         <div class="post-meta">
@@ -331,8 +329,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-06T15:15:39+08:00">
-                2017-11-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T11:03:54+08:00">
+                2017-11-13
               </time>
             
 
@@ -385,7 +383,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  855
+                  2,323
                 </span>
               
 
@@ -401,7 +399,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  9
                 </span>
               
             </div>
@@ -409,7 +407,7 @@
 
           
               <div class="post-description">
-                  记录下异常抛出的过程和注意的地方
+                  简单介绍TCP/IP的定义以及常用的基础知识
               </div>
           
 
@@ -426,44 +424,28 @@
       
 
       
-        <p><img src="/images/exception.png" alt="异常分类"><br>如图可以看出所有的异常跟错误都继承与Throwable类，也就是说所有的异常都是一个对象。</p>
-<p><strong>从大体来分异常为两块：</strong></p>
-<h5 id="1、error—错误-："><a href="#1、error—错误-：" class="headerlink" title="1、error—错误 ："></a>1、error—错误 ：</h5><p>是指程序无法处理的错误，表示应用程序运行时出现的重大错误。例如jvm运行时出现的OutOfMemoryError以及Socket编程时出现的端口占用等程序无法处理的错误。</p>
-<h5 id="2、Exception-—-异常-："><a href="#2、Exception-—-异常-：" class="headerlink" title="2、Exception — 异常 ："></a>2、Exception — 异常 ：</h5><p>异常可分为运行时异常跟编译异常</p>
-<p><strong>1）运行时异常</strong><br>即RuntimeException及其之类的异常。这类异常在代码编写的时候不会被编译器所检测出来，是可以不需要被捕获，但是程序员也可以根据需要进行捕获抛出。常见的RUNtimeException有：NullpointException（空指针异常），ClassCastException（类型转换异常），IndexOutOfBoundsException（数组越界异常）等。</p>
-<p><strong>2）编译异常</strong><br>RuntimeException以外的异常。这类异常在编译时编译器会提示需要捕获，如果不进行捕获则编译错误。常见编译异常有：IOException（流传输异常），SQLException（数据库操作异常）等。</p>
-<h5 id="3、java处理异常的机制："><a href="#3、java处理异常的机制：" class="headerlink" title="3、java处理异常的机制："></a>3、java处理异常的机制：</h5><p>抛出异常以及捕获异常 ，一个方法所能捕捉的异常，一定是Java代码在某处所抛出的异常。简单地说，异常总是先被抛出，后被捕捉的。</p>
-<h5 id="4、throw跟throws的区别"><a href="#4、throw跟throws的区别" class="headerlink" title="4、throw跟throws的区别:"></a>4、throw跟throws的区别:</h5><pre><code>public void test thorws Exception(){
-throw new Exception();
-}
-</code></pre><p>从上面这一段代码可以明显的看出两者的区别。throws表示一个方法声明可能抛出一个异常，throw表示此处抛出一个已定义的异常（可以是自定义需继承Exception，也可以是java自己给出的异常类）。</p>
-<h5 id="5、接下来看一下如何捕获异常："><a href="#5、接下来看一下如何捕获异常：" class="headerlink" title="5、接下来看一下如何捕获异常："></a>5、接下来看一下如何捕获异常：</h5><p>首先java对于异常捕获使用的是try—catch或try — catch — finally 代码块，程序会捕获try代码块里面的代码，若捕获到异常则进行catch代码块处理。若有finally则在catch处理后执行finally里面的代码。然而存在这样两个问题：</p>
-<p><strong>a.看如下代码：</strong></p>
-<pre><code>try{
-    //待捕获代码
-}catch（Exception e）{
-    System.out.println(&quot;catch is begin&quot;);
-    return 1 ；
-}finally{
-    System.out.println(&quot;finally is begin&quot;);
-}
-</code></pre><p>在catch里面有一个return，那么finally会不会被执行呢？答案是肯定的，上面代码的执行结果为：</p>
-<pre><code>catch is begin
-finally is begin  
-</code></pre><p>也就是说会先执行catch里面的代码后执行finally里面的代码最后才return1 </p>
-<p><strong>b.看如下代码：</strong></p>
-<pre><code>try{
-    //待捕获代码    
-}catch（Exception e）{
-    System.out.println(&quot;catch is begin&quot;);
-    return 1 ；
-}finally{
-    System.out.println(&quot;finally is begin&quot;);
-    return 2 ;
-}
-</code></pre><p>在b代码中输出结果跟a是一样的，然而返回的是return 2 ； 原因很明显，就是执行了finally后已经return了，所以catch里面的return不会被执行到。也就是说finally永远都会在catch的return前被执行。（这个是面试经常问到的问题哦！）</p>
-<p><em><strong>finally不一定被执行 ,例如 catch 块中有退出系统的语句 System.exit(-1); finally就不会被执行</strong></em></p>
-<h5 id="6、对于异常的捕获不应该觉得方便而将几个异常合成一个Exception进行捕获，比如有IO的异常跟SQL的异常，这样完全不同的两个异常应该分开处理！而且在catch里处理异常的时候不要简单的e-printStackTrace-，而是应该进行详细的处理。比如进行console打印详情或者进行日志记录。"><a href="#6、对于异常的捕获不应该觉得方便而将几个异常合成一个Exception进行捕获，比如有IO的异常跟SQL的异常，这样完全不同的两个异常应该分开处理！而且在catch里处理异常的时候不要简单的e-printStackTrace-，而是应该进行详细的处理。比如进行console打印详情或者进行日志记录。" class="headerlink" title="6、对于异常的捕获不应该觉得方便而将几个异常合成一个Exception进行捕获，比如有IO的异常跟SQL的异常，这样完全不同的两个异常应该分开处理！而且在catch里处理异常的时候不要简单的e.printStackTrace()，而是应该进行详细的处理。比如进行console打印详情或者进行日志记录。"></a>6、对于异常的捕获不应该觉得方便而将几个异常合成一个Exception进行捕获，比如有IO的异常跟SQL的异常，这样完全不同的两个异常应该分开处理！而且在catch里处理异常的时候不要简单的e.printStackTrace()，而是应该进行详细的处理。比如进行console打印详情或者进行日志记录。</h5>
+        <h3 id="TCP-IP-介绍"><a href="#TCP-IP-介绍" class="headerlink" title="TCP/IP 介绍"></a>TCP/IP 介绍</h3><p>TCP/IP 是用于因特网 (Internet) 的通信协议。<br>计算机通信协议（Computer Communication Protocol）<br>计算机通信协议是对那些计算机必须遵守以便彼此通信的的规则的描述。</p>
+<p><strong>什么是 TCP/IP？</strong></p>
+<p>TCP/IP 是供已连接因特网的计算机进行通信的通信协议。<br>TCP/IP 指传输控制协议/网际协议（Transmission Control Protocol / Internet Protocol）。<br>TCP/IP 定义了电子设备（比如计算机）如何连入因特网，以及数据如何在它们之间传输的标准。</p>
+<p><strong>在 TCP/IP 内部</strong></p>
+<p>在 TCP/IP 中包含一系列用于处理数据通信的协议：<br>TCP (传输控制协议) - 应用程序之间通信<br>UDP (用户数据报协议) - 应用程序之间的简单通信<br>IP (网际协议) - 计算机之间的通信<br>ICMP (因特网消息控制协议) - 针对错误和状态<br>DHCP (动态主机配置协议) - 针对动态寻址</p>
+<p><strong>TCP 使用固定的连接</strong></p>
+<p>TCP 用于应用程序之间的通信。<br>当应用程序希望通过 TCP 与另一个应用程序通信时，它会发送一个通信请求。这个请求必须被送到一个确切的地址。在双方”握手”之后，TCP 将在两个应用程序之间建立一个全双工 (full-duplex) 的通信。<br>这个全双工的通信将占用两个计算机之间的通信线路，直到它被一方或双方关闭为止。<br>UDP 和 TCP 很相似，但是更简单，同时可靠性低于 TCP。</p>
+<p><strong>IP 是无连接的</strong></p>
+<p>IP 用于计算机之间的通信。<br>IP 是无连接的通信协议。它不会占用两个正在通信的计算机之间的通信线路。这样，IP 就降低了对网络线路的需求。每条线可以同时满足许多不同的计算机之间的通信需要。<br>通过 IP，消息（或者其他数据）被分割为小的独立的包，并通过因特网在计算机之间传送。<br>IP 负责将每个包路由至它的目的地。</p>
+<p><strong>IP 路由器</strong></p>
+<p>当一个 IP 包从一台计算机被发送，它会到达一个 IP 路由器。<br>IP 路由器负责将这个包路由至它的目的地，直接地或者通过其他的路由器。<br>在一个相同的通信中，一个包所经由的路径可能会和其他的包不同。而路由器负责根据通信量、网络中的错误或者其他参数来进行正确地寻址。</p>
+<p><strong>TCP/IP</strong></p>
+<p>TCP/IP 意味着 TCP 和 IP 在一起协同工作。<br>TCP 负责应用软件（比如您的浏览器）和网络软件之间的通信。<br>IP 负责计算机之间的通信。<br>TCP 负责将数据分割并装入 IP 包，然后在它们到达的时候重新组合它们。<br>IP 负责将包发送至接受者。</p>
+<h3 id="TCP-IP-寻址"><a href="#TCP-IP-寻址" class="headerlink" title="TCP/IP 寻址"></a>TCP/IP 寻址</h3><p>TCP/IP 使用 32 个比特或者 4 组 0 到 255 之间的数字来为计算机编址。</p>
+<p><strong>IP地址</strong></p>
+<p>每个计算机必须有一个 IP 地址才能够连入因特网。<br>每个 IP 包必须有一个地址才能够发送到另一台计算机。<br>IP 地址包含 4 组数字：<br>TCP/IP 使用 4 组数字来为计算机编址。每个计算机必须有一个唯一的 4 组数字的地址。<br>每组数字必须在 0 到 255 之间，并由点号隔开，比如：192.168.1.60。<br>32 比特 = 4 字节<br>TCP/IP 使用 32 个比特来编址。一个计算机字节是 8 比特。所以 TCP/IP 使用了 4 个字节。<br>一个计算机字节可以包含 256 个不同的值：<br>00000000、00000001、00000010、00000011、00000100、00000101、00000110、00000111、00001000 ……. 直到 11111111。<br>现在，您应该知道了为什么 TCP/IP 地址是介于 0 到 255 之间的 4 组数字。</p>
+<p><strong>IP V6</strong></p>
+<p>IPv6 是 “Internet Protocol Version 6” 的缩写，也被称作下一代互联网协议，它是由 IETF 小组（Internet 工程任务组Internet Engineering Task Force）设计的用来替代现行的 IPv4（现行的）协议的一种新的 IP 协议。<br>我们知道，Internet 的主机都有一个唯一的 IP 地址，IP 地址用一个 32 位二进制的数表示一个主机号码，但 32 位地址资源有限，已经不能满足用户的需求了，因此 Internet 研究组织发布新的主机标识方法，即 IPv6。<br>在 RFC1884 中（RFC 是 Request for Comments document 的缩写。RFC 实际上就是 Internet 有关服务的一些标准），规定的标准语法建议把 IPv6 地址的 128 位（16 个字节）写成 8 个 16 位的无符号整数，每个整数用 4 个十六进制位表示，这些数之间用冒号（:）分开，例如：<br>686E：8C64：FFFF：FFFF：0：1180：96A：FFFF<br>冒号十六进制记法允许零压缩，即一串连续的0可以用一对冒号取代，例如：<br>FF05：0：0：0：0：0：0：B3可以定成：FF05：：B3<br>为了保证零压缩有一个清晰的解释，建议中规定，在任一地址中，只能使用一次零压缩。该技术对已建议的分配策略特别有用，因为会有许多地址包含连续的零串。<br>冒号十六进制记法结合有点十进制记法的后缀。这种结合在IPv4向IPv6换阶段特别有用。例如，下面的串是一个合法的冒号十六进制记法：<br>0：0：0：0：0：0：128.10.1.1<br>这种记法中，虽然冒号所分隔的每一个值是一个16位的量，但每个分点十进制部分的值则指明一个字节的值。再使用零压缩即可得出：<br>：：128.10.1.1</p>
+<p><strong>域名</strong></p>
+<p>12 个阿拉伯数字很难记忆。使用一个名称更容易。<br>用于 TCP/IP 地址的名字被称为域名。runoob.com 就是一个域名。<br>当你键入一个像 <a href="http://www.runoob.com" target="_blank" rel="external">http://www.runoob.com</a> 这样的域名，域名会被一种 DNS 程序翻译为数字。<br>在全世界，数量庞大的 DNS 服务器被连入因特网。DNS 服务器负责将域名翻译为 TCP/IP 地址，同时负责使用新的域名信息更新彼此的系统。<br>当一个新的域名连同其 TCP/IP 地址一起注册后，全世界的 DNS 服务器都会对此信息进行更新。</p>
+<h3 id="TCP-IP-协议"><a href="#TCP-IP-协议" class="headerlink" title="TCP/IP 协议"></a>TCP/IP 协议</h3><p>TCP/IP 是不同的通信协议的大集合。<br><strong>协议族</strong><br>TCP/IP 是基于 TCP 和 IP 这两个最初的协议之上的不同的通信协议的大集合。<br><strong>TCP - 传输控制协议</strong><br>TCP 用于从应用程序到网络的数据传输控制。<br>TCP 负责在数据传送之前将它们分割为 IP 包，然后在它们到达的时候将它们重组。<br><strong>IP - 网际协议（Internet Protocol）</strong><br>IP 负责计算机之间的通信。<br>IP 负责在因特网上发送和接收数据包。<br><strong>HTTP - 超文本传输协议(Hyper Text Transfer Protocol)</strong><br>HTTP 负责 web 服务器与 web 浏览器之间的通信。<br>HTTP 用于从 web 客户端（浏览器）向 web 服务器发送请求，并从 web 服务器向 web 客户端返回内容（网页）。<br><strong>HTTPS - 安全的 HTTP（Secure HTTP）</strong><br>HTTPS 负责在 web 服务器和 web 浏览器之间的安全通信。<br>作为有代表性的应用，HTTPS 会用于处理信用卡交易和其他的敏感数据。<br><strong>SSL - 安全套接字层（Secure Sockets Layer）</strong><br>SSL 协议用于为安全数据传输加密数据。<br><strong>SMTP - 简易邮件传输协议（Simple Mail Transfer Protocol）</strong><br>SMTP 用于电子邮件的传输。<br><strong>MIME - 多用途因特网邮件扩展（Multi-purpose Internet Mail Extensions）</strong><br>MIME 协议使 SMTP 有能力通过 TCP/IP 网络传输多媒体文件，包括声音、视频和二进制数据。<br><strong>IMAP - 因特网消息访问协议（Internet Message Access Protocol）</strong><br>IMAP 用于存储和取回电子邮件。<br><strong>POP - 邮局协议（Post Office Protocol）</strong><br>POP 用于从电子邮件服务器向个人电脑下载电子邮件。<br><strong>FTP - 文件传输协议（File Transfer Protocol）</strong><br>FTP 负责计算机之间的文件传输。<br><strong>NTP - 网络时间协议（Network Time Protocol）</strong><br>NTP 用于在计算机之间同步时间（钟）。<br><strong>DHCP - 动态主机配置协议（Dynamic Host Configuration Protocol）</strong><br>DHCP 用于向网络中的计算机分配动态 IP 地址。<br><strong>SNMP - 简单网络管理协议（Simple Network Management Protocol）</strong><br>SNMP 用于计算机网络的管理。<br><strong>LDAP - 轻量级的目录访问协议（Lightweight Directory Access Protocol）</strong><br>LDAP 用于从因特网搜集关于用户和电子邮件地址的信息。<br><strong>ICMP - 因特网消息控制协议（Internet Control Message Protocol）</strong><br>ICMP 负责网络中的错误处理。<br><strong>ARP - 地址解析协议（Address Resolution Protocol）</strong><br>ARP - 用于通过 IP 来查找基于 IP 地址的计算机网卡的硬件地址。<br><strong>RARP - 反向地址转换协议（Reverse Address Resolution Protocol）</strong><br>RARP 用于通过 IP 查找基于硬件地址的计算机网卡的 IP 地址。<br><strong>BOOTP - 自举协议（Boot Protocol）</strong><br>BOOTP 用于从网络启动计算机。<br><strong>PPTP - 点对点隧道协议（Point to Point Tunneling Protocol）</strong><br>PPTP 用于私人网络之间的连接（隧道）。</p>
+
       
     </div>
     
@@ -487,8 +469,8 @@ finally is begin
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/05/MarkDown/" rel="next" title="MarkDown语言学习">
-                <i class="fa fa-chevron-left"></i> MarkDown语言学习
+              <a href="/2017/11/08/NB-IOT-primer/" rel="next" title="比较全面的NB-IOT基础知识">
+                <i class="fa fa-chevron-left"></i> 比较全面的NB-IOT基础知识
               </a>
             
           </div>
@@ -497,8 +479,8 @@ finally is begin
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/11/08/LTE-frame/" rel="prev" title="LTE物理传输资源-帧结构简介">
-                LTE物理传输资源-帧结构简介 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/11/13/HTTP/" rel="prev" title="HTTP简介">
+                HTTP简介 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -642,7 +624,7 @@ finally is begin
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、error—错误-："><span class="nav-number">1.</span> <span class="nav-text">1、error—错误 ：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、Exception-—-异常-："><span class="nav-number">2.</span> <span class="nav-text">2、Exception — 异常 ：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、java处理异常的机制："><span class="nav-number">3.</span> <span class="nav-text">3、java处理异常的机制：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4、throw跟throws的区别"><span class="nav-number">4.</span> <span class="nav-text">4、throw跟throws的区别:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5、接下来看一下如何捕获异常："><span class="nav-number">5.</span> <span class="nav-text">5、接下来看一下如何捕获异常：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6、对于异常的捕获不应该觉得方便而将几个异常合成一个Exception进行捕获，比如有IO的异常跟SQL的异常，这样完全不同的两个异常应该分开处理！而且在catch里处理异常的时候不要简单的e-printStackTrace-，而是应该进行详细的处理。比如进行console打印详情或者进行日志记录。"><span class="nav-number">6.</span> <span class="nav-text">6、对于异常的捕获不应该觉得方便而将几个异常合成一个Exception进行捕获，比如有IO的异常跟SQL的异常，这样完全不同的两个异常应该分开处理！而且在catch里处理异常的时候不要简单的e.printStackTrace()，而是应该进行详细的处理。比如进行console打印详情或者进行日志记录。</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-IP-介绍"><span class="nav-number">1.</span> <span class="nav-text">TCP/IP 介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-IP-寻址"><span class="nav-number">2.</span> <span class="nav-text">TCP/IP 寻址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-IP-协议"><span class="nav-number">3.</span> <span class="nav-text">TCP/IP 协议</span></a></li></ol></div>
             
 
           </div>

@@ -86,19 +86,19 @@
 
 
 
-<meta name="description" content="记录下异常抛出的过程和注意的地方">
+<meta name="description" content="记录下URI URL的作用、区别和关系">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JAVA 异常抛出及捕获">
-<meta property="og:url" content="http://yoursite.com/2017/11/06/java-exception/index.html">
+<meta property="og:title" content="URI URL区别">
+<meta property="og:url" content="http://yoursite.com/2017/11/13/URI-URL/index.html">
 <meta property="og:site_name" content="Xsc&#39;s Blog">
-<meta property="og:description" content="记录下异常抛出的过程和注意的地方">
+<meta property="og:description" content="记录下URI URL的作用、区别和关系">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/exception.png">
-<meta property="og:updated_time" content="2017-11-06T07:15:39.623Z">
+<meta property="og:image" content="http://yoursite.com/images/HTTP/4.jpg">
+<meta property="og:updated_time" content="2017-11-13T03:30:08.466Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JAVA 异常抛出及捕获">
-<meta name="twitter:description" content="记录下异常抛出的过程和注意的地方">
-<meta name="twitter:image" content="http://yoursite.com/images/exception.png">
+<meta name="twitter:title" content="URI URL区别">
+<meta name="twitter:description" content="记录下URI URL的作用、区别和关系">
+<meta name="twitter:image" content="http://yoursite.com/images/HTTP/4.jpg">
 
 
 
@@ -128,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/11/06/java-exception/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/13/URI-URL/"/>
 
 
 
 
 
-  <title>JAVA 异常抛出及捕获 | Xsc's Blog</title>
+  <title>URI URL区别 | Xsc's Blog</title>
   
 
 
@@ -302,7 +302,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/06/java-exception/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/13/URI-URL/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xing Shuchen">
@@ -319,7 +319,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JAVA 异常抛出及捕获</h1>
+          <h1 class="post-title" itemprop="name headline">URI URL区别</h1>
         
 
         <div class="post-meta">
@@ -331,8 +331,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-06T15:15:39+08:00">
-                2017-11-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T11:30:08+08:00">
+                2017-11-13
               </time>
             
 
@@ -385,7 +385,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  855
+                  728
                 </span>
               
 
@@ -409,7 +409,7 @@
 
           
               <div class="post-description">
-                  记录下异常抛出的过程和注意的地方
+                  记录下URI URL的作用、区别和关系
               </div>
           
 
@@ -426,44 +426,38 @@
       
 
       
-        <p><img src="/images/exception.png" alt="异常分类"><br>如图可以看出所有的异常跟错误都继承与Throwable类，也就是说所有的异常都是一个对象。</p>
-<p><strong>从大体来分异常为两块：</strong></p>
-<h5 id="1、error—错误-："><a href="#1、error—错误-：" class="headerlink" title="1、error—错误 ："></a>1、error—错误 ：</h5><p>是指程序无法处理的错误，表示应用程序运行时出现的重大错误。例如jvm运行时出现的OutOfMemoryError以及Socket编程时出现的端口占用等程序无法处理的错误。</p>
-<h5 id="2、Exception-—-异常-："><a href="#2、Exception-—-异常-：" class="headerlink" title="2、Exception — 异常 ："></a>2、Exception — 异常 ：</h5><p>异常可分为运行时异常跟编译异常</p>
-<p><strong>1）运行时异常</strong><br>即RuntimeException及其之类的异常。这类异常在代码编写的时候不会被编译器所检测出来，是可以不需要被捕获，但是程序员也可以根据需要进行捕获抛出。常见的RUNtimeException有：NullpointException（空指针异常），ClassCastException（类型转换异常），IndexOutOfBoundsException（数组越界异常）等。</p>
-<p><strong>2）编译异常</strong><br>RuntimeException以外的异常。这类异常在编译时编译器会提示需要捕获，如果不进行捕获则编译错误。常见编译异常有：IOException（流传输异常），SQLException（数据库操作异常）等。</p>
-<h5 id="3、java处理异常的机制："><a href="#3、java处理异常的机制：" class="headerlink" title="3、java处理异常的机制："></a>3、java处理异常的机制：</h5><p>抛出异常以及捕获异常 ，一个方法所能捕捉的异常，一定是Java代码在某处所抛出的异常。简单地说，异常总是先被抛出，后被捕捉的。</p>
-<h5 id="4、throw跟throws的区别"><a href="#4、throw跟throws的区别" class="headerlink" title="4、throw跟throws的区别:"></a>4、throw跟throws的区别:</h5><pre><code>public void test thorws Exception(){
-throw new Exception();
-}
-</code></pre><p>从上面这一段代码可以明显的看出两者的区别。throws表示一个方法声明可能抛出一个异常，throw表示此处抛出一个已定义的异常（可以是自定义需继承Exception，也可以是java自己给出的异常类）。</p>
-<h5 id="5、接下来看一下如何捕获异常："><a href="#5、接下来看一下如何捕获异常：" class="headerlink" title="5、接下来看一下如何捕获异常："></a>5、接下来看一下如何捕获异常：</h5><p>首先java对于异常捕获使用的是try—catch或try — catch — finally 代码块，程序会捕获try代码块里面的代码，若捕获到异常则进行catch代码块处理。若有finally则在catch处理后执行finally里面的代码。然而存在这样两个问题：</p>
-<p><strong>a.看如下代码：</strong></p>
-<pre><code>try{
-    //待捕获代码
-}catch（Exception e）{
-    System.out.println(&quot;catch is begin&quot;);
-    return 1 ；
-}finally{
-    System.out.println(&quot;finally is begin&quot;);
-}
-</code></pre><p>在catch里面有一个return，那么finally会不会被执行呢？答案是肯定的，上面代码的执行结果为：</p>
-<pre><code>catch is begin
-finally is begin  
-</code></pre><p>也就是说会先执行catch里面的代码后执行finally里面的代码最后才return1 </p>
-<p><strong>b.看如下代码：</strong></p>
-<pre><code>try{
-    //待捕获代码    
-}catch（Exception e）{
-    System.out.println(&quot;catch is begin&quot;);
-    return 1 ；
-}finally{
-    System.out.println(&quot;finally is begin&quot;);
-    return 2 ;
-}
-</code></pre><p>在b代码中输出结果跟a是一样的，然而返回的是return 2 ； 原因很明显，就是执行了finally后已经return了，所以catch里面的return不会被执行到。也就是说finally永远都会在catch的return前被执行。（这个是面试经常问到的问题哦！）</p>
-<p><em><strong>finally不一定被执行 ,例如 catch 块中有退出系统的语句 System.exit(-1); finally就不会被执行</strong></em></p>
-<h5 id="6、对于异常的捕获不应该觉得方便而将几个异常合成一个Exception进行捕获，比如有IO的异常跟SQL的异常，这样完全不同的两个异常应该分开处理！而且在catch里处理异常的时候不要简单的e-printStackTrace-，而是应该进行详细的处理。比如进行console打印详情或者进行日志记录。"><a href="#6、对于异常的捕获不应该觉得方便而将几个异常合成一个Exception进行捕获，比如有IO的异常跟SQL的异常，这样完全不同的两个异常应该分开处理！而且在catch里处理异常的时候不要简单的e-printStackTrace-，而是应该进行详细的处理。比如进行console打印详情或者进行日志记录。" class="headerlink" title="6、对于异常的捕获不应该觉得方便而将几个异常合成一个Exception进行捕获，比如有IO的异常跟SQL的异常，这样完全不同的两个异常应该分开处理！而且在catch里处理异常的时候不要简单的e.printStackTrace()，而是应该进行详细的处理。比如进行console打印详情或者进行日志记录。"></a>6、对于异常的捕获不应该觉得方便而将几个异常合成一个Exception进行捕获，比如有IO的异常跟SQL的异常，这样完全不同的两个异常应该分开处理！而且在catch里处理异常的时候不要简单的e.printStackTrace()，而是应该进行详细的处理。比如进行console打印详情或者进行日志记录。</h5>
+        <p><img src="/images/HTTP/4.jpg" alt="URI-URL"></p>
+<h3 id="URI，URL，URN"><a href="#URI，URL，URN" class="headerlink" title="URI，URL，URN"></a>URI，URL，URN</h3><p>从上面的那幅图可以看出来，一共有三个不同的概念URI,URL,URN。这讨论这样的问题时，最好的方法就是回到原点啊，这里我们在RFC 3986: Uniform Resource Identifier (URI): Generic Syntax里面收集了点资料：</p>
+<p>“A Uniform Resource Identifier (URI) 是一个紧凑的字符串用来标示抽象或物理资源。”</p>
+<p>“A URI 可以进一步被分为定位符、名字或两者都是. 术语“Uniform Resource Locator” (URL) 是URI的子集, 除了确定一个资源,还提供一种定位该资源的主要访问机制(如其网络“位置”)。“</p>
+<p>那我们无所不知的维基百科把这段消化的很好，并描述的更加形象了：</p>
+<p>“URI可以分为URL,URN或同时具备locators 和names特性的一个东西。URN作用就好像一个人的名字，URL就像一个人的地址。换句话说：URN确定了东西的身份，URL提供了找到它的方式。”</p>
+<p><strong>通过这些描述我们可以得到一些结论：</strong></p>
+<ul>
+<li>首先，URL是URI的一种（通过那个图就看的出来吧）。所以有人跟你说URL不是URI，他就错了呗。但也不是所有的URI都是URL哦，就好像蝴蝶都会飞，但会飞的可不都是蝴蝶啊，你让苍蝇怎么想！</li>
+<li>让URI能成为URL的当然就是那个“访问机制”，“网络位置”。e.g. http:// or ftp://.。</li>
+<li>URN是唯一标识的一部分，就是一个特殊的名字。</li>
+</ul>
+<p><strong>下面就来看看例子吧，当来也是来自权威的RFC：</strong></p>
+<ul>
+<li>ftp://ftp.is.co.za/rfc/rfc1808.txt (also a URL because of the protocol)</li>
+<li><a href="http://www.ietf.org/rfc/rfc2396.txt" target="_blank" rel="external">http://www.ietf.org/rfc/rfc2396.txt</a> (also a URL because of the protocol)</li>
+<li>ldap://[2001:db8::7]/c=GB?objectClass?one (also a URL because of the protocol)</li>
+<li>mailto:John.Doe@example.com (also a URL because of the protocol)</li>
+<li>news:comp.infosystems.www.servers.unix (also a URL because of the protocol)</li>
+<li>tel:+1-816-555-1212</li>
+<li>telnet://192.0.2.16:80/ (also a URL because of the protocol)</li>
+<li>urn:oasis:names:specification:docbook:dtd:xml:4.1.2<br>　　这些全都是URI, 其中有些是URL. 哪些? 就是那些提供了访问机制的.</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>下面到了回答问题的时候了：</p>
+<p>当我们替代web地址的时候，URI和URL那个更准确？</p>
+<p>基于我读的很多的文章，包括RFC，我想说URI更准确。</p>
+<p>别急，我有我的理由：</p>
+<p>我们经常使用的URI不是严格技术意义上的URL。例如：你需要的文件在files.hp.com. 这是URI，但不是URL–系统可能会对很多协议和端口都做出正</p>
+<p>确的反应。</p>
+<p>你去<a href="http://files.hp.com" target="_blank" rel="external">http://files.hp.com</a> 和ftp://files.hp.com.可能得到完全不同的内容。这种情况可能更加普遍，想想不同谷歌域名上的不同服务啊。</p>
+<p>所以，用URI吧，这样你通常技术上是正确的，URL可不一定。最后“URL”这个术语正在被弃用。所以明智吧少年！</p>
+
       
     </div>
     
@@ -487,8 +481,8 @@ finally is begin
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/05/MarkDown/" rel="next" title="MarkDown语言学习">
-                <i class="fa fa-chevron-left"></i> MarkDown语言学习
+              <a href="/2017/11/13/HTTP/" rel="next" title="HTTP简介">
+                <i class="fa fa-chevron-left"></i> HTTP简介
               </a>
             
           </div>
@@ -496,10 +490,6 @@ finally is begin
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/08/LTE-frame/" rel="prev" title="LTE物理传输资源-帧结构简介">
-                LTE物理传输资源-帧结构简介 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -642,7 +632,7 @@ finally is begin
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、error—错误-："><span class="nav-number">1.</span> <span class="nav-text">1、error—错误 ：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、Exception-—-异常-："><span class="nav-number">2.</span> <span class="nav-text">2、Exception — 异常 ：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、java处理异常的机制："><span class="nav-number">3.</span> <span class="nav-text">3、java处理异常的机制：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4、throw跟throws的区别"><span class="nav-number">4.</span> <span class="nav-text">4、throw跟throws的区别:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5、接下来看一下如何捕获异常："><span class="nav-number">5.</span> <span class="nav-text">5、接下来看一下如何捕获异常：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6、对于异常的捕获不应该觉得方便而将几个异常合成一个Exception进行捕获，比如有IO的异常跟SQL的异常，这样完全不同的两个异常应该分开处理！而且在catch里处理异常的时候不要简单的e-printStackTrace-，而是应该进行详细的处理。比如进行console打印详情或者进行日志记录。"><span class="nav-number">6.</span> <span class="nav-text">6、对于异常的捕获不应该觉得方便而将几个异常合成一个Exception进行捕获，比如有IO的异常跟SQL的异常，这样完全不同的两个异常应该分开处理！而且在catch里处理异常的时候不要简单的e.printStackTrace()，而是应该进行详细的处理。比如进行console打印详情或者进行日志记录。</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#URI，URL，URN"><span class="nav-number">1.</span> <span class="nav-text">URI，URL，URN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
