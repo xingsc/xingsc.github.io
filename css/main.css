@@ -1828,7 +1828,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #d2cfb0;
+  background: #4f9cff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2678,7 +2678,7 @@ embed {
 #idhyt-surprise-ball-animation {
   width: 320px;
   position: fixed;
-  top: 50%;
+  top: 40%;
   left: 20px;
   margin: 0 auto;
 }
