@@ -94,7 +94,7 @@
 <meta property="og:description" content="Ioc—Inversion of Control，即“控制反转”，不是什么技术，而是一种设计思想。AOP（Aspect Oriented Programming），即面向切面编程，可以说是OOP（Object Oriented Programming，面向对象编程）的补充和完善。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://xscblog.com/images/JAVA/ioc.jpg">
-<meta property="og:updated_time" content="2018-01-09T15:42:26.350Z">
+<meta property="og:updated_time" content="2018-01-09T15:46:00.388Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IOC AOP概念简析">
 <meta name="twitter:description" content="Ioc—Inversion of Control，即“控制反转”，不是什么技术，而是一种设计思想。AOP（Aspect Oriented Programming），即面向切面编程，可以说是OOP（Object Oriented Programming，面向对象编程）的补充和完善。">
@@ -352,7 +352,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-09T23:42:26+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-09T23:46:00+08:00">
                 2018-01-09
               </time>
             
@@ -450,7 +450,10 @@
         <h2 id="IOC"><a href="#IOC" class="headerlink" title="IOC"></a>IOC</h2><h3 id="1-1、IoC是什么"><a href="#1-1、IoC是什么" class="headerlink" title="1.1、IoC是什么"></a>1.1、IoC是什么</h3><p>　　Ioc—Inversion of Control，即“控制反转”，不是什么技术，而是一种设计思想。在Java开发中，Ioc意味着将你设计好的对象交给容器控制，而不是传统的在你的对象内部直接控制。如何理解好Ioc呢？理解好Ioc的关键是要明确“谁控制谁，控制什么，为何是反转（有反转就应该有正转了），哪些方面反转了”，那我们来深入分析一下：</p>
 <p>　　●谁控制谁，控制什么：传统Java SE程序设计，我们直接在对象内部通过new进行创建对象，是程序主动去创建依赖对象；而IoC是有专门一个容器来创建这些对象，即由Ioc容器来控制对 象的创建；谁控制谁？当然是IoC 容器控制了对象；控制什么？那就是主要控制了外部资源获取（不只是对象包括比如文件等）。</p>
 <p>　　●为何是反转，哪些方面反转了：有反转就有正转，传统应用程序是由我们自己在对象中主动控制去直接获取依赖对象，也就是正转；而反转则是由容器来帮忙创建及注入依赖对象；为何是反转？因为由容器帮我们查找及注入依赖对象，对象只是被动的接受依赖对象，所以是反转；哪些方面反转了？依赖对象的获取被反转了。</p>
-<p><img src="/images/JAVA/ioc.jpg" alt="IOC"><br>图1-1 传统应用程序示意图</p>
+<p><img src="/images/JAVA/ioc.jpg" alt="IOC"></p>
+<center>图1-1 传统应用程序示意图</center>
+
+
 <h3 id="1-2、IoC能做什么"><a href="#1-2、IoC能做什么" class="headerlink" title="1.2、IoC能做什么"></a>1.2、IoC能做什么</h3><p>　　IoC 不是一种技术，只是一种思想，一个重要的面向对象编程的法则，它能指导我们如何设计出松耦合、更优良的程序。传统应用程序都是由我们在类内部主动创建依赖对象，从而导致类与类之间高耦合，难于测试；有了IoC容器后，把创建和查找依赖对象的控制权交给了容器，由容器进行注入组合对象，所以对象与对象之间是 松散耦合，这样也方便测试，利于功能复用，更重要的是使得程序的整个体系结构变得非常灵活。</p>
 <p>　　其实IoC对编程带来的最大改变不是从代码上，而是从思想上，发生了“主从换位”的变化。应用程序原本是老大，要获取什么资源都是主动出击，但是在IoC/DI思想中，应用程序就变成被动的了，被动的等待IoC容器来创建并注入它所需要的资源了。</p>
 <p>　　IoC很好的体现了面向对象设计法则之一—— 好莱坞法则：“别找我们，我们找你”；即由IoC容器帮对象找相应的依赖对象并注入，而不是由对象主动去找。</p>
