@@ -86,17 +86,17 @@
 
 
 
-<meta name="description" content="配置SpringMVC返回JSON遇到的坑">
+<meta name="description" content="SpringMVC3 AnnotationMethodHandlerAdapter与mvc:annotation-driven冲突的解决方案">
 <meta property="og:type" content="article">
-<meta property="og:title" content="配置SpringMVC返回JSON遇到的坑">
-<meta property="og:url" content="http://xscblog.com/2018/01/23/spring-json/index.html">
+<meta property="og:title" content="SpringMVC AnnotationMethodHandlerAdapter与mvc:annotation-driven冲突的解决方案">
+<meta property="og:url" content="http://xscblog.com/2018/01/25/springmvc-annotation/index.html">
 <meta property="og:site_name" content="Xsc&#39;s Blog">
-<meta property="og:description" content="配置SpringMVC返回JSON遇到的坑">
+<meta property="og:description" content="SpringMVC3 AnnotationMethodHandlerAdapter与mvc:annotation-driven冲突的解决方案">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-23T14:35:04.783Z">
+<meta property="og:updated_time" content="2018-01-25T14:55:47.572Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="配置SpringMVC返回JSON遇到的坑">
-<meta name="twitter:description" content="配置SpringMVC返回JSON遇到的坑">
+<meta name="twitter:title" content="SpringMVC AnnotationMethodHandlerAdapter与mvc:annotation-driven冲突的解决方案">
+<meta name="twitter:description" content="SpringMVC3 AnnotationMethodHandlerAdapter与mvc:annotation-driven冲突的解决方案">
 
 
 
@@ -126,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://xscblog.com/2018/01/23/spring-json/"/>
+  <link rel="canonical" href="http://xscblog.com/2018/01/25/springmvc-annotation/"/>
 
 
 
 
 
-  <title>配置SpringMVC返回JSON遇到的坑 | Xsc's Blog</title>
+  <title>SpringMVC AnnotationMethodHandlerAdapter与mvc:annotation-driven冲突的解决方案 | Xsc's Blog</title>
   
 
 
@@ -321,7 +321,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://xscblog.com/2018/01/23/spring-json/">
+    <link itemprop="mainEntityOfPage" href="http://xscblog.com/2018/01/25/springmvc-annotation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xing Shuchen">
@@ -338,7 +338,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">配置SpringMVC返回JSON遇到的坑</h2>
+          <h2 class="post-title" itemprop="name headline">SpringMVC AnnotationMethodHandlerAdapter与mvc:annotation-driven冲突的解决方案</h2>
         
 
         <div class="post-meta">
@@ -350,8 +350,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-23T22:35:04+08:00">
-                2018-01-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-25T22:55:47+08:00">
+                2018-01-25
               </time>
             
 
@@ -404,7 +404,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  209
+                  362
                 </span>
               
 
@@ -420,7 +420,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -428,7 +428,7 @@
 
           
               <div class="post-description">
-                  配置SpringMVC返回JSON遇到的坑
+                  SpringMVC3 AnnotationMethodHandlerAdapter与mvc:annotation-driven冲突的解决方案
               </div>
           
 
@@ -445,36 +445,68 @@
       
 
       
-        <h3 id="坑一："><a href="#坑一：" class="headerlink" title="坑一："></a>坑一：</h3><p>官方网站下载地址不明朗，最后找了几个下载地址：<a href="http://wiki.fasterxml.com/JacksonDownload" target="_blank" rel="external">http://wiki.fasterxml.com/JacksonDownload</a></p>
-<pre><code>Jackson2.5下载地址：jackson2.5.0.jar
-</code></pre><h3 id="坑二："><a href="#坑二：" class="headerlink" title="坑二："></a>坑二：</h3><p>配置文件的配置信息跟jackson的版本有关。</p>
-<pre><code>版本一： org.springframework.http.converter.json.MappingJacksonHttpMessageConverter
+        <h3 id="1、问题"><a href="#1、问题" class="headerlink" title="1、问题"></a>1、问题</h3><p>在使用SpringMVC3时，需要对response到页面的数据进行编码设置则需要自定义注解数据格式化类来对页面传过来的字符串进行格式化。</p>
+<p>编码设置：</p>
+<pre><code>&lt;bean class=&quot;org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter&quot; &gt;  
+        &lt;property name=&quot;messageConverters&quot;&gt;  
+             &lt;list&gt;  
+                 &lt;bean class = &quot;org.springframework.http.converter.StringHttpMessageConverter&quot;&gt;  
+                    &lt;property name = &quot;supportedMediaTypes&quot;&gt;  
+                         &lt;list&gt;  
+                             &lt;value&gt;text/plain;charset=UTF-8&lt;/value&gt;  
+                         &lt;/list&gt;  
+                    &lt;/property&gt;  
+                 &lt;/bean&gt;  
+             &lt;/list&gt;  
+        &lt;/property&gt;  
+    &lt;/bean&gt; 
+</code></pre><p>Formatter设置:</p>
+<pre><code>&lt;bean id=&quot;conversionService&quot; class=&quot;org.springframework.format.support.FormattingConversionServiceFactoryBean&quot;&gt;  
+      &lt;property name=&quot;formatters&quot;&gt;  
+          &lt;list&gt;  
+              &lt;bean class=&quot;com.grgbanking.it.common.formatter.TimestampFormatAnnotationFormatterFactory&quot;/&gt;  
+          &lt;/list&gt;  
+      &lt;/property&gt;  
+    &lt;/bean&gt; 
+    &lt;mvc:annotation-driven conversion-service=&quot;conversionService&quot;/&gt;
+</code></pre><p>当两者按上面的设置好后，StringHttpMessageConverter不起作用了。</p>
+<h3 id="2、原因"><a href="#2、原因" class="headerlink" title="2、原因"></a>2、原因</h3><p><mvc:annotation-driven>的配置如下:</mvc:annotation-driven></p>
+<pre><code>&lt;bean class=&quot;org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping&quot;&gt;
+        &lt;property name=&quot;order&quot; value=&quot;1&quot; /&gt;
+    &lt;/bean&gt;
+    &lt;bean class=&quot;org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter&quot;&gt;
+        &lt;property name=&quot;webBindingInitializer&quot;&gt;
+          &lt;bean class=&quot;org.springframework.web.bind.support.ConfigurableWebBindingInitializer&quot;&gt;
+           &lt;property name=&quot;conversionService&quot; ref=&quot;conversionService&quot; /&gt;
+           &lt;property name=&quot;validator&quot; ref=&quot;validator&quot; /&gt;
+          &lt;/bean&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
+    &lt;bean id=&quot;conversionService&quot; class=&quot;org.springframework.samples.petclinic.util.PetclinicConversionServiceFactory&quot; /&gt;
+    &lt;bean id=&quot;validator&quot; class=&quot;org.springframework.validation.beanvalidation.LocalValidatorFactoryBean&quot; /&gt; 
+</code></pre><p>从上面的配置信息来看，<mvc:annotation-driven>相当于注册了DefaultAnnotationHandlerMapping和AnnotationMethodHandlerAdapter两个bean。<br>所以我们在上面配置的AnnotationMethodHandlerAdapter在<mvc:annotation-driven>后是不起作用的。<mvc:annotation-driven>包括了一个默认的AnnotationMethodHandlerAdapter功能。</mvc:annotation-driven></mvc:annotation-driven></mvc:annotation-driven></p>
+<h3 id="3、解决"><a href="#3、解决" class="headerlink" title="3、解决"></a>3、解决</h3><p>把StringHttpMessageConverter配置在<mvc:annotation-driven>里面。</mvc:annotation-driven></p>
+<pre><code>    &lt;bean id=&quot;conversionService&quot; class=&quot;org.springframework.format.support.FormattingConversionServiceFactoryBean&quot;&gt;  
+          &lt;property name=&quot;formatters&quot;&gt;  
+              &lt;list&gt;  
+                  &lt;bean class=&quot;com.grgbanking.it.common.formatter.TimestampFormatAnnotationFormatterFactory&quot;/&gt;  
+              &lt;/list&gt;  
+          &lt;/property&gt;  
+        &lt;/bean&gt; 
 
-版本二：org.springframework.http.converter.json.MappingJackson2HttpMessageConverter
-</code></pre><h3 id="SpringMVC返回json配置步骤如下："><a href="#SpringMVC返回json配置步骤如下：" class="headerlink" title="SpringMVC返回json配置步骤如下："></a>SpringMVC返回json配置步骤如下：</h3><h4 id="1、添加jackson-jar包"><a href="#1、添加jackson-jar包" class="headerlink" title="1、添加jackson.jar包"></a>1、添加jackson.jar包</h4><h4 id="2、在applicationContext-xml配制文件中添加如下代码"><a href="#2、在applicationContext-xml配制文件中添加如下代码" class="headerlink" title="2、在applicationContext.xml配制文件中添加如下代码"></a>2、在applicationContext.xml配制文件中添加如下代码</h4><pre><code>&lt;!--解析返回JSON --&gt;
-&lt;!--  &lt;bean class=&quot;org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter&quot;&gt; --&gt;
-   &lt;bean class=&quot;org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter&quot;&gt;
-  &lt;property name=&quot;messageConverters&quot;&gt;
-   &lt;list &gt;
-    &lt;ref bean=&quot;mappingJacksonHttpMessageConverter&quot; /&gt;
-   &lt;/list&gt;
-  &lt;/property&gt;
- &lt;/bean&gt;
- &lt;bean id=&quot;mappingJacksonHttpMessageConverter&quot;
-  class=&quot;org.springframework.http.converter.json.MappingJackson2HttpMessageConverter&quot;&gt;
-  &lt;property name=&quot;supportedMediaTypes&quot;&gt;
-   &lt;list&gt;
-    &lt;value&gt;text/html;charset=UTF-8&lt;/value&gt;
-   &lt;/list&gt;
-  &lt;/property&gt;
- &lt;/bean&gt; 
-</code></pre><h4 id="3、在controller中添加如下代码"><a href="#3、在controller中添加如下代码" class="headerlink" title="3、在controller中添加如下代码"></a>3、在controller中添加如下代码</h4><pre><code>@RequestMapping(value=&quot;/chinese/listTree&quot;, method = RequestMethod.POST) 
-@ResponseBody 
- public List getlistChinese(Model model){
-  List&lt;User&gt; list = (List&lt;ChineseCategory&gt;) commonMgr.find(&quot;from User&quot;);
-    return list;
- }
-</code></pre><p>返回值可以为list也可以为Map类型</p>
+&lt;!-- 设置转换器 --&gt;
+&lt;mvc:annotation-driven conversion-service=&quot;conversionService&quot;&gt;
+    &lt;mvc:message-converters&gt;  
+         &lt;bean class = &quot;org.springframework.http.converter.StringHttpMessageConverter&quot;&gt;  
+                &lt;property name = &quot;supportedMediaTypes&quot;&gt;  
+                     &lt;list&gt;  
+                         &lt;value&gt;text/plain;charset=UTF-8&lt;/value&gt;  
+                     &lt;/list&gt;  
+                &lt;/property&gt;  
+             &lt;/bean&gt;  
+    &lt;/mvc:message-converters&gt;
+&lt;/mvc:annotation-driven&gt;
+</code></pre><p><strong>注:上面方法只适用于SpringMVC 3.1.x以上版本。</strong></p>
 
       
     </div>
@@ -499,8 +531,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/09/IOC-AOP/" rel="next" title="IOC AOP概念简析">
-                <i class="fa fa-chevron-left"></i> IOC AOP概念简析
+              <a href="/2018/01/25/ejb-javabean/" rel="next" title="JAVABEAN EJB POJO区别">
+                <i class="fa fa-chevron-left"></i> JAVABEAN EJB POJO区别
               </a>
             
           </div>
@@ -508,10 +540,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/25/ejb-javabean/" rel="prev" title="JAVABEAN EJB POJO区别">
-                JAVABEAN EJB POJO区别 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -654,7 +682,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#坑一："><span class="nav-number">1.</span> <span class="nav-text">坑一：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#坑二："><span class="nav-number">2.</span> <span class="nav-text">坑二：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringMVC返回json配置步骤如下："><span class="nav-number">3.</span> <span class="nav-text">SpringMVC返回json配置步骤如下：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、添加jackson-jar包"><span class="nav-number">3.1.</span> <span class="nav-text">1、添加jackson.jar包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、在applicationContext-xml配制文件中添加如下代码"><span class="nav-number">3.2.</span> <span class="nav-text">2、在applicationContext.xml配制文件中添加如下代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、在controller中添加如下代码"><span class="nav-number">3.3.</span> <span class="nav-text">3、在controller中添加如下代码</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、问题"><span class="nav-number">1.</span> <span class="nav-text">1、问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、原因"><span class="nav-number">2.</span> <span class="nav-text">2、原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、解决"><span class="nav-number">3.</span> <span class="nav-text">3、解决</span></a></li></ol></div>
             
 
           </div>
