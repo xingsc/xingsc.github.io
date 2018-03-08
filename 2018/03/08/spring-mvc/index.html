@@ -93,20 +93,20 @@
 <meta property="og:site_name" content="Xsc&#39;s Blog">
 <meta property="og:description" content="生活就像海洋，只有意志坚强的人才能到达彼岸。已经很久没有发文章了呀，想必大家都挂念我了，哈哈。温故而知新，今天一起来复习一下spring mvc的内容吧。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://xscblog.com/images/spring-mvc/1.jpg">
-<meta property="og:image" content="http://xscblog.com/images/spring-mvc/4.jpg">
+<meta property="og:image" content="http://xscblog.com/images/spring-mvc/1.JPG">
+<meta property="og:image" content="http://xscblog.com/images/spring-mvc/4.JPG">
 <meta property="og:image" content="http://xscblog.com/images/spring-mvc/web.xml加载过程.png">
 <meta property="og:image" content="http://xscblog.com/images/spring-mvc/web.xml配置.png">
-<meta property="og:image" content="http://xscblog.com/images/spring-mvc/2.jpg">
-<meta property="og:image" content="http://xscblog.com/images/spring-mvc/3.jpg">
+<meta property="og:image" content="http://xscblog.com/images/spring-mvc/2.JPG">
+<meta property="og:image" content="http://xscblog.com/images/spring-mvc/3.JPG">
 <meta property="og:image" content="http://xscblog.com/images/spring-mvc/特殊bean.png">
 <meta property="og:image" content="http://xscblog.com/images/spring-mvc/配置文件标签.png">
 <meta property="og:image" content="http://xscblog.com/images/spring-mvc/异常处理方式.png">
-<meta property="og:updated_time" content="2018-03-08T13:55:32.575Z">
+<meta property="og:updated_time" content="2018-03-08T13:57:59.212Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring思维导图，让Spring不再难懂（mvc篇）">
 <meta name="twitter:description" content="生活就像海洋，只有意志坚强的人才能到达彼岸。已经很久没有发文章了呀，想必大家都挂念我了，哈哈。温故而知新，今天一起来复习一下spring mvc的内容吧。">
-<meta name="twitter:image" content="http://xscblog.com/images/spring-mvc/1.jpg">
+<meta name="twitter:image" content="http://xscblog.com/images/spring-mvc/1.JPG">
 
 
 
@@ -360,7 +360,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-08T21:55:32+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-08T21:57:59+08:00">
                 2018-03-08
               </time>
             
@@ -456,9 +456,9 @@
 
       
         <h3 id="spring-mvc简介与运行原理"><a href="#spring-mvc简介与运行原理" class="headerlink" title="spring mvc简介与运行原理"></a>spring mvc简介与运行原理</h3><p>Spring的模型-视图-控制器（MVC）框架是围绕一个DispatcherServlet来设计的，这个Servlet会把请求分发给各个处理器，并支持可配置的处理器映射、视图渲染、本地化、时区与主题渲染等，甚至还能支持文件上传。</p>
-<p><img src="/images/spring-mvc/1.jpg" alt="1"></p>
+<p><img src="/images/spring-mvc/1.JPG" alt="1"></p>
 <p>(1) Http请求：客户端请求提交到DispatcherServlet。<br>(2) 寻找处理器：由DispatcherServlet控制器查询一个或多个HandlerMapping，找到处理请求的Controller。<br>(3) 调用处理器：DispatcherServlet将请求提交到Controller。<br>(4)(5)调用业务处理和返回结果：Controller调用业务逻辑处理后，返回ModelAndView。<br>(6)(7)处理视图映射并返回模型： DispatcherServlet查询一个或多个ViewResoler视图解析器，找到ModelAndView指定的视图。<br>(8) Http响应：视图负责将结果显示到客户端。</p>
-<h3 id="主要注解"><a href="#主要注解" class="headerlink" title="主要注解"></a>主要注解</h3><p><img src="/images/spring-mvc/4.jpg" alt="2"></p>
+<h3 id="主要注解"><a href="#主要注解" class="headerlink" title="主要注解"></a>主要注解</h3><p><img src="/images/spring-mvc/4.JPG" alt="2"></p>
 <h3 id="ContextLoaderListener"><a href="#ContextLoaderListener" class="headerlink" title="ContextLoaderListener"></a>ContextLoaderListener</h3><p>在讲ContextLoaderListener之前，首先来了解一下web.xml的作用。</p>
 <p>一个web中可以没有web.xml文件，也就是说，web.xml文件并不是web工程必须的。web.xml文件是用来初始化配置信息：比如Welcome页面、servlet、servlet-mapping、filter、listener、启动加载级别等。当你的web工程没用到这些时，你可以不用web.xml文件来配置你的Application。</p>
 <p>当要启动某个web项目时，服务器软件或容器如（tomcat）会第一步加载项目中的web.xml文件，通过其中的各种配置来启动项目，只有其中配置的各项均无误时，项目才能正确启动。web.xml有多项标签，在其加载的过程中顺序依次为：context-param &gt;&gt; listener &gt;&gt; fileter &gt;&gt; servlet。（同类多个节点以出现顺序依次加载）</p>
@@ -481,7 +481,7 @@
 <h3 id="DispatcherServlet"><a href="#DispatcherServlet" class="headerlink" title="DispatcherServlet"></a>DispatcherServlet</h3><p>Spring MVC框架，与其他很多web的MVC框架一样：请求驱动；所有设计都围绕着一个中央Servlet来展开，它负责把所有请求分发到控制器；同时提供其他web应用开发所需要的功能。不过Spring的中央处理器，DispatcherServlet，能做的比这更多。</p>
 <p>下图展示了Spring Web MVC的DispatcherServlet处理请求的工作流。熟悉设计模式的朋友会发现，DispatcherServlet应用的其实就是一个“前端控制器”的设计模式（其他很多优秀的web框架也都使用了这个设计模式）。</p>
 <p>流程图</p>
-<p><img src="/images/spring-mvc/2.jpg" alt="5"></p>
+<p><img src="/images/spring-mvc/2.JPG" alt="5"></p>
 <p>在web.xml中的配置</p>
 <pre><code>&lt;!-- servlet定义 --&gt;
 &lt;servlet&gt;
@@ -496,7 +496,7 @@
 </code></pre><p>其中</p>
 <p>load-on-startup：表示启动容器时初始化该Servlet；<br>url-pattern：表示哪些请求交给Spring Web MVC处理， “/” 是用来定义默认servlet映射的。也可以如“*.html”表示拦截所有以html为扩展名的请求。<br>在Spring MVC中，每个DispatcherServlet都持有一个自己的上下文对象WebApplicationContext，它又继承了根（root）WebApplicationContext对象中已经定义的所有bean。这些继承的bean可以在具体的Servlet实例中被重载，在每个Servlet实例中你也可以定义其scope下的新bean。</p>
 <p>WebApplicationContext继承自ApplicationContext，它提供了一些web应用经常需要用到的特性。它与普通的ApplicationContext不同的地方在于，它支持主题的解析，并且知道它关联到的是哪个servlet（它持有一个该ServletContext的引用）</p>
-<p><img src="/images/spring-mvc/3.jpg" alt="6"></p>
+<p><img src="/images/spring-mvc/3.JPG" alt="6"></p>
 <p>spring mvc同时提供了很多特殊的注解，用于处理请求和渲染视图等。DispatcherServlet初始化的过程中会默认使用这些特殊bean进行配置。如果你想指定使用哪个特定的bean，你可以在web应用上下文WebApplicationContext中简单地配置它们。</p>
 <p><img src="/images/spring-mvc/特殊bean.png" alt="7"></p>
 <p>其中，常用的ViewResolver的配置。以jsp作为视图为例</p>
