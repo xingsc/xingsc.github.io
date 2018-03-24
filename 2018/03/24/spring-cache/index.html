@@ -86,17 +86,22 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="缓存是实际工作中非常常用的一种提高性能的方法。而在java中，所谓缓存，就是将程序或系统经常要调用的对象存在内存中，再次调用时可以快速从内存中获取对象，不必再去创建新的重复的实例。这样做可以减少系统开销，提高系统效率。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://xscblog.com/2017/11/03/hello-world/index.html">
+<meta property="og:title" content="Spring思维导图，让Spring不再难懂（cache篇）">
+<meta property="og:url" content="http://xscblog.com/2018/03/24/spring-cache/index.html">
 <meta property="og:site_name" content="Xsc&#39;s Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="缓存是实际工作中非常常用的一种提高性能的方法。而在java中，所谓缓存，就是将程序或系统经常要调用的对象存在内存中，再次调用时可以快速从内存中获取对象，不必再去创建新的重复的实例。这样做可以减少系统开销，提高系统效率。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-03T11:50:26.579Z">
+<meta property="og:image" content="http://xscblog.com/images/spring-cache/1.jpg">
+<meta property="og:image" content="http://xscblog.com/images/spring-cache/2.jpg">
+<meta property="og:image" content="http://xscblog.com/images/spring-cache/3.jpg">
+<meta property="og:image" content="http://xscblog.com/images/spring-cache/4.jpg">
+<meta property="og:updated_time" content="2018-03-24T08:26:24.078Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="Spring思维导图，让Spring不再难懂（cache篇）">
+<meta name="twitter:description" content="缓存是实际工作中非常常用的一种提高性能的方法。而在java中，所谓缓存，就是将程序或系统经常要调用的对象存在内存中，再次调用时可以快速从内存中获取对象，不必再去创建新的重复的实例。这样做可以减少系统开销，提高系统效率。">
+<meta name="twitter:image" content="http://xscblog.com/images/spring-cache/1.jpg">
 
 
 
@@ -126,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://xscblog.com/2017/11/03/hello-world/"/>
+  <link rel="canonical" href="http://xscblog.com/2018/03/24/spring-cache/"/>
 
 
 
 
 
-  <title>Hello World | Xsc's Blog</title>
+  <title>Spring思维导图，让Spring不再难懂（cache篇） | Xsc's Blog</title>
   
 
 
@@ -321,7 +326,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://xscblog.com/2017/11/03/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://xscblog.com/2018/03/24/spring-cache/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xing Shuchen">
@@ -338,7 +343,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Hello World</h2>
+          <h2 class="post-title" itemprop="name headline">Spring思维导图，让Spring不再难懂（cache篇）</h2>
         
 
         <div class="post-meta">
@@ -350,8 +355,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-03T19:11:32+08:00">
-                2017-11-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-24T16:26:24+08:00">
+                2018-03-24
               </time>
             
 
@@ -360,6 +365,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/program/" itemprop="url" rel="index">
+                    <span itemprop="name">program</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -382,7 +409,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  76
+                  1,371
                 </span>
               
 
@@ -398,12 +425,16 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  6
                 </span>
               
             </div>
           
 
+          
+              <div class="post-description">
+                  缓存是实际工作中非常常用的一种提高性能的方法。而在java中，所谓缓存，就是将程序或系统经常要调用的对象存在内存中，再次调用时可以快速从内存中获取对象，不必再去创建新的重复的实例。这样做可以减少系统开销，提高系统效率。
+              </div>
           
 
         </div>
@@ -419,15 +450,169 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight plain"><figcaption><span>new "My New Post</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ &quot;</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h3 id="关于缓存"><a href="#关于缓存" class="headerlink" title="关于缓存"></a>关于缓存</h3><p>缓存是实际工作中非常常用的一种提高性能的方法。而在java中，所谓缓存，就是将程序或系统经常要调用的对象存在内存中，再次调用时可以快速从内存中获取对象，不必再去创建新的重复的实例。这样做可以减少系统开销，提高系统效率。</p>
+<p>在增删改查中，数据库查询占据了数据库操作的80%以上，而非常频繁的磁盘I/O读取操作，会导致数据库性能极度低下。而数据库的重要性就不言而喻了：</p>
+<pre><code>数据库通常是企业应用系统最核心的部分
+数据库保存的数据量通常非常庞大
+数据库查询操作通常很频繁，有时还很复杂
+</code></pre><p>在系统架构的不同层级之间，为了加快访问速度，都可以存在缓存</p>
+<p><img src="/images/spring-cache/1.jpg" alt="1"><br>缓存不同层级的作用.png</p>
+<h3 id="spring-cache特性与缺憾"><a href="#spring-cache特性与缺憾" class="headerlink" title="spring cache特性与缺憾"></a>spring cache特性与缺憾</h3><p>现在市场上主流的缓存框架有ehcache、redis、memcached。spring cache可以通过简单的配置就可以搭配使用起来。其中使用注解方式是最简单的。</p>
+<p><img src="/images/spring-cache/2.jpg" alt="2"><br>特性与缺憾.png</p>
+<h3 id="Cache注解"><a href="#Cache注解" class="headerlink" title="Cache注解"></a>Cache注解</h3><p><img src="/images/spring-cache/3.jpg" alt="3"><br>缓存注解.png</p>
+<p>从以上的注解中可以看出，虽然使用注解的确方便，但是缺少灵活的缓存策略，</p>
+<p>缓存策略：</p>
+<p>TTL（Time To Live ）<br>存活期，即从缓存中创建时间点开始直到它到期的一个时间段（不管在这个时间段内有没有访问都将过期）</p>
+<p>TTI（Time To Idle）<br>空闲期，即一个数据多久没被访问将从缓存中移除的时间</p>
+<p>项目中可能有很多缓存的TTL不相同，这时候就需要编码式使用编写缓存。</p>
+<h3 id="条件缓存"><a href="#条件缓存" class="headerlink" title="条件缓存"></a>条件缓存</h3><p>根据运行流程，如下@Cacheable将在执行方法之前( #result还拿不到返回值)判断condition，如果返回true，则查缓存；</p>
+<pre><code>@Cacheable(value = &quot;user&quot;, key = &quot;#id&quot;, condition = &quot;#id lt 10&quot;)  
+public User conditionFindById(final Long id)  
+</code></pre><p>如下@CachePut将在执行完方法后（#result就能拿到返回值了）判断condition，如果返回true，则放入缓存</p>
+<pre><code>@CachePut(value = &quot;user&quot;, key = &quot;#id&quot;, condition = &quot;#result.username ne &apos;zhang&apos;&quot;)  
+public User conditionSave(final User user)   
+</code></pre><p>如下@CachePut将在执行完方法后（#result就能拿到返回值了）判断unless，如果返回false，则放入缓存；（即跟condition相反）</p>
+<pre><code>@CachePut(value = &quot;user&quot;, key = &quot;#user.id&quot;, unless = &quot;#result.username eq &apos;zhang&apos;&quot;)  
+public User conditionSave2(final User user)   
+</code></pre><p>如下@CacheEvict， beforeInvocation=false表示在方法执行之后调用（#result能拿到返回值了）；且判断condition，如果返回true，则移除缓存；</p>
+<pre><code>@CacheEvict(value = &quot;user&quot;, key = &quot;#user.id&quot;, beforeInvocation = false, condition = &quot;#result.username ne &apos;zhang&apos;&quot;) 
+public User conditionDelete(final User user)   
+</code></pre><p>小试牛刀，综合运用：</p>
+<pre><code>@CachePut(value = &quot;user&quot;, key = &quot;#user.id&quot;)
+public User save(User user) {
+    users.add(user);
+    return user;
+}
+
+@CachePut(value = &quot;user&quot;, key = &quot;#user.id&quot;)
+public User update(User user) {
+    users.remove(user);
+    users.add(user);
+    return user;
+}
+
+@CacheEvict(value = &quot;user&quot;, key = &quot;#user.id&quot;)
+public User delete(User user) {
+    users.remove(user);
+    return user;
+}
+
+@CacheEvict(value = &quot;user&quot;, allEntries = true)
+public void deleteAll() {
+    users.clear();
+}
+
+@Cacheable(value = &quot;user&quot;, key = &quot;#id&quot;)
+public User findById(final Long id) {
+    System.out.println(&quot;cache miss, invoke find by id, id:&quot; + id);
+    for (User user : users) {
+        if (user.getId().equals(id)) {
+            return user;
+        }
+    }
+    return null;
+}
+</code></pre><h3 id="配置ehcache与redis"><a href="#配置ehcache与redis" class="headerlink" title="配置ehcache与redis"></a>配置ehcache与redis</h3><p>spring cache集成ehcache，spring-ehcache.xml主要内容：</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;net.sf.ehcache&lt;/groupId&gt;
+    &lt;artifactId&gt;ehcache-core&lt;/artifactId&gt;
+    &lt;version&gt;${ehcache.version}&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;!-- Spring提供的基于的Ehcache实现的缓存管理器 --&gt;
+
+&lt;!-- 如果有多个ehcacheManager要在bean加上p:shared=&quot;true&quot; --&gt;
+&lt;bean id=&quot;ehcacheManager&quot; class=&quot;org.springframework.cache.ehcache.EhCacheManagerFactoryBean&quot;&gt;
+     &lt;property name=&quot;configLocation&quot; value=&quot;classpath:xml/ehcache.xml&quot;/&gt;
+&lt;/bean&gt;
+
+&lt;bean id=&quot;cacheManager&quot; class=&quot;org.springframework.cache.ehcache.EhCacheCacheManager&quot;&gt;
+     &lt;property name=&quot;cacheManager&quot; ref=&quot;ehcacheManager&quot;/&gt;
+     &lt;property name=&quot;transactionAware&quot; value=&quot;true&quot;/&gt;
+&lt;/bean&gt;
+
+&lt;!-- cache注解，和spring-redis.xml中的只能使用一个 --&gt;
+&lt;cache:annotation-driven cache-manager=&quot;cacheManager&quot; proxy-target-class=&quot;true&quot;/&gt;
+</code></pre><p>spring cache集成redis，spring-redis.xml主要内容：</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.data&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-data-redis&lt;/artifactId&gt;
+    &lt;version&gt;1.8.1.RELEASE&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;
+    &lt;artifactId&gt;commons-pool2&lt;/artifactId&gt;
+    &lt;version&gt;2.4.2&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;redis.clients&lt;/groupId&gt;
+    &lt;artifactId&gt;jedis&lt;/artifactId&gt;
+    &lt;version&gt;2.9.0&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;!-- 注意需要添加Spring Data Redis等jar包 --&gt;
+&lt;description&gt;redis配置&lt;/description&gt;
+
+&lt;bean id=&quot;jedisPoolConfig&quot; class=&quot;redis.clients.jedis.JedisPoolConfig&quot;&gt;
+    &lt;property name=&quot;maxIdle&quot; value=&quot;${redis.pool.maxIdle}&quot;/&gt;
+    &lt;property name=&quot;maxTotal&quot; value=&quot;${redis.pool.maxActive}&quot;/&gt;
+    &lt;property name=&quot;maxWaitMillis&quot; value=&quot;${redis.pool.maxWait}&quot;/&gt;
+    &lt;property name=&quot;testOnBorrow&quot; value=&quot;${redis.pool.testOnBorrow}&quot;/&gt;
+    &lt;property name=&quot;testOnReturn&quot; value=&quot;${redis.pool.testOnReturn}&quot;/&gt;
+&lt;/bean&gt;
+
+&lt;!-- JedisConnectionFactory --&gt;
+&lt;bean id=&quot;jedisConnectionFactory&quot; class=&quot;org.springframework.data.redis.connection.jedis.JedisConnectionFactory&quot;&gt;
+    &lt;property name=&quot;hostName&quot; value=&quot;${redis.master.ip}&quot;/&gt;
+    &lt;property name=&quot;port&quot; value=&quot;${redis.master.port}&quot;/&gt;
+    &lt;property name=&quot;poolConfig&quot; ref=&quot;jedisPoolConfig&quot;/&gt;
+&lt;/bean&gt;
+
+&lt;bean id=&quot;redisTemplate&quot; class=&quot;org.springframework.data.redis.core.RedisTemplate&quot;
+      p:connectionFactory-ref=&quot;jedisConnectionFactory&quot;&gt;
+    &lt;property name=&quot;keySerializer&quot;&gt;
+        &lt;bean class=&quot;org.springframework.data.redis.serializer.JdkSerializationRedisSerializer&quot;&gt;&lt;/bean&gt;
+    &lt;/property&gt;
+    &lt;property name=&quot;valueSerializer&quot;&gt;
+        &lt;bean class=&quot;org.springframework.data.redis.serializer.JdkSerializationRedisSerializer&quot;/&gt;
+    &lt;/property&gt;
+    &lt;property name=&quot;hashKeySerializer&quot;&gt;
+        &lt;bean class=&quot;org.springframework.data.redis.serializer.JdkSerializationRedisSerializer&quot;/&gt;
+    &lt;/property&gt;
+    &lt;property name=&quot;hashValueSerializer&quot;&gt;
+        &lt;bean class=&quot;org.springframework.data.redis.serializer.JdkSerializationRedisSerializer&quot;/&gt;
+    &lt;/property&gt;
+&lt;/bean&gt;
+
+&lt;!--spring cache--&gt;
+&lt;bean id=&quot;cacheManager&quot; class=&quot;org.springframework.data.redis.cache.RedisCacheManager&quot;
+      c:redisOperations-ref=&quot;redisTemplate&quot;&gt;
+    &lt;!-- 默认缓存10分钟 --&gt;
+    &lt;property name=&quot;defaultExpiration&quot; value=&quot;600&quot;/&gt;
+    &lt;property name=&quot;usePrefix&quot; value=&quot;true&quot;/&gt;
+    &lt;!-- cacheName 缓存超时配置，半小时，一小时，一天 --&gt;
+    &lt;property name=&quot;expires&quot;&gt;
+        &lt;map key-type=&quot;java.lang.String&quot; value-type=&quot;java.lang.Long&quot;&gt;
+            &lt;entry key=&quot;halfHour&quot; value=&quot;1800&quot;/&gt;
+            &lt;entry key=&quot;hour&quot; value=&quot;3600&quot;/&gt;
+            &lt;entry key=&quot;oneDay&quot; value=&quot;86400&quot;/&gt;
+            &lt;!-- shiro cache keys --&gt;
+            &lt;entry key=&quot;authorizationCache&quot; value=&quot;1800&quot;/&gt;
+            &lt;entry key=&quot;authenticationCache&quot; value=&quot;1800&quot;/&gt;
+            &lt;entry key=&quot;activeSessionCache&quot; value=&quot;1800&quot;/&gt;
+        &lt;/map&gt;
+    &lt;/property&gt;
+&lt;/bean&gt;
+
+&lt;!-- cache注解，和spring-ehcache.xml中的只能使用一个 --&gt;
+&lt;cache:annotation-driven cache-manager=&quot;cacheManager&quot; proxy-target-class=&quot;true&quot;/&gt;
+</code></pre><p>项目中注解缓存只能配置一个，所以可以通过以下引入哪个配置文件来决定使用哪个缓存。</p>
+<pre><code>&lt;import resource=&quot;classpath:spring/spring-ehcache.xml&quot;/&gt;
+&lt;!-- &lt;import resource=&quot;classpath:spring/spring-redis.xml&quot;/&gt;--&gt;
+</code></pre><p>当然，可以通过其他配置搭配使用两个缓存机制。比如ecache做一级缓存，redis做二级缓存。</p>
+<p><img src="/images/spring-cache/4.jpg" alt="4"><br>缓存对比.png</p>
+<p>更加详细的使用与配置，可以参考项目中spring-shiro-training中有关spring cache的配置。</p>
+<p><a href="https://git.oschina.net/wangzhixuan/spring-shiro-training.git" target="_blank" rel="external">https://git.oschina.net/wangzhixuan/spring-shiro-training.git</a></p>
 
       
     </div>
@@ -452,15 +637,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/03/24/spring-aop/" rel="next" title="Spring思维导图，让Spring不再难懂（aop篇）">
+                <i class="fa fa-chevron-left"></i> Spring思维导图，让Spring不再难懂（aop篇）
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/05/MarkDown/" rel="prev" title="MarkDown语言学习">
-                MarkDown语言学习 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -603,7 +788,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于缓存"><span class="nav-number">1.</span> <span class="nav-text">关于缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#spring-cache特性与缺憾"><span class="nav-number">2.</span> <span class="nav-text">spring cache特性与缺憾</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cache注解"><span class="nav-number">3.</span> <span class="nav-text">Cache注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件缓存"><span class="nav-number">4.</span> <span class="nav-text">条件缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置ehcache与redis"><span class="nav-number">5.</span> <span class="nav-text">配置ehcache与redis</span></a></li></ol></div>
             
 
           </div>
