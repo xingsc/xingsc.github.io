@@ -86,17 +86,29 @@
 
 
 
-<meta name="description" content="SpringMVC3 AnnotationMethodHandlerAdapter与mvc:annotation-driven冲突的解决方案">
+<meta name="description" content="写过java的都知道：所有的对象都必须创建；或者说：使用对象之前必须先创建。而使用ioc之后，你就可以不再手动创建对象，而是从ioc容器中直接获取对象。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringMVC AnnotationMethodHandlerAdapter与mvc:annotation-driven冲突的解决方案">
-<meta property="og:url" content="http://xscblog.com/2018/01/25/springmvc-annotation/index.html">
+<meta property="og:title" content="Spring思维导图，让Spring不再难懂（ioc篇）">
+<meta property="og:url" content="http://xscblog.com/2018/03/24/spring-ioc/index.html">
 <meta property="og:site_name" content="Xsc&#39;s Blog">
-<meta property="og:description" content="SpringMVC3 AnnotationMethodHandlerAdapter与mvc:annotation-driven冲突的解决方案">
+<meta property="og:description" content="写过java的都知道：所有的对象都必须创建；或者说：使用对象之前必须先创建。而使用ioc之后，你就可以不再手动创建对象，而是从ioc容器中直接获取对象。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-25T14:55:47.572Z">
+<meta property="og:image" content="http://xscblog.com/images/spring-ioc/1.jpg">
+<meta property="og:image" content="http://xscblog.com/images/spring-ioc/2.jpg">
+<meta property="og:image" content="http://xscblog.com/images/spring-ioc/3.jpg">
+<meta property="og:image" content="http://xscblog.com/images/spring-ioc/4.jpg">
+<meta property="og:image" content="http://xscblog.com/images/spring-ioc/5.jpg">
+<meta property="og:image" content="http://xscblog.com/images/spring-ioc/6.jpg">
+<meta property="og:image" content="http://xscblog.com/images/spring-ioc/7.jpg">
+<meta property="og:image" content="http://xscblog.com/images/spring-ioc/8.jpg">
+<meta property="og:image" content="http://xscblog.com/images/spring-ioc/9.jpg">
+<meta property="og:image" content="http://xscblog.com/images/spring-ioc/10.jpg">
+<meta property="og:image" content="http://xscblog.com/images/spring-ioc/11.jpg">
+<meta property="og:updated_time" content="2018-03-24T07:44:25.835Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SpringMVC AnnotationMethodHandlerAdapter与mvc:annotation-driven冲突的解决方案">
-<meta name="twitter:description" content="SpringMVC3 AnnotationMethodHandlerAdapter与mvc:annotation-driven冲突的解决方案">
+<meta name="twitter:title" content="Spring思维导图，让Spring不再难懂（ioc篇）">
+<meta name="twitter:description" content="写过java的都知道：所有的对象都必须创建；或者说：使用对象之前必须先创建。而使用ioc之后，你就可以不再手动创建对象，而是从ioc容器中直接获取对象。">
+<meta name="twitter:image" content="http://xscblog.com/images/spring-ioc/1.jpg">
 
 
 
@@ -126,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="http://xscblog.com/2018/01/25/springmvc-annotation/"/>
+  <link rel="canonical" href="http://xscblog.com/2018/03/24/spring-ioc/"/>
 
 
 
 
 
-  <title>SpringMVC AnnotationMethodHandlerAdapter与mvc:annotation-driven冲突的解决方案 | Xsc's Blog</title>
+  <title>Spring思维导图，让Spring不再难懂（ioc篇） | Xsc's Blog</title>
   
 
 
@@ -321,7 +333,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://xscblog.com/2018/01/25/springmvc-annotation/">
+    <link itemprop="mainEntityOfPage" href="http://xscblog.com/2018/03/24/spring-ioc/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xing Shuchen">
@@ -338,7 +350,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">SpringMVC AnnotationMethodHandlerAdapter与mvc:annotation-driven冲突的解决方案</h2>
+          <h2 class="post-title" itemprop="name headline">Spring思维导图，让Spring不再难懂（ioc篇）</h2>
         
 
         <div class="post-meta">
@@ -350,8 +362,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-25T22:55:47+08:00">
-                2018-01-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-24T15:44:25+08:00">
+                2018-03-24
               </time>
             
 
@@ -404,7 +416,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  362
+                  750
                 </span>
               
 
@@ -420,7 +432,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -428,7 +440,7 @@
 
           
               <div class="post-description">
-                  SpringMVC3 AnnotationMethodHandlerAdapter与mvc:annotation-driven冲突的解决方案
+                  写过java的都知道：所有的对象都必须创建；或者说：使用对象之前必须先创建。而使用ioc之后，你就可以不再手动创建对象，而是从ioc容器中直接获取对象。
               </div>
           
 
@@ -445,68 +457,30 @@
       
 
       
-        <h3 id="1、问题"><a href="#1、问题" class="headerlink" title="1、问题"></a>1、问题</h3><p>在使用SpringMVC3时，需要对response到页面的数据进行编码设置则需要自定义注解数据格式化类来对页面传过来的字符串进行格式化。</p>
-<p>编码设置：</p>
-<pre><code>&lt;bean class=&quot;org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter&quot; &gt;  
-        &lt;property name=&quot;messageConverters&quot;&gt;  
-             &lt;list&gt;  
-                 &lt;bean class = &quot;org.springframework.http.converter.StringHttpMessageConverter&quot;&gt;  
-                    &lt;property name = &quot;supportedMediaTypes&quot;&gt;  
-                         &lt;list&gt;  
-                             &lt;value&gt;text/plain;charset=UTF-8&lt;/value&gt;  
-                         &lt;/list&gt;  
-                    &lt;/property&gt;  
-                 &lt;/bean&gt;  
-             &lt;/list&gt;  
-        &lt;/property&gt;  
-    &lt;/bean&gt; 
-</code></pre><p>Formatter设置:</p>
-<pre><code>&lt;bean id=&quot;conversionService&quot; class=&quot;org.springframework.format.support.FormattingConversionServiceFactoryBean&quot;&gt;  
-      &lt;property name=&quot;formatters&quot;&gt;  
-          &lt;list&gt;  
-              &lt;bean class=&quot;com.grgbanking.it.common.formatter.TimestampFormatAnnotationFormatterFactory&quot;/&gt;  
-          &lt;/list&gt;  
-      &lt;/property&gt;  
-    &lt;/bean&gt; 
-    &lt;mvc:annotation-driven conversion-service=&quot;conversionService&quot;/&gt;
-</code></pre><p>当两者按上面的设置好后，StringHttpMessageConverter不起作用了。</p>
-<h3 id="2、原因"><a href="#2、原因" class="headerlink" title="2、原因"></a>2、原因</h3><p><mvc:annotation-driven>的配置如下:</mvc:annotation-driven></p>
-<pre><code>&lt;bean class=&quot;org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping&quot;&gt;
-        &lt;property name=&quot;order&quot; value=&quot;1&quot; /&gt;
-    &lt;/bean&gt;
-    &lt;bean class=&quot;org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter&quot;&gt;
-        &lt;property name=&quot;webBindingInitializer&quot;&gt;
-          &lt;bean class=&quot;org.springframework.web.bind.support.ConfigurableWebBindingInitializer&quot;&gt;
-           &lt;property name=&quot;conversionService&quot; ref=&quot;conversionService&quot; /&gt;
-           &lt;property name=&quot;validator&quot; ref=&quot;validator&quot; /&gt;
-          &lt;/bean&gt;
-        &lt;/property&gt;
-    &lt;/bean&gt;
-    &lt;bean id=&quot;conversionService&quot; class=&quot;org.springframework.samples.petclinic.util.PetclinicConversionServiceFactory&quot; /&gt;
-    &lt;bean id=&quot;validator&quot; class=&quot;org.springframework.validation.beanvalidation.LocalValidatorFactoryBean&quot; /&gt; 
-</code></pre><p>从上面的配置信息来看，<mvc:annotation-driven>相当于注册了DefaultAnnotationHandlerMapping和AnnotationMethodHandlerAdapter两个bean。<br>所以我们在上面配置的AnnotationMethodHandlerAdapter在<mvc:annotation-driven>后是不起作用的。<mvc:annotation-driven>包括了一个默认的AnnotationMethodHandlerAdapter功能。</mvc:annotation-driven></mvc:annotation-driven></mvc:annotation-driven></p>
-<h3 id="3、解决"><a href="#3、解决" class="headerlink" title="3、解决"></a>3、解决</h3><p>把StringHttpMessageConverter配置在<mvc:annotation-driven>里面。</mvc:annotation-driven></p>
-<pre><code>    &lt;bean id=&quot;conversionService&quot; class=&quot;org.springframework.format.support.FormattingConversionServiceFactoryBean&quot;&gt;  
-          &lt;property name=&quot;formatters&quot;&gt;  
-              &lt;list&gt;  
-                  &lt;bean class=&quot;com.grgbanking.it.common.formatter.TimestampFormatAnnotationFormatterFactory&quot;/&gt;  
-              &lt;/list&gt;  
-          &lt;/property&gt;  
-        &lt;/bean&gt; 
-
-&lt;!-- 设置转换器 --&gt;
-&lt;mvc:annotation-driven conversion-service=&quot;conversionService&quot;&gt;
-    &lt;mvc:message-converters&gt;  
-         &lt;bean class = &quot;org.springframework.http.converter.StringHttpMessageConverter&quot;&gt;  
-                &lt;property name = &quot;supportedMediaTypes&quot;&gt;  
-                     &lt;list&gt;  
-                         &lt;value&gt;text/plain;charset=UTF-8&lt;/value&gt;  
-                     &lt;/list&gt;  
-                &lt;/property&gt;  
-             &lt;/bean&gt;  
-    &lt;/mvc:message-converters&gt;
-&lt;/mvc:annotation-driven&gt;
-</code></pre><p><strong>注:上面方法只适用于SpringMVC 3.1.x以上版本。</strong></p>
+        <h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>写过java的都知道：所有的对象都必须创建；或者说：使用对象之前必须先创建。而使用ioc之后，你就可以不再手动创建对象，而是从ioc容器中直接获取对象。</p>
+<p>就好像我们无需考虑对象的销毁回收一样，因为java垃圾回收机制帮助我们实现了这个过程；而ioc则是让我们无需考虑对象的创建过程，由ioc容器帮我们实现对象的创建、注入等过程。</p>
+<p><img src="/images/spring-ioc/1.jpg" alt="1"><br>Spring知识细节.png</p>
+<h3 id="控制反转"><a href="#控制反转" class="headerlink" title="控制反转"></a>控制反转</h3><p><img src="/images/spring-ioc/2.jpg" alt="2"><br>Spring ioc简介.png</p>
+<h3 id="spring-ioc容器"><a href="#spring-ioc容器" class="headerlink" title="spring ioc容器"></a>spring ioc容器</h3><p>在Spring框架中的核心组件只有三个：Core、Context和Bean。它们构建起了整个Spring的骨骼架构，没有它们就不可能有AOP、Web等特性功能。</p>
+<p><img src="/images/spring-ioc/3.jpg" alt="3"><br>Spring 整体结构图.jpg</p>
+<p>如果说在三个核心中再选出一个核心，那就非Bean莫属了。可以说，Spring就是面向Bean的编程，Bean在Spring中才是真正的主角。</p>
+<p>Spring为何如此流行？你会发现Spring解决了一个非常关键的问题，它可以让你对对象之间的关系转而用配置文件来管理，或者注解，也就是它的依赖注入机制。而这个注入关系在一个叫Ioc的容器中管理。Ioc容器就是被Bean包裹的对象。Spring正是通过把对象包装在Bean中从而达到管理这些对象及做一些列额外操作的目的。</p>
+<p><img src="/images/spring-ioc/4.jpg" alt="4"><br>ioc容器.png</p>
+<p><img src="/images/spring-ioc/5.jpg" alt="5"><br>spring ioc初始化.png</p>
+<p><img src="/images/spring-ioc/6.jpg" alt="6"><br>spring ioc容器工作原理.jpg</p>
+<h3 id="核心组件协同工作"><a href="#核心组件协同工作" class="headerlink" title="核心组件协同工作"></a>核心组件协同工作</h3><p><img src="/images/spring-ioc/7.jpg" alt="7"><br>三大核心组件.png</p>
+<h3 id="BeanFactory与ApplacationContext的区别"><a href="#BeanFactory与ApplacationContext的区别" class="headerlink" title="BeanFactory与ApplacationContext的区别"></a>BeanFactory与ApplacationContext的区别</h3><p>IOC中最核心的接口是Beanfactory提供IOC的高级服务,而ApplicationContext是建立在BeanFactory基础之上提供抽象的面向应用的服务。</p>
+<p><img src="/images/spring-ioc/8.jpg" alt="8"><br>BeanFactory 与ApplacationContext.png</p>
+<h3 id="3种注入方式"><a href="#3种注入方式" class="headerlink" title="3种注入方式"></a>3种注入方式</h3><p>在Spring框架中，依赖注入(DI)的设计模式是用来定义对象彼此间的依赖。使用xml配置bean的情况下，它主要有两种类型：</p>
+<p>Setter方法注入<br>构造器注入</p>
+<p>当然，有了注解之后，使用注解的方式更加方便快捷。即自动装配功能实现属性自动注入（@autowire）。</p>
+<h3 id="原理解析"><a href="#原理解析" class="headerlink" title="原理解析"></a>原理解析</h3><p>Spring的代码还真是不好读，分得太细了，文字也是难以描述出来，看了别人有关的博客，贴了好多代码，画了好多ER图来描述关键接口或类之间的关系。这么一篇这么长文章下来，大家也未必会认真读代码，看ER图，干脆也不跟风了。就贴了一点在我看来特关键的代码，嘿嘿。</p>
+<p>context的初始化过程</p>
+<p>当运行ApplicationContext ctx = new ClassPathXmlApplicationContext(“applicationContext.xml”); 构造方法ClassPathXmlApplicationContext(String configLocation)调用了this(new String[] {configLocation}, true, null);， 该构造方法具体代码如下。</p>
+<p><img src="/images/spring-ioc/9.jpg" alt="9"><br>ClassPathXmlApplicationContext构造方法.jpg</p>
+<p><img src="/images/spring-ioc/10.jpg" alt="10"><br>refresh()方法.jpg</p>
+<p>从时序图来看启动上述初始化</p>
+<p><img src="/images/spring-ioc/11.jpg" alt="11"><br>容器初始化时序图.jpg</p>
 
       
     </div>
@@ -531,8 +505,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/25/ejb-javabean/" rel="next" title="JAVABEAN EJB POJO区别">
-                <i class="fa fa-chevron-left"></i> JAVABEAN EJB POJO区别
+              <a href="/2018/03/08/spring-mvc/" rel="next" title="Spring思维导图，让Spring不再难懂（mvc篇）">
+                <i class="fa fa-chevron-left"></i> Spring思维导图，让Spring不再难懂（mvc篇）
               </a>
             
           </div>
@@ -540,10 +514,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/08/redis/" rel="prev" title="memcache、redis原理对比">
-                memcache、redis原理对比 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -686,7 +656,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、问题"><span class="nav-number">1.</span> <span class="nav-text">1、问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、原因"><span class="nav-number">2.</span> <span class="nav-text">2、原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、解决"><span class="nav-number">3.</span> <span class="nav-text">3、解决</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控制反转"><span class="nav-number">2.</span> <span class="nav-text">控制反转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#spring-ioc容器"><span class="nav-number">3.</span> <span class="nav-text">spring ioc容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核心组件协同工作"><span class="nav-number">4.</span> <span class="nav-text">核心组件协同工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BeanFactory与ApplacationContext的区别"><span class="nav-number">5.</span> <span class="nav-text">BeanFactory与ApplacationContext的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3种注入方式"><span class="nav-number">6.</span> <span class="nav-text">3种注入方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原理解析"><span class="nav-number">7.</span> <span class="nav-text">原理解析</span></a></li></ol></div>
             
 
           </div>
