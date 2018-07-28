@@ -86,17 +86,17 @@
 
 
 
-<meta name="description" content="简单介绍TCP/IP的定义以及常用的基础知识">
+<meta name="description" content="一篇文章搞定面试中的链表题目(java实现)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TCP&#x2F;IP协议基础知识">
-<meta property="og:url" content="http://xscblog.com/2017/11/13/TCP-IP/index.html">
+<meta property="og:title" content="一篇文章搞定面试中的链表题目(java实现)">
+<meta property="og:url" content="http://xscblog.com/2018/07/28/LinkedList/index.html">
 <meta property="og:site_name" content="Xsc&#39;s Blog">
-<meta property="og:description" content="简单介绍TCP/IP的定义以及常用的基础知识">
+<meta property="og:description" content="一篇文章搞定面试中的链表题目(java实现)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-13T03:03:54.045Z">
+<meta property="og:updated_time" content="2018-07-28T06:50:37.678Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TCP&#x2F;IP协议基础知识">
-<meta name="twitter:description" content="简单介绍TCP/IP的定义以及常用的基础知识">
+<meta name="twitter:title" content="一篇文章搞定面试中的链表题目(java实现)">
+<meta name="twitter:description" content="一篇文章搞定面试中的链表题目(java实现)">
 
 
 
@@ -126,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://xscblog.com/2017/11/13/TCP-IP/"/>
+  <link rel="canonical" href="http://xscblog.com/2018/07/28/LinkedList/"/>
 
 
 
 
 
-  <title>TCP/IP协议基础知识 | Xsc's Blog</title>
+  <title>一篇文章搞定面试中的链表题目(java实现) | Xsc's Blog</title>
   
 
 
@@ -321,7 +321,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://xscblog.com/2017/11/13/TCP-IP/">
+    <link itemprop="mainEntityOfPage" href="http://xscblog.com/2018/07/28/LinkedList/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xing Shuchen">
@@ -338,7 +338,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">TCP/IP协议基础知识</h2>
+          <h2 class="post-title" itemprop="name headline">一篇文章搞定面试中的链表题目(java实现)</h2>
         
 
         <div class="post-meta">
@@ -350,8 +350,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T11:03:54+08:00">
-                2017-11-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-28T14:50:37+08:00">
+                2018-07-28
               </time>
             
 
@@ -404,7 +404,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,323
+                  1,056
                 </span>
               
 
@@ -420,7 +420,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  9
+                  6
                 </span>
               
             </div>
@@ -428,7 +428,7 @@
 
           
               <div class="post-description">
-                  简单介绍TCP/IP的定义以及常用的基础知识
+                  一篇文章搞定面试中的链表题目(java实现)
               </div>
           
 
@@ -445,28 +445,343 @@
       
 
       
-        <h3 id="TCP-IP-介绍"><a href="#TCP-IP-介绍" class="headerlink" title="TCP/IP 介绍"></a>TCP/IP 介绍</h3><p>TCP/IP 是用于因特网 (Internet) 的通信协议。<br>计算机通信协议（Computer Communication Protocol）<br>计算机通信协议是对那些计算机必须遵守以便彼此通信的的规则的描述。</p>
-<p><strong>什么是 TCP/IP？</strong></p>
-<p>TCP/IP 是供已连接因特网的计算机进行通信的通信协议。<br>TCP/IP 指传输控制协议/网际协议（Transmission Control Protocol / Internet Protocol）。<br>TCP/IP 定义了电子设备（比如计算机）如何连入因特网，以及数据如何在它们之间传输的标准。</p>
-<p><strong>在 TCP/IP 内部</strong></p>
-<p>在 TCP/IP 中包含一系列用于处理数据通信的协议：<br>TCP (传输控制协议) - 应用程序之间通信<br>UDP (用户数据报协议) - 应用程序之间的简单通信<br>IP (网际协议) - 计算机之间的通信<br>ICMP (因特网消息控制协议) - 针对错误和状态<br>DHCP (动态主机配置协议) - 针对动态寻址</p>
-<p><strong>TCP 使用固定的连接</strong></p>
-<p>TCP 用于应用程序之间的通信。<br>当应用程序希望通过 TCP 与另一个应用程序通信时，它会发送一个通信请求。这个请求必须被送到一个确切的地址。在双方”握手”之后，TCP 将在两个应用程序之间建立一个全双工 (full-duplex) 的通信。<br>这个全双工的通信将占用两个计算机之间的通信线路，直到它被一方或双方关闭为止。<br>UDP 和 TCP 很相似，但是更简单，同时可靠性低于 TCP。</p>
-<p><strong>IP 是无连接的</strong></p>
-<p>IP 用于计算机之间的通信。<br>IP 是无连接的通信协议。它不会占用两个正在通信的计算机之间的通信线路。这样，IP 就降低了对网络线路的需求。每条线可以同时满足许多不同的计算机之间的通信需要。<br>通过 IP，消息（或者其他数据）被分割为小的独立的包，并通过因特网在计算机之间传送。<br>IP 负责将每个包路由至它的目的地。</p>
-<p><strong>IP 路由器</strong></p>
-<p>当一个 IP 包从一台计算机被发送，它会到达一个 IP 路由器。<br>IP 路由器负责将这个包路由至它的目的地，直接地或者通过其他的路由器。<br>在一个相同的通信中，一个包所经由的路径可能会和其他的包不同。而路由器负责根据通信量、网络中的错误或者其他参数来进行正确地寻址。</p>
-<p><strong>TCP/IP</strong></p>
-<p>TCP/IP 意味着 TCP 和 IP 在一起协同工作。<br>TCP 负责应用软件（比如您的浏览器）和网络软件之间的通信。<br>IP 负责计算机之间的通信。<br>TCP 负责将数据分割并装入 IP 包，然后在它们到达的时候重新组合它们。<br>IP 负责将包发送至接受者。</p>
-<h3 id="TCP-IP-寻址"><a href="#TCP-IP-寻址" class="headerlink" title="TCP/IP 寻址"></a>TCP/IP 寻址</h3><p>TCP/IP 使用 32 个比特或者 4 组 0 到 255 之间的数字来为计算机编址。</p>
-<p><strong>IP地址</strong></p>
-<p>每个计算机必须有一个 IP 地址才能够连入因特网。<br>每个 IP 包必须有一个地址才能够发送到另一台计算机。<br>IP 地址包含 4 组数字：<br>TCP/IP 使用 4 组数字来为计算机编址。每个计算机必须有一个唯一的 4 组数字的地址。<br>每组数字必须在 0 到 255 之间，并由点号隔开，比如：192.168.1.60。<br>32 比特 = 4 字节<br>TCP/IP 使用 32 个比特来编址。一个计算机字节是 8 比特。所以 TCP/IP 使用了 4 个字节。<br>一个计算机字节可以包含 256 个不同的值：<br>00000000、00000001、00000010、00000011、00000100、00000101、00000110、00000111、00001000 ……. 直到 11111111。<br>现在，您应该知道了为什么 TCP/IP 地址是介于 0 到 255 之间的 4 组数字。</p>
-<p><strong>IP V6</strong></p>
-<p>IPv6 是 “Internet Protocol Version 6” 的缩写，也被称作下一代互联网协议，它是由 IETF 小组（Internet 工程任务组Internet Engineering Task Force）设计的用来替代现行的 IPv4（现行的）协议的一种新的 IP 协议。<br>我们知道，Internet 的主机都有一个唯一的 IP 地址，IP 地址用一个 32 位二进制的数表示一个主机号码，但 32 位地址资源有限，已经不能满足用户的需求了，因此 Internet 研究组织发布新的主机标识方法，即 IPv6。<br>在 RFC1884 中（RFC 是 Request for Comments document 的缩写。RFC 实际上就是 Internet 有关服务的一些标准），规定的标准语法建议把 IPv6 地址的 128 位（16 个字节）写成 8 个 16 位的无符号整数，每个整数用 4 个十六进制位表示，这些数之间用冒号（:）分开，例如：<br>686E：8C64：FFFF：FFFF：0：1180：96A：FFFF<br>冒号十六进制记法允许零压缩，即一串连续的0可以用一对冒号取代，例如：<br>FF05：0：0：0：0：0：0：B3可以定成：FF05：：B3<br>为了保证零压缩有一个清晰的解释，建议中规定，在任一地址中，只能使用一次零压缩。该技术对已建议的分配策略特别有用，因为会有许多地址包含连续的零串。<br>冒号十六进制记法结合有点十进制记法的后缀。这种结合在IPv4向IPv6换阶段特别有用。例如，下面的串是一个合法的冒号十六进制记法：<br>0：0：0：0：0：0：128.10.1.1<br>这种记法中，虽然冒号所分隔的每一个值是一个16位的量，但每个分点十进制部分的值则指明一个字节的值。再使用零压缩即可得出：<br>：：128.10.1.1</p>
-<p><strong>域名</strong></p>
-<p>12 个阿拉伯数字很难记忆。使用一个名称更容易。<br>用于 TCP/IP 地址的名字被称为域名。runoob.com 就是一个域名。<br>当你键入一个像 <a href="http://www.runoob.com" target="_blank" rel="external">http://www.runoob.com</a> 这样的域名，域名会被一种 DNS 程序翻译为数字。<br>在全世界，数量庞大的 DNS 服务器被连入因特网。DNS 服务器负责将域名翻译为 TCP/IP 地址，同时负责使用新的域名信息更新彼此的系统。<br>当一个新的域名连同其 TCP/IP 地址一起注册后，全世界的 DNS 服务器都会对此信息进行更新。</p>
-<h3 id="TCP-IP-协议"><a href="#TCP-IP-协议" class="headerlink" title="TCP/IP 协议"></a>TCP/IP 协议</h3><p>TCP/IP 是不同的通信协议的大集合。<br><strong>协议族</strong><br>TCP/IP 是基于 TCP 和 IP 这两个最初的协议之上的不同的通信协议的大集合。<br><strong>TCP - 传输控制协议</strong><br>TCP 用于从应用程序到网络的数据传输控制。<br>TCP 负责在数据传送之前将它们分割为 IP 包，然后在它们到达的时候将它们重组。<br><strong>IP - 网际协议（Internet Protocol）</strong><br>IP 负责计算机之间的通信。<br>IP 负责在因特网上发送和接收数据包。<br><strong>HTTP - 超文本传输协议(Hyper Text Transfer Protocol)</strong><br>HTTP 负责 web 服务器与 web 浏览器之间的通信。<br>HTTP 用于从 web 客户端（浏览器）向 web 服务器发送请求，并从 web 服务器向 web 客户端返回内容（网页）。<br><strong>HTTPS - 安全的 HTTP（Secure HTTP）</strong><br>HTTPS 负责在 web 服务器和 web 浏览器之间的安全通信。<br>作为有代表性的应用，HTTPS 会用于处理信用卡交易和其他的敏感数据。<br><strong>SSL - 安全套接字层（Secure Sockets Layer）</strong><br>SSL 协议用于为安全数据传输加密数据。<br><strong>SMTP - 简易邮件传输协议（Simple Mail Transfer Protocol）</strong><br>SMTP 用于电子邮件的传输。<br><strong>MIME - 多用途因特网邮件扩展（Multi-purpose Internet Mail Extensions）</strong><br>MIME 协议使 SMTP 有能力通过 TCP/IP 网络传输多媒体文件，包括声音、视频和二进制数据。<br><strong>IMAP - 因特网消息访问协议（Internet Message Access Protocol）</strong><br>IMAP 用于存储和取回电子邮件。<br><strong>POP - 邮局协议（Post Office Protocol）</strong><br>POP 用于从电子邮件服务器向个人电脑下载电子邮件。<br><strong>FTP - 文件传输协议（File Transfer Protocol）</strong><br>FTP 负责计算机之间的文件传输。<br><strong>NTP - 网络时间协议（Network Time Protocol）</strong><br>NTP 用于在计算机之间同步时间（钟）。<br><strong>DHCP - 动态主机配置协议（Dynamic Host Configuration Protocol）</strong><br>DHCP 用于向网络中的计算机分配动态 IP 地址。<br><strong>SNMP - 简单网络管理协议（Simple Network Management Protocol）</strong><br>SNMP 用于计算机网络的管理。<br><strong>LDAP - 轻量级的目录访问协议（Lightweight Directory Access Protocol）</strong><br>LDAP 用于从因特网搜集关于用户和电子邮件地址的信息。<br><strong>ICMP - 因特网消息控制协议（Internet Control Message Protocol）</strong><br>ICMP 负责网络中的错误处理。<br><strong>ARP - 地址解析协议（Address Resolution Protocol）</strong><br>ARP - 用于通过 IP 来查找基于 IP 地址的计算机网卡的硬件地址。<br><strong>RARP - 反向地址转换协议（Reverse Address Resolution Protocol）</strong><br>RARP 用于通过 IP 查找基于硬件地址的计算机网卡的 IP 地址。<br><strong>BOOTP - 自举协议（Boot Protocol）</strong><br>BOOTP 用于从网络启动计算机。<br><strong>PPTP - 点对点隧道协议（Point to Point Tunneling Protocol）</strong><br>PPTP 用于私人网络之间的连接（隧道）。</p>
+        <p>废话少说，上链表的数据结构</p>
+<pre><code>class ListNode {
+    ListNode next;
+    int val;
+    ListNode(int x){
+        val = x;
+        next = null;
+    }
+}
+</code></pre><h4 id="1-翻转链表"><a href="#1-翻转链表" class="headerlink" title="1.翻转链表"></a>1.翻转链表</h4><pre><code>ListNode reverse(ListNode node){
+    ListNode prev = null;
+    while(node!=null){
+        ListNode tmp = node.next;
+        node.next = prev;
+        prev = node;
+        node = tmp;
+    }
+    return prev;
+}
+//翻转链表(递归方式)
+ListNode reverse2(ListNode head){
+    if(head.next == null){
+        return head;
+    }
+    ListNode reverseNode = reverse2(head.next);
+    head.next.next = head;
+    head.next = null;
+    return reverseNode;
 
+}
+</code></pre><h4 id="2-判断链表是否有环"><a href="#2-判断链表是否有环" class="headerlink" title="2.判断链表是否有环"></a>2.判断链表是否有环</h4><pre><code>boolean hasCycle(ListNode head){
+    if(head == null|| head.next == null){
+        return false;
+    }
+    ListNode slow,fast;
+    fast = head.next;
+    slow = head;
+    while(fast!=slow){
+        if(fast==null||fast.next==null){
+            return false;
+        }
+        fast = fast.next.next;
+        slow = slow.next;
+    }
+    return true;
+}
+</code></pre><h4 id="3-链表排序"><a href="#3-链表排序" class="headerlink" title="3.链表排序"></a>3.链表排序</h4><pre><code>ListNode sortList(ListNode head){
+    if(head == null|| head.next == null){
+        return head;
+    }
+    ListNode mid = middleNode(head);
+    ListNode right = sortList(mid.next);
+    mid.next = null;
+    ListNode left = sortList(head);
+    return merge(left, right);
+}
+ListNode middleNode(ListNode head){
+    ListNode slow = head;
+    ListNode fast = head.next;
+    while(fast!=null&amp;fast.next!=null){
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    return slow;
+}
+ListNode merge(ListNode n1,ListNode n2){
+    ListNode dummy = new ListNode(0);
+    ListNode node = dummy;
+    while (n1!=null&amp;&amp;n2!=null) {
+        if(n1.val&lt;n2.val){
+            node.next = n1;
+            n1 = n1.next;
+        }else{
+            node.next = n2;
+            n2 = n2.next;
+        }
+        node = node.next;
+    }
+    if(n1!=null){
+        node.next = n1;
+    }else{
+        node.next = n2;
+    }
+    return dummy.next;
+}
+</code></pre><h4 id="4-链表相加求和"><a href="#4-链表相加求和" class="headerlink" title="4.链表相加求和"></a>4.链表相加求和</h4><pre><code>ListNode addLists(ListNode l1,ListNode l2){
+    if(l1==null&amp;&amp;l2==null){
+        return null;
+    }
+    ListNode head = new ListNode();
+    ListNode point = head;
+    int carry = 0;
+    while(l1!=null&amp;&amp;l2!=null){
+        int sum = carry + l1.val + l2.val;
+        point.next = new ListNode(sum%10);
+        carry = sum/10;
+        l1 = l1.next;
+        l2 = l2.next;
+        point = point.next;
+    }
+    while(l1!=null){
+        int sum = carry + l1.val;
+        point.next = new ListNode(sum%10);
+        carry = sum/10;
+        l1 = l1.next;
+        point = point.next;
+    }
+    while(l2!=null){
+        int sum = carry + l2.val;
+        point.next = new ListNode(sum%10);
+        carry = sum/10;
+        l2 = l2.next;
+        point = point.next;
+    }
+    if(carry!=0){
+        point.next = new ListNode(carry);
+
+    }
+    return head.next;
+}
+</code></pre><h4 id="5-得到链表倒数第n个节点"><a href="#5-得到链表倒数第n个节点" class="headerlink" title="5.得到链表倒数第n个节点"></a>5.得到链表倒数第n个节点</h4><pre><code>ListNode nthToLast(ListNode head,int n ){
+    if(head == null||n&lt;1){
+        return null;
+    }
+    ListNode l1 = head;
+    ListNode l2 = head;
+    for(int i = 0;i&lt;n-1;i++){
+        if(l2 == null){
+            return null;
+        }
+        l2 = l2.next;
+    }
+    while(l2.next!=null){
+        l1 = l1.next;
+        l2 = l2.next;
+    }
+    return l1;
+
+
+}
+</code></pre><h4 id="6-删除链表倒数第n个节点"><a href="#6-删除链表倒数第n个节点" class="headerlink" title="6.删除链表倒数第n个节点"></a>6.删除链表倒数第n个节点</h4><pre><code>ListNode deletenthNode(ListNode head,int n){
+    // write your code here
+    if (n &lt;= 0) {
+        return null;
+    }
+
+    ListNode dumy = new ListNode(0);
+    dumy.next = head;
+    ListNode prdDel = dumy;
+    for(int i = 0;i&lt;n;i++){
+        if(head==null){
+            return null;
+        }
+        head = head.next;
+    }
+    while(head!=null){
+        head = head.next;
+        prdDel = prdDel.next;
+    }
+    prdDel.next = prdDel.next.next;
+    return dumy.next;
+
+}
+</code></pre><h4 id="7-删除链表中重复的元素"><a href="#7-删除链表中重复的元素" class="headerlink" title="7.删除链表中重复的元素"></a>7.删除链表中重复的元素</h4><pre><code>ListNode deleteMuNode(ListNode head){
+    if(head == null){
+        return null;
+    }
+    ListNode node = head;
+    while(node.next != null){
+        if(node.val == node.next.val){
+            node.next = node.next.next;
+        }else{
+            node = node.next;
+        }
+    }
+    return head;
+
+}
+</code></pre><h4 id="8-删除链表中重复的元素ii-去掉重复的节点"><a href="#8-删除链表中重复的元素ii-去掉重复的节点" class="headerlink" title="8.删除链表中重复的元素ii,去掉重复的节点"></a>8.删除链表中重复的元素ii,去掉重复的节点</h4><pre><code>ListNode deleteMuNode2(ListNode head){
+    if(head == null||head.next == null){
+        return head;
+    }
+    ListNode dummy = new ListNode(0);
+    dummy.next = head;
+    head = dummy;
+    while(head.next!=null&amp;&amp;head.next.next!=null){
+        if(head.next.val == head.next.next.val){
+            int val = head.next.val;
+            while(head.next.val == val&amp;&amp;head.next != null){
+                head.next = head.next.next;
+            }
+        }else{
+            head = head.next;
+        }
+    }
+    return dummy.next;
+}
+</code></pre><h4 id="9-旋转链表"><a href="#9-旋转链表" class="headerlink" title="9.旋转链表"></a>9.旋转链表</h4><pre><code>ListNode rotateRight(ListNode head,int k){
+    if(head ==null){
+        return null;
+    }
+    int length = getLength(head);
+    k = k % length;
+    ListNode dummy = new ListNode(0);
+    dummy.next = head;
+    head = dummy;
+    ListNode tail = dummy;
+    for(int i = 0;i&lt;k;i++){
+        head = head.next;
+    }
+    while(head.next!= null){
+        head = head.next;
+        tail = tail.next;
+    }
+    head.next = dummy.next;
+    dummy.next = tail.next;
+    tail.next = null;
+    return dummy.next;
+}
+</code></pre><h4 id="10-重排链表"><a href="#10-重排链表" class="headerlink" title="10.重排链表"></a>10.重排链表</h4><pre><code>ListNode reOrder(ListNode head){
+    if(head == null||head.next == null){
+        return;
+    }
+    ListNode mid = middleNode(head);
+    ListNode tail = reverse(mid.next);
+    mergeIndex(head, tail);
+}
+private void mergeIndex(ListNode head1,ListNode head2){
+    int index = 0;
+    ListNode dummy = new ListNode(0);
+    while (head1!=null&amp;&amp;head2!=null) {
+        if(index%2==0){
+            dummy.next = head1;
+            head1 = head1.next;
+        }else{
+            dummy.next = head2;
+            head2 = head2.next;
+        }
+        dummy = dummy.next;
+        index ++;
+    }
+    if(head1!=null){
+        dummy.next = head1;
+    }else{
+        dummy.next = head2;
+    }
+}
+</code></pre><h4 id="11-链表划分"><a href="#11-链表划分" class="headerlink" title="11.链表划分"></a>11.链表划分</h4><pre><code>ListNode partition(ListNode head,int x){
+    if(head == null){
+        return null;
+    }
+    ListNode left = new ListNode(0);
+    ListNode right = new ListNode(0);
+    ListNode leftDummy = left;
+    ListNode rightDummy = right;
+    while(head!=null){
+        if(head.val&lt;x){
+            left.next = head;
+            left = head;
+        }else{
+            right.next = head;
+            right = head;
+        }
+        head = head.next;
+    }
+    left.next = rightDummy.next;
+    right.next = null;
+    return leftDummy.next;
+}
+</code></pre><h4 id="12-翻转链表的n到m之间的节点"><a href="#12-翻转链表的n到m之间的节点" class="headerlink" title="12.翻转链表的n到m之间的节点"></a>12.翻转链表的n到m之间的节点</h4><pre><code>ListNode reverseN2M(ListNode head,int m,int n){
+    if(m&gt;=n||head == null){
+        return head;
+    }
+    ListNode dummy = new ListNode(0);
+    dummy.next = head;
+    head = dummy;
+    for(int i = 1;i&lt;m;i++){
+        if(head == null){
+            return null;
+        }
+        head = head.next;
+    }
+    ListNode pmNode = head;
+    ListNode mNode = head.next;
+    ListNode nNode = mNode;
+    ListNode pnNode = mNode.next;
+    for(int i = m;i&lt;n;i++){
+        if(pnNode == null){
+            return null;
+        }
+        ListNode tmp = pnNode.next;
+        pnNode.next = nNode;
+        nNode = pnNode;
+        pnNode = tmp;
+    }
+    pmNode.next = nNode;
+    mNode.next = pnNode;
+    return dummy.next;
+}
+</code></pre><h4 id="13-合并K个排序过的链表"><a href="#13-合并K个排序过的链表" class="headerlink" title="13.合并K个排序过的链表"></a>13.合并K个排序过的链表</h4><pre><code>ListNode mergeKListNode(ArrayList&lt;ListNode&gt; k){
+    if(k.size()==0){
+        return null;
+    }
+    return mergeHelper(k,0,k.size()-1);
+}
+ListNode mergeHelper(List&lt;ListNode&gt; lists,int start,int end){
+    if(start == end){
+        return lists.get(start);
+    }
+    int mid = start + ( end - start )/2;
+    ListNode left = mergeHelper(lists, start, mid);
+    ListNode right = mergeHelper(lists, mid+1, end);
+    return mergeTwoLists(left,right);
+}
+ListNode mergeTwoLists(ListNode list1,ListNode list2){
+    ListNode dummy = new ListNode(0);
+    ListNode tail = dummy;
+    while(list1!=null&amp;&amp;list2!=null){
+        if(list1.val&lt;list2.val){
+            tail.next = list1;
+            tail = tail.next;
+            list1 = list1.next;
+        }else{
+            tail.next = list2;
+            tail = list2;
+            list2 = list2.next;
+        }
+
+    }
+    if(list1!=null){
+        tail.next = list1;
+    }else{
+        tail.next = list2;
+    }
+    return dummy.next;
+}
+</code></pre>
       
     </div>
     
@@ -490,8 +805,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/08/NB-IOT-primer/" rel="next" title="比较全面的NB-IOT基础知识">
-                <i class="fa fa-chevron-left"></i> 比较全面的NB-IOT基础知识
+              <a href="/2018/07/28/binary_tree/" rel="next" title="一篇文章搞定面试中的二叉树题目(java实现)">
+                <i class="fa fa-chevron-left"></i> 一篇文章搞定面试中的二叉树题目(java实现)
               </a>
             
           </div>
@@ -499,10 +814,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/13/HTTP/" rel="prev" title="HTTP简介">
-                HTTP简介 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -645,7 +956,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-IP-介绍"><span class="nav-number">1.</span> <span class="nav-text">TCP/IP 介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-IP-寻址"><span class="nav-number">2.</span> <span class="nav-text">TCP/IP 寻址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-IP-协议"><span class="nav-number">3.</span> <span class="nav-text">TCP/IP 协议</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-翻转链表"><span class="nav-number">1.</span> <span class="nav-text">1.翻转链表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-判断链表是否有环"><span class="nav-number">2.</span> <span class="nav-text">2.判断链表是否有环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-链表排序"><span class="nav-number">3.</span> <span class="nav-text">3.链表排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-链表相加求和"><span class="nav-number">4.</span> <span class="nav-text">4.链表相加求和</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-得到链表倒数第n个节点"><span class="nav-number">5.</span> <span class="nav-text">5.得到链表倒数第n个节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-删除链表倒数第n个节点"><span class="nav-number">6.</span> <span class="nav-text">6.删除链表倒数第n个节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-删除链表中重复的元素"><span class="nav-number">7.</span> <span class="nav-text">7.删除链表中重复的元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-删除链表中重复的元素ii-去掉重复的节点"><span class="nav-number">8.</span> <span class="nav-text">8.删除链表中重复的元素ii,去掉重复的节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-旋转链表"><span class="nav-number">9.</span> <span class="nav-text">9.旋转链表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-重排链表"><span class="nav-number">10.</span> <span class="nav-text">10.重排链表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-链表划分"><span class="nav-number">11.</span> <span class="nav-text">11.链表划分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-翻转链表的n到m之间的节点"><span class="nav-number">12.</span> <span class="nav-text">12.翻转链表的n到m之间的节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13-合并K个排序过的链表"><span class="nav-number">13.</span> <span class="nav-text">13.合并K个排序过的链表</span></a></li></ol></div>
             
 
           </div>

@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一篇文章搞定面试中的二叉树题目(java实现)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一篇文章搞定面试中的二叉树题目(java实现)">
+<meta property="og:url" content="http://xscblog.com/2018/07/28/binary_tree/index.html">
+<meta property="og:site_name" content="Xsc&#39;s Blog">
+<meta property="og:description" content="一篇文章搞定面试中的二叉树题目(java实现)">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-28T06:46:23.912Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一篇文章搞定面试中的二叉树题目(java实现)">
+<meta name="twitter:description" content="一篇文章搞定面试中的二叉树题目(java实现)">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://xscblog.com/2018/07/28/binary_tree/"/>
+
+
+
+
+
+  <title>一篇文章搞定面试中的二叉树题目(java实现) | Xsc's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+  
+  
+    
+  
+  <a href="https://github.com/xingsc" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;z-index:2" src="/images/forkme.png" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+
+  <div class="container sidebar-position-left page-post-detail" stytle="position:absolute">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xsc's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">物联网研究员</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-iot">
+          <a href="/categories/IOT/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            物联网
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-algorithm">
+          <a href="/categories/algorithm/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-edit"></i> <br />
+            
+            算法
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-program">
+          <a href="/categories/program/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-briefcase"></i> <br />
+            
+            工程
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-life">
+          <a href="/categories/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-coffee"></i> <br />
+            
+            日常
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/categories/photo/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-image"></i> <br />
+            
+            图片
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+    
+        <div id="idhyt-surprise-ball">
+  <div id="idhyt-surprise-ball-animation">
+    <!--why you are here? -->
+    <span id="layer0Go" class="drag">w</span>
+    <span id="layer1Go" class="drag">h</span>
+    <span id="layer2Go" class="drag">y</span>
+    <span id="layer3Go" class="drag"></span>
+    <span id="layer4Go" class="drag">y</span>
+    <span id="layer5Go" class="drag">o</span>
+    <span id="layer6Go" class="drag">u</span>
+    <span id="layer7Go" class="drag">a</span>
+    <span id="layer8Go" class="drag">r</span>
+    <span id="layer9Go" class="drag">e</span>
+    <span id="layer10Go" class="drag">h</span>
+    <span id="layer11Go" class="drag">e</span>
+    <span id="layer12Go" class="drag">r</span>
+    <span id="layer13Go" class="drag">e</span>
+    <span id="layer14Go" class="drag">?</span>
+    <span id="layer15Go" class="drag ball"></span>
+  </div>
+</div>
+    
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xscblog.com/2018/07/28/binary_tree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xing Shuchen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xsc's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">一篇文章搞定面试中的二叉树题目(java实现)</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-28T14:46:23+08:00">
+                2018-07-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/program/" itemprop="url" rel="index">
+                    <span itemprop="name">program</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,858
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  一篇文章搞定面试中的二叉树题目(java实现)
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近总结了一些数据结构和算法相关的题目，这是第一篇文章，关于二叉树的。<br>先上二叉树的数据结构：</p>
+<pre><code>class TreeNode{
+    int val;
+    //左孩子
+    TreeNode left;
+    //右孩子
+    TreeNode right;
+}
+</code></pre><p>二叉树的题目普遍可以用递归和迭代的方式来解</p>
+<h4 id="1-求二叉树的最大深度"><a href="#1-求二叉树的最大深度" class="headerlink" title="1.求二叉树的最大深度"></a>1.求二叉树的最大深度</h4><pre><code>int maxDeath(TreeNode node){
+    if(node==null){
+        return 0;
+    }
+    int left = maxDeath(node.left);
+    int right = maxDeath(node.right);
+    return Math.max(left,right) + 1;
+}
+</code></pre><h4 id="2-求二叉树的最小深度"><a href="#2-求二叉树的最小深度" class="headerlink" title="2.求二叉树的最小深度"></a>2.求二叉树的最小深度</h4><pre><code>int getMinDepth(TreeNode root){
+    if(root == null){
+        return 0;
+    }
+    return getMin(root);
+}
+int getMin(TreeNode root){
+    if(root == null){
+        return Integer.MAX_VALUE;
+    }
+    if(root.left == null&amp;&amp;root.right == null){
+        return 1;
+    }
+    return Math.min(getMin(root.left),getMin(root.right)) + 1;
+}
+</code></pre><h4 id="3-求二叉树中节点的个数"><a href="#3-求二叉树中节点的个数" class="headerlink" title="3.求二叉树中节点的个数"></a>3.求二叉树中节点的个数</h4><pre><code>int numOfTreeNode(TreeNode root){
+    if(root == null){
+        return 0;
+
+    }
+    int left = numOfTreeNode(root.left);
+    int right = numOfTreeNode(root.right);
+    return left + right + 1;
+}
+</code></pre><h4 id="4-求二叉树中叶子节点的个数"><a href="#4-求二叉树中叶子节点的个数" class="headerlink" title="4.求二叉树中叶子节点的个数"></a>4.求二叉树中叶子节点的个数</h4><pre><code>int numsOfNoChildNode(TreeNode root){
+    if(root == null){
+        return 0;
+    }
+    if(root.left==null&amp;&amp;root.right==null){
+        return 1;
+    }
+    return numsOfNodeTreeNode(root.left)+numsOfNodeTreeNode(root.right);
+
+}
+</code></pre><h4 id="5-求二叉树中第k层节点的个数"><a href="#5-求二叉树中第k层节点的个数" class="headerlink" title="5.求二叉树中第k层节点的个数"></a>5.求二叉树中第k层节点的个数</h4><pre><code>int numsOfkLevelTreeNode(TreeNode root,int k){
+    if(root == null||k&lt;1){
+        return 0;
+    }
+    if(k==1){
+        return 1;
+    }
+    int numsLeft = numsOfkLevelTreeNode(root.left,k-1);
+    int numsRight = numsOfkLevelTreeNode(root.right,k-1);
+    return numsLeft + numsRight;
+}
+</code></pre><h4 id="6-判断二叉树是否是平衡二叉树"><a href="#6-判断二叉树是否是平衡二叉树" class="headerlink" title="6.判断二叉树是否是平衡二叉树"></a>6.判断二叉树是否是平衡二叉树</h4><pre><code>boolean isBalanced(TreeNode node){
+    return maxDeath2(node)!=-1;
+}
+int maxDeath2(TreeNode node){
+    if(node == null){
+        return 0;
+    }
+    int left = maxDeath2(node.left);
+    int right = maxDeath2(node.right);
+    if(left==-1||right==-1||Math.abs(left-right)&gt;1){
+        return -1;
+    }
+    return Math.max(left, right) + 1;
+}
+</code></pre><h4 id="7-判断二叉树是否是完全二叉树"><a href="#7-判断二叉树是否是完全二叉树" class="headerlink" title="7.判断二叉树是否是完全二叉树"></a>7.判断二叉树是否是完全二叉树</h4><p>什么是完全二叉树呢？参见</p>
+<pre><code>boolean isCompleteTreeNode(TreeNode root){
+    if(root == null){
+        return false;
+    }
+    Queue&lt;TreeNode&gt; queue = new LinkedList&lt;TreeNode&gt;();
+    queue.add(root);
+    boolean result = true;
+    boolean hasNoChild = false;
+    while(!queue.isEmpty()){
+        TreeNode current = queue.remove();
+        if(hasNoChild){
+            if(current.left!=null||current.right!=null){
+                result = false;
+                break;
+            }
+        }else{
+            if(current.left!=null&amp;&amp;current.right!=null){
+                queue.add(current.left);
+                queue.add(current.right);
+            }else if(current.left!=null&amp;&amp;current.right==null){
+                queue.add(current.left);
+                hasNoChild = true;
+
+            }else if(current.left==null&amp;&amp;current.right!=null){
+                result = false;
+                break;
+            }else{
+                hasNoChild = true;
+            }
+        }
+
+    }
+    return result;
+}
+</code></pre><h4 id="8-两个二叉树是否完全相同"><a href="#8-两个二叉树是否完全相同" class="headerlink" title="8.两个二叉树是否完全相同"></a>8.两个二叉树是否完全相同</h4><pre><code>boolean isSameTreeNode(TreeNode t1,TreeNode t2){
+    if(t1==null&amp;&amp;t2==null){
+        return true;
+    }
+    else if(t1==null||t2==null){
+        return false;
+    }
+    if(t1.val != t2.val){
+        return false;
+    }
+    boolean left = isSameTreeNode(t1.left,t2.left);
+    boolean right = isSameTreeNode(t1.right,t2.right);
+    return left&amp;&amp;right;
+
+}
+</code></pre><h4 id="9-两个二叉树是否互为镜像"><a href="#9-两个二叉树是否互为镜像" class="headerlink" title="9.两个二叉树是否互为镜像"></a>9.两个二叉树是否互为镜像</h4><pre><code>boolean isMirror(TreeNode t1,TreeNode t2){
+    if(t1==null&amp;&amp;t2==null){
+        return true;
+    }
+    if(t1==null||t2==null){
+        return false;
+    }
+    if(t1.val != t2.val){
+        return false;
+    }
+    return isMirror(t1.left,t2.right)&amp;&amp;isMirror(t1.right,t2.left);
+
+}
+</code></pre><h4 id="10-翻转二叉树or镜像二叉树"><a href="#10-翻转二叉树or镜像二叉树" class="headerlink" title="10.翻转二叉树or镜像二叉树"></a>10.翻转二叉树or镜像二叉树</h4><pre><code>TreeNode mirrorTreeNode(TreeNode root){
+    if(root == null){
+        return null;
+    }
+    TreeNode left = mirrorTreeNode(root.left);
+    TreeNode right = mirrorTreeNode(root.right);
+    root.left = right;
+    root.right = left;
+    return root;
+}
+</code></pre><h4 id="11-求两个二叉树的最低公共祖先节点"><a href="#11-求两个二叉树的最低公共祖先节点" class="headerlink" title="11.求两个二叉树的最低公共祖先节点"></a>11.求两个二叉树的最低公共祖先节点</h4><pre><code>TreeNode getLastCommonParent(TreeNode root,TreeNode t1,TreeNode t2){
+    if(findNode(root.left,t1)){
+        if(findNode(root.right,t2)){
+            return root;
+        }else{
+            return getLastCommonParent(root.left,t1,t2);
+        }
+    }else{
+        if(findNode(root.left,t2)){
+            return root;
+        }else{
+            return getLastCommonParent(root.right,t1,t2)
+        }
+    }
+}
+// 查找节点node是否在当前 二叉树中
+boolean findNode(TreeNode root,TreeNode node){
+    if(root == null || node == null){
+        return false;
+    }
+    if(root == node){
+        return true;
+    }
+    boolean found = findNode(root.left,node);
+    if(!found){
+        found = findNode(root.right,node);
+    }
+    return found;
+}
+</code></pre><h4 id="12-二叉树的前序遍历"><a href="#12-二叉树的前序遍历" class="headerlink" title="12.二叉树的前序遍历"></a>12.二叉树的前序遍历</h4><p>迭代解法</p>
+<pre><code>ArrayList&lt;Integer&gt; preOrder(TreeNode root){
+    Stack&lt;TreeNode&gt; stack = new Stack&lt;TreeNode&gt;();
+    ArrayList&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();
+    if(root == null){
+        return list;
+    }
+    stack.push(root);
+    while(!stack.empty()){
+        TreeNode node = stack.pop();
+        list.add(node.val);
+        if(node.right!=null){
+            stack.push(node.right);
+        }
+        if(node.left != null){
+            stack.push(node.left);
+        }
+
+    }
+    return list;
+}
+</code></pre><p>递归解法</p>
+<pre><code>ArrayList&lt;Integer&gt; preOrderReverse(TreeNode root){
+    ArrayList&lt;Integer&gt; result = new ArrayList&lt;Integer&gt;();
+    preOrder2(root,result);
+    return result;
+
+}
+void preOrder2(TreeNode root,ArrayList&lt;Integer&gt; result){
+    if(root == null){
+        return;
+    }
+    result.add(root.val);
+    preOrder2(root.left,result);
+    preOrder2(root.right,result);
+}
+</code></pre><h4 id="13-二叉树的中序遍历"><a href="#13-二叉树的中序遍历" class="headerlink" title="13.二叉树的中序遍历"></a>13.二叉树的中序遍历</h4><pre><code>ArrayList&lt;Integer&gt; inOrder(TreeNode root){
+    ArrayList&lt;Integer&gt; list = new ArrayList&lt;&lt;Integer&gt;();
+    Stack&lt;TreeNode&gt; stack = new Stack&lt;TreeNode&gt;();
+    TreeNode current = root;
+    while(current != null|| !stack.empty()){
+        while(current != null){
+            stack.add(current);
+            current = current.left;
+        }
+        current = stack.peek();
+        stack.pop();
+        list.add(current.val);
+        current = current.right;
+
+    }
+    return list;
+
+}
+</code></pre><h4 id="14-二叉树的后序遍历"><a href="#14-二叉树的后序遍历" class="headerlink" title="14.二叉树的后序遍历"></a>14.二叉树的后序遍历</h4><pre><code>ArrayList&lt;Integer&gt; postOrder(TreeNode root){
+    ArrayList&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();
+    if(root == null){
+        return list;
+    }
+    list.addAll(postOrder(root.left));
+    list.addAll(postOrder(root.right));
+    list.add(root.val);
+    return list;
+}
+</code></pre><h4 id="15-前序遍历和后序遍历构造二叉树"><a href="#15-前序遍历和后序遍历构造二叉树" class="headerlink" title="15.前序遍历和后序遍历构造二叉树"></a>15.前序遍历和后序遍历构造二叉树</h4><pre><code>TreeNode buildTreeNode(int[] preorder,int[] inorder){
+    if(preorder.length!=inorder.length){
+        return null;
+    }
+    return myBuildTree(inorder,0,inorder.length-1,preorder,0,preorder.length-1);
+}
+TreeNode myBuildTree(int[] inorder,int instart,int inend,int[] preorder,int prestart,int preend){
+    if(instart&gt;inend){
+        return null;
+    }
+    TreeNode root = new TreeNode(preorder[prestart]);
+    int position = findPosition(inorder,instart,inend,preorder[start]);
+    root.left = myBuildTree(inorder,instart,position-1,preorder,prestart+1,prestart+position-instart);
+    root.right = myBuildTree(inorder,position+1,inend,preorder,position-inend+preend+1,preend);
+    return root;
+}
+int findPosition(int[] arr,int start,int end,int key){
+    int i;
+    for(i = start;i&lt;=end;i++){
+        if(arr[i] == key){
+            return i;
+        }
+    }
+    return -1;
+}
+</code></pre><h4 id="16-在二叉树中插入节点"><a href="#16-在二叉树中插入节点" class="headerlink" title="16.在二叉树中插入节点"></a>16.在二叉树中插入节点</h4><pre><code>TreeNode insertNode(TreeNode root,TreeNode node){
+    if(root == node){
+        return node;
+    }
+    TreeNode tmp = new TreeNode();
+    tmp = root;
+    TreeNode last = null;
+    while(tmp!=null){
+        last = tmp;
+        if(tmp.val&gt;node.val){
+            tmp = tmp.left;
+        }else{
+            tmp = tmp.right;
+        }
+    }
+    if(last!=null){
+        if(last.val&gt;node.val){
+            last.left = node;
+        }else{
+            last.right = node;
+        }
+    }
+    return root;
+}
+</code></pre><h4 id="17-输入一个二叉树和一个整数，打印出二叉树中节点值的和等于输入整数所有的路径"><a href="#17-输入一个二叉树和一个整数，打印出二叉树中节点值的和等于输入整数所有的路径" class="headerlink" title="17.输入一个二叉树和一个整数，打印出二叉树中节点值的和等于输入整数所有的路径"></a>17.输入一个二叉树和一个整数，打印出二叉树中节点值的和等于输入整数所有的路径</h4><pre><code>void findPath(TreeNode r,int i){
+    if(root == null){
+        return;
+    }
+    Stack&lt;Integer&gt; stack = new Stack&lt;Integer&gt;();
+    int currentSum = 0;
+    findPath(r, i, stack, currentSum);
+
+}
+void findPath(TreeNode r,int i,Stack&lt;Integer&gt; stack,int currentSum){
+    currentSum+=r.val;
+    stack.push(r.val);
+    if(r.left==null&amp;&amp;r.right==null){
+        if(currentSum==i){
+            for(int path:stack){
+                System.out.println(path);
+            }
+
+        }
+    }
+    if(r.left!=null){
+        findPath(r.left, i, stack, currentSum);
+    }
+    if(r.right!=null){
+        findPath(r.right, i, stack, currentSum);
+    }
+    stack.pop();
+}
+</code></pre><h4 id="18-二叉树的搜索区间"><a href="#18-二叉树的搜索区间" class="headerlink" title="18.二叉树的搜索区间"></a>18.二叉树的搜索区间</h4><p>给定两个值 k1 和 k2（k1 &lt; k2）和一个二叉查找树的根节点。找到树中所有值在 k1 到 k2 范围内的节点。即打印所有x (k1 &lt;= x &lt;= k2) 其中 x 是二叉查找树的中的节点值。返回所有升序的节点值。</p>
+<pre><code>ArrayList&lt;Integer&gt; result;
+ArrayList&lt;Integer&gt; searchRange(TreeNode root,int k1,int k2){
+    result = new ArrayList&lt;Integer&gt;();
+    searchHelper(root,k1,k2);
+    return result;
+}
+void searchHelper(TreeNode root,int k1,int k2){
+    if(root == null){
+        return;
+    }
+    if(root.val&gt;k1){
+        searchHelper(root.left,k1,k2);
+    }
+    if(root.val&gt;=k1&amp;&amp;root.val&lt;=k2){
+        result.add(root.val);
+    }
+    if(root.val&lt;k2){
+        searchHelper(root.right,k1,k2);
+    }
+}
+</code></pre><h4 id="19-二叉树的层次遍历"><a href="#19-二叉树的层次遍历" class="headerlink" title="19.二叉树的层次遍历"></a>19.二叉树的层次遍历</h4><pre><code>ArrayList&lt;ArrayList&lt;Integer&gt;&gt; levelOrder(TreeNode root){
+    ArrayList&lt;ArrayList&lt;Integer&gt;&gt; result = new ArrayList&lt;ArrayList&lt;Integer&gt;&gt;();
+    if(root == null){
+        return result;
+    }
+    Queue&lt;TreeNode&gt; queue = new LinkedList&lt;TreeNode&gt;();
+    queue.offer(root);
+    while(!queue.isEmpty()){
+        int size = queue.size();
+        ArrayList&lt;&lt;Integer&gt; level = new ArrayList&lt;Integer&gt;():
+        for(int i = 0;i &lt; size ;i++){
+            TreeNode node = queue.poll();
+            level.add(node.val);
+            if(node.left != null){
+                queue.offer(node.left);
+            }
+            if(node.right != null){
+                queue.offer(node.right);
+            }
+        } 
+        result.add(Level);
+    }
+    return result;
+}
+</code></pre><h4 id="20-二叉树内两个节点的最长距离"><a href="#20-二叉树内两个节点的最长距离" class="headerlink" title="20.二叉树内两个节点的最长距离"></a>20.二叉树内两个节点的最长距离</h4><p>二叉树中两个节点的最长距离可能有三种情况：<br>1.左子树的最大深度+右子树的最大深度为二叉树的最长距离<br>2.左子树中的最长距离即为二叉树的最长距离<br>3.右子树种的最长距离即为二叉树的最长距离<br>因此，递归求解即可</p>
+<pre><code>private static class Result{  
+    int maxDistance;  
+    int maxDepth;  
+    public Result() {  
+    }  
+
+    public Result(int maxDistance, int maxDepth) {  
+        this.maxDistance = maxDistance;  
+        this.maxDepth = maxDepth;  
+    }  
+}  
+    int getMaxDistance(TreeNode root){
+      return getMaxDistanceResult(root).maxDistance;
+    }
+    Result getMaxDistanceResult(TreeNode root){
+        if(root == null){
+            Result empty = new Result(0,-1);
+            return empty;
+        }
+        Result lmd = getMaxDistanceResult(root.left);
+        Result rmd = getMaxDistanceResult(root.right);
+        Result result = new Result();
+        result.maxDepth = Math.max(lmd.maxDepth,rmd.maxDepth) + 1;
+        result.maxDistance = Math.max(lmd.maxDepth + rmd.maxDepth,Math.max(lmd.maxDistance,rmd.maxDistance));
+        return result;
+    }
+</code></pre><h4 id="21-不同的二叉树"><a href="#21-不同的二叉树" class="headerlink" title="21.不同的二叉树"></a>21.不同的二叉树</h4><p>给出 n，问由 1…n 为节点组成的不同的二叉查找树有多少种？</p>
+<pre><code>int numTrees(int n ){
+    int[] counts = new int[n+2];
+    counts[0] = 1;
+    counts[1] = 1;
+    for(int i = 2;i&lt;=n;i++){
+        for(int j = 0;j&lt;i;j++){
+            counts[i] += counts[j] * counts[i-j-1];
+        }
+    }
+    return counts[n];
+}
+</code></pre><h4 id="22-判断二叉树是否是合法的二叉查找树-BST"><a href="#22-判断二叉树是否是合法的二叉查找树-BST" class="headerlink" title="22.判断二叉树是否是合法的二叉查找树(BST)"></a>22.判断二叉树是否是合法的二叉查找树(BST)</h4><p>一棵BST定义为：<br>节点的左子树中的值要严格小于该节点的值。<br>节点的右子树中的值要严格大于该节点的值。<br>左右子树也必须是二叉查找树。<br>一个节点的树也是二叉查找树。</p>
+<pre><code>public int lastVal = Integer.MAX_VALUE;
+public boolean firstNode = true;
+public boolean isValidBST(TreeNode root) {
+    // write your code here
+    if(root==null){
+        return true;
+    }
+    if(!isValidBST(root.left)){
+        return false;
+    }
+    if(!firstNode&amp;&amp;lastVal &gt;= root.val){
+        return false;
+    }
+    firstNode = false;
+    lastVal = root.val;
+    if (!isValidBST(root.right)) {
+        return false;
+    }
+    return true;
+}
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/28/design_mode/" rel="next" title="23种设计模式的意图和适用范围">
+                <i class="fa fa-chevron-left"></i> 23种设计模式的意图和适用范围
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/28/LinkedList/" rel="prev" title="一篇文章搞定面试中的链表题目(java实现)">
+                一篇文章搞定面试中的链表题目(java实现) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="Xing Shuchen" />
+            
+              <p class="site-author-name" itemprop="name">Xing Shuchen</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/xingsc" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://plus.google.com/yourname" target="_blank" title="Google">
+                    
+                      <i class="fa fa-fw fa-google"></i>Google</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-求二叉树的最大深度"><span class="nav-number">1.</span> <span class="nav-text">1.求二叉树的最大深度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-求二叉树的最小深度"><span class="nav-number">2.</span> <span class="nav-text">2.求二叉树的最小深度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-求二叉树中节点的个数"><span class="nav-number">3.</span> <span class="nav-text">3.求二叉树中节点的个数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-求二叉树中叶子节点的个数"><span class="nav-number">4.</span> <span class="nav-text">4.求二叉树中叶子节点的个数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-求二叉树中第k层节点的个数"><span class="nav-number">5.</span> <span class="nav-text">5.求二叉树中第k层节点的个数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-判断二叉树是否是平衡二叉树"><span class="nav-number">6.</span> <span class="nav-text">6.判断二叉树是否是平衡二叉树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-判断二叉树是否是完全二叉树"><span class="nav-number">7.</span> <span class="nav-text">7.判断二叉树是否是完全二叉树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-两个二叉树是否完全相同"><span class="nav-number">8.</span> <span class="nav-text">8.两个二叉树是否完全相同</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-两个二叉树是否互为镜像"><span class="nav-number">9.</span> <span class="nav-text">9.两个二叉树是否互为镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-翻转二叉树or镜像二叉树"><span class="nav-number">10.</span> <span class="nav-text">10.翻转二叉树or镜像二叉树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-求两个二叉树的最低公共祖先节点"><span class="nav-number">11.</span> <span class="nav-text">11.求两个二叉树的最低公共祖先节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-二叉树的前序遍历"><span class="nav-number">12.</span> <span class="nav-text">12.二叉树的前序遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13-二叉树的中序遍历"><span class="nav-number">13.</span> <span class="nav-text">13.二叉树的中序遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-二叉树的后序遍历"><span class="nav-number">14.</span> <span class="nav-text">14.二叉树的后序遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15-前序遍历和后序遍历构造二叉树"><span class="nav-number">15.</span> <span class="nav-text">15.前序遍历和后序遍历构造二叉树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#16-在二叉树中插入节点"><span class="nav-number">16.</span> <span class="nav-text">16.在二叉树中插入节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#17-输入一个二叉树和一个整数，打印出二叉树中节点值的和等于输入整数所有的路径"><span class="nav-number">17.</span> <span class="nav-text">17.输入一个二叉树和一个整数，打印出二叉树中节点值的和等于输入整数所有的路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#18-二叉树的搜索区间"><span class="nav-number">18.</span> <span class="nav-text">18.二叉树的搜索区间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#19-二叉树的层次遍历"><span class="nav-number">19.</span> <span class="nav-text">19.二叉树的层次遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#20-二叉树内两个节点的最长距离"><span class="nav-number">20.</span> <span class="nav-text">20.二叉树内两个节点的最长距离</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#21-不同的二叉树"><span class="nav-number">21.</span> <span class="nav-text">21.不同的二叉树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#22-判断二叉树是否是合法的二叉查找树-BST"><span class="nav-number">22.</span> <span class="nav-text">22.判断二叉树是否是合法的二叉查找树(BST)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+    </div>
+    <object type="application/x-shockwave-flash" title="小白饿了，请大哥大姐施舍点吧。。。" style="outline: none;border:3px" data="http://cdn.abowman.com/widgets/hamster/hamster.swf?" width="330" height="290">
+            <param name="movie" value="http://cdn.abowman.com/widgets/hamster/hamster.swf?">
+            <param name="AllowScriptAccess" value="always">
+            <param name="wmode" value="opaque">
+    </object>
+    <div id="xsc">
+        <embed src="//music.163.com/style/swf/widget.swf?sid=442760&type=2&auto=0&width=320&height=66" width="340" height="86"  allowNetworking="all"></embed>
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xing Shuchen</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+<!--<canvas id="canvas" style="position:fixed;z-index:-1"></canvas>-->
+<!--<script>-->
+    <!--var ca = document.getElementById("canvas");-->
+    <!--ca.style.width = window.innerWidth + "px";-->
+    <!--ca.style.height = window.innerHeight + "px";-->
+    <!--class Circle {-->
+
+        <!--constructor(x, y) {-->
+            <!--this.x = x;-->
+            <!--this.y = y;-->
+            <!--this.r = 5.5 ;-->
+            <!--this._mx = Math.random() ;-->
+            <!--this._my = Math.random() ;-->
+
+        <!--}-->
+
+
+        <!--drawCircle(ctx) {-->
+            <!--ctx.beginPath();-->
+            <!--ctx.arc(this.x, this.y, this.r, 0, 360)-->
+            <!--ctx.closePath();-->
+            <!--ctx.fillStyle = 'rgba(204, 204, 204, 0.3)';-->
+            <!--ctx.fill();-->
+        <!--}-->
+
+        <!--drawLine(ctx, _circle) {-->
+            <!--let dx = this.x - _circle.x;-->
+            <!--let dy = this.y - _circle.y;-->
+            <!--let d = Math.sqrt(dx * dx + dy * dy)-->
+            <!--if (d < 150) {-->
+                <!--ctx.beginPath();-->
+                <!--ctx.moveTo(this.x, this.y);   //???-->
+                <!--ctx.lineTo(_circle.x, _circle.y);   //??-->
+                <!--ctx.closePath();-->
+                <!--ctx.strokeStyle = 'rgba(204, 204, 204, 0.3)';-->
+                <!--ctx.stroke();-->
+            <!--}-->
+        <!--}-->
+
+        <!--move(w, h) {-->
+            <!--this._mx = (this.x < w && this.x > 0) ? this._mx : (-this._mx);-->
+            <!--this._my = (this.y < h && this.y > 0) ? this._my : (-this._my);-->
+            <!--this.x += this._mx / 2;-->
+            <!--this.y += this._my / 2;-->
+        <!--}-->
+    <!--}-->
+    <!--class currentCirle extends Circle {-->
+        <!--constructor(x, y) {-->
+            <!--super(x, y)-->
+        <!--}-->
+
+        <!--drawCircle(ctx) {-->
+            <!--ctx.beginPath();-->
+            <!--this.r = 7;-->
+            <!--ctx.arc(this.x, this.y, this.r, 0, 360);-->
+            <!--ctx.closePath();-->
+            <!--//ctx.fillStyle = 'rgba(0,0,0,' + (parseInt(Math.random() * 100) / 100) + ')'-->
+            <!--ctx.fillStyle = 'rgba(255, 77, 54, 0.3)'-->
+            <!--ctx.fill();-->
+
+        <!--}-->
+    <!--}-->
+    <!--window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;-->
+
+    <!--let canvas = document.getElementById('canvas');-->
+    <!--let ctx = canvas.getContext('2d');-->
+    <!--let w = canvas.width = canvas.offsetWidth;-->
+    <!--let h = canvas.height = canvas.offsetHeight;-->
+    <!--let circles = [];-->
+    <!--let current_circle = new currentCirle(0, 0)-->
+
+    <!--let draw = function () {-->
+        <!--ctx.clearRect(0, 0, w, h);-->
+        <!--for (let i = 0; i < circles.length; i++) {-->
+            <!--circles[i].move(w, h);-->
+            <!--circles[i].drawCircle(ctx);-->
+            <!--for (j = i + 1; j < circles.length; j++) {-->
+                <!--circles[i].drawLine(ctx, circles[j])-->
+            <!--}-->
+        <!--}-->
+        <!--if (current_circle.x) {-->
+            <!--current_circle.drawCircle(ctx);-->
+            <!--for (var k = 1; k < circles.length; k++) {-->
+                <!--current_circle.drawLine(ctx, circles[k])-->
+            <!--}-->
+        <!--}-->
+        <!--requestAnimationFrame(draw)-->
+    <!--}-->
+
+    <!--let init = function (num) {-->
+        <!--for (var i = 0; i < num; i++) {-->
+            <!--circles.push(new Circle(Math.random() * w, Math.random() * h));-->
+        <!--}-->
+        <!--draw();-->
+    <!--}-->
+    <!--window.addEventListener('load', init(130));-->
+    <!--window.onmousemove = function (e) {-->
+        <!--e = e || window.event;-->
+        <!--current_circle.x = e.clientX;-->
+        <!--current_circle.y = e.clientY;-->
+    <!--}-->
+    <!--window.onmouseout = function () {-->
+        <!--current_circle.x = null;-->
+        <!--current_circle.y = null;-->
+
+    <!--};-->
+<!--</script>-->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+</body>
+</html>
