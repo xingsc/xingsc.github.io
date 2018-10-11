@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Maven pom.xml中的元素modules、parent、properties以及import">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Maven pom.xml中的元素modules、parent、properties以及import">
+<meta property="og:url" content="http://xscblog.com/2018/10/11/pom1/index.html">
+<meta property="og:site_name" content="Xsc&#39;s Blog">
+<meta property="og:description" content="Maven pom.xml中的元素modules、parent、properties以及import">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://xscblog.com/images/pom1/1.png">
+<meta property="og:image" content="http://xscblog.com/images/pom1/2.png">
+<meta property="og:image" content="http://xscblog.com/images/pom1/3.png">
+<meta property="og:image" content="http://xscblog.com/images/pom1/4.png">
+<meta property="og:image" content="http://xscblog.com/images/pom1/5.png">
+<meta property="og:updated_time" content="2018-10-11T15:43:19.278Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Maven pom.xml中的元素modules、parent、properties以及import">
+<meta name="twitter:description" content="Maven pom.xml中的元素modules、parent、properties以及import">
+<meta name="twitter:image" content="http://xscblog.com/images/pom1/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://xscblog.com/2018/10/11/pom1/"/>
+
+
+
+
+
+  <title>Maven pom.xml中的元素modules、parent、properties以及import | Xsc's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+  
+  
+    
+  
+  <a href="https://github.com/xingsc" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;z-index:2" src="/images/forkme.png" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+
+  <div class="container sidebar-position-left page-post-detail" stytle="position:absolute">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xsc's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">物联网研究员</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-iot">
+          <a href="/categories/IOT/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            物联网
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-algorithm">
+          <a href="/categories/algorithm/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-edit"></i> <br />
+            
+            算法
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-program">
+          <a href="/categories/program/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-briefcase"></i> <br />
+            
+            工程
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-life">
+          <a href="/categories/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-coffee"></i> <br />
+            
+            日常
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/categories/photo/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-image"></i> <br />
+            
+            图片
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+    
+        <div id="idhyt-surprise-ball">
+  <div id="idhyt-surprise-ball-animation">
+    <!--why you are here? -->
+    <span id="layer0Go" class="drag">w</span>
+    <span id="layer1Go" class="drag">h</span>
+    <span id="layer2Go" class="drag">y</span>
+    <span id="layer3Go" class="drag"></span>
+    <span id="layer4Go" class="drag">y</span>
+    <span id="layer5Go" class="drag">o</span>
+    <span id="layer6Go" class="drag">u</span>
+    <span id="layer7Go" class="drag">a</span>
+    <span id="layer8Go" class="drag">r</span>
+    <span id="layer9Go" class="drag">e</span>
+    <span id="layer10Go" class="drag">h</span>
+    <span id="layer11Go" class="drag">e</span>
+    <span id="layer12Go" class="drag">r</span>
+    <span id="layer13Go" class="drag">e</span>
+    <span id="layer14Go" class="drag">?</span>
+    <span id="layer15Go" class="drag ball"></span>
+  </div>
+</div>
+    
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xscblog.com/2018/10/11/pom1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xing Shuchen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xsc's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Maven pom.xml中的元素modules、parent、properties以及import</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-11T23:43:19+08:00">
+                2018-10-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/program/" itemprop="url" rel="index">
+                    <span itemprop="name">program</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,820
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  13
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  Maven pom.xml中的元素modules、parent、properties以及import
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>　　项目中用到了maven，而且用到的内容不像利用maven/eclipse搭建ssm(spring+spring mvc+mybatis)用的那么简单；maven的核心是pom.xml，那么我就它来谈谈那些不同的地方；</p>
+<p>　　给我印象最深的就是如下四个元素：modules、parent、properties、import。</p>
+<h3 id="modules"><a href="#modules" class="headerlink" title="modules"></a>modules</h3><p>　　从字面意思来说，module就是模块，而pom.xml中的modules也正是这个意思，用来管理同个项目中的各个模块；如果maven用的比较简单，或者说项目的模块在pom.xml没进行划分，那么此元素是用不到的；不过一般大一点的项目是要用到的。</p>
+<h4 id="1-需求场景"><a href="#1-需求场景" class="headerlink" title="1.需求场景"></a>1.需求场景</h4><p>　　　　如果我们的项目分成了好几个模块，那么我们构建的时候是不是有几个模块就需要构建几次了（到每个模块的目录下执行mvn命令）？当然，你逐个构建没问题，但是非要这么麻烦的一个一个的构建吗，那么简单的做法就是使用聚合，一次构建全部模块。</p>
+<h4 id="2-具体实现"><a href="#2-具体实现" class="headerlink" title="2.具体实现"></a>2.具体实现</h4><p>　　　　a.既然使用聚合，那么就需要一个聚合的载体，先创建一个普通的maven项目account-aggregator,如下图：<br><img src="/images/pom1/1.png" alt="1">
+　　</p>
+<p>　　　　因为是个聚合体，仅仅负责聚合其他模块，那么就只需要上述目录，该删除的就删了；注意的是pom文件的书写（红色标明的）：</p>
+<pre><code>&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+  xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+  &lt;groupId&gt;com.youzhibing.account&lt;/groupId&gt;
+  &lt;artifactId&gt;account-aggregator&lt;/artifactId&gt;
+  &lt;version&gt;1.0.0-SNAPSHOT&lt;/version&gt;
+  &lt;packaging&gt;pom&lt;/packaging&gt;
+
+  &lt;name&gt;Account Aggrregator&lt;/name&gt;
+  &lt;url&gt;http://maven.apache.org&lt;/url&gt;
+
+  &lt;modules&gt;
+　　　 &lt;!-- 模块都写在此处 --&gt;
+      &lt;module&gt;account-register&lt;/module&gt;
+      &lt;module&gt;account-persist&lt;/module&gt;
+  &lt;/modules&gt;
+
+&lt;/project&gt;
+</code></pre><p>　　　　b.创建子模account-register、account-persist:右击account-aggregator，new –&gt; other –&gt; Maven，选择Maven Module，创建moven模块。<br><img src="/images/pom1/2.png" alt="2"></p>
+<p>　　　　c.创建完成后，项目结构如下，那么此时account-aggregator可以收缩起来了，我们操作具体子模块就好了。<br><img src="/images/pom1/3.png" alt="3"><br><img src="/images/pom1/4.png" alt="4">                   </p>
+<p> 　　　　d.注意点，当我们打开包结构的子模块的pom文件时，发现离预期的多了一些内容，我们坐下处理就好了。<br><img src="/images/pom1/5.png" alt="5"></p>
+<p>　　　　e.那么编码完了之后，我们只需要构建account-aggregator就好了，所有的子模块都会构建。</p>
+<h3 id="parent"><a href="#parent" class="headerlink" title="parent"></a>parent</h3><p>　　继承，和java中的继承相当，作用就是复用</p>
+<p>####　　1.需求场景</p>
+<p>　　　　若每个子模块都都用的了spring，那么我们是不是每个子模块都需要单独配置spring依赖了?,这么做是可以的，但是我们有更优的做法，那就是继承，用parent来实现。</p>
+<p>####　　2.具体实现</p>
+<p>　　　　a.配置父pom.xml</p>
+<p>　　　　　　我就用聚合pom来做父pom,配置子模块的公共依赖。</p>
+<p>　　　　　　父(account-aggregator)pom.xml :</p>
+<pre><code>&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+  xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+  &lt;groupId&gt;com.youzhibing.account&lt;/groupId&gt;
+  &lt;artifactId&gt;account-aggregator&lt;/artifactId&gt;
+  &lt;version&gt;1.0.0-SNAPSHOT&lt;/version&gt;
+  &lt;packaging&gt;pom&lt;/packaging&gt;
+
+  &lt;name&gt;Account Aggrregator&lt;/name&gt;
+  &lt;url&gt;http://maven.apache.org&lt;/url&gt;
+
+  &lt;modules&gt;
+      &lt;!-- 模块都写在此处 --&gt;
+      &lt;module&gt;account-register&lt;/module&gt;
+      &lt;module&gt;account-persist&lt;/module&gt;
+  &lt;/modules&gt;
+
+  &lt;dependencies&gt; &lt;!-- 配置共有依赖 --&gt;
+      &lt;!-- spring 依赖 --&gt;
+      &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-core&lt;/artifactId&gt;
+        &lt;version&gt;4.0.2.RELEASE&lt;/version&gt;
+    &lt;/dependency&gt;
+      &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-beans&lt;/artifactId&gt;
+        &lt;version&gt;4.0.2.RELEASE&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-context&lt;/artifactId&gt;
+        &lt;version&gt;4.0.2.RELEASE&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-context-support&lt;/artifactId&gt;
+        &lt;version&gt;4.0.2.RELEASE&lt;/version&gt;
+    &lt;/dependency&gt;
+
+      &lt;!-- junit 依赖 --&gt;
+      &lt;dependency&gt;
+      &lt;groupId&gt;junit&lt;/groupId&gt;
+      &lt;artifactId&gt;junit&lt;/artifactId&gt;
+      &lt;version&gt;4.7&lt;/version&gt;
+      &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+
+&lt;/project&gt;
+</code></pre><p>　　　　b.account-register的pom.xml :</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;project xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot; xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;parent&gt;
+    &lt;groupId&gt;com.youzhibing.account&lt;/groupId&gt;
+    &lt;artifactId&gt;account-aggregator&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0-SNAPSHOT&lt;/version&gt;
+    &lt;relativePath&gt;../pom.xml&lt;/relativePath&gt; &lt;!-- 与不配置一样，默认就是寻找上级目录下得pom.xml --&gt;
+  &lt;/parent&gt;
+  &lt;artifactId&gt;account-register&lt;/artifactId&gt;
+  &lt;name&gt;account-register&lt;/name&gt;
+  &lt;url&gt;http://maven.apache.org&lt;/url&gt;
+  &lt;properties&gt;
+    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+  &lt;/properties&gt;
+  &lt;dependencies&gt;    &lt;!-- 配置自己独有依赖 --&gt;
+      &lt;dependency&gt;
+          &lt;groupId&gt;javax.mail&lt;/groupId&gt;
+          &lt;artifactId&gt;mail&lt;/artifactId&gt;
+          &lt;version&gt;1.4.3&lt;/version&gt;
+      &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;com.icegreen&lt;/groupId&gt;
+      &lt;artifactId&gt;greenmail&lt;/artifactId&gt;
+      &lt;version&gt;1.4.1&lt;/version&gt;
+      &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+&lt;/project&gt;
+</code></pre><p>　　　　c.account-persist的pom.xml :</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;project xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot; xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;parent&gt;
+    &lt;groupId&gt;com.youzhibing.account&lt;/groupId&gt;
+    &lt;artifactId&gt;account-aggregator&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0-SNAPSHOT&lt;/version&gt;
+  &lt;/parent&gt;
+  &lt;artifactId&gt;account-persist&lt;/artifactId&gt;
+  &lt;name&gt;account-persist&lt;/name&gt;
+  &lt;url&gt;http://maven.apache.org&lt;/url&gt;
+  &lt;properties&gt;
+    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+  &lt;/properties&gt;
+  &lt;dependencies&gt;    &lt;!-- 配置自己独有依赖 --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-jdbc&lt;/artifactId&gt;
+        &lt;version&gt;4.0.2.RELEASE&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+        &lt;artifactId&gt;druid&lt;/artifactId&gt;
+        &lt;version&gt;1.0.16&lt;/version&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+&lt;/project&gt;
+</code></pre><p>　　　　d.依赖的jar包全部ok，需要做的则是在各个模块中进行代码开发了！</p>
+<p>####　　3.依赖管理</p>
+<p>　　　　继承可以消除重复，那是不是就没有问题了？ 答案是存在问题，假设将来需要添加一个新的子模块account-util，该模块只是提供一些简单的帮助工具，不需要依赖spring、junit，那么继承后就依赖上了，有没有什么办法了？ 有，maven已经替我们想到了，那就是dependencyManagement元素，既能让子模块继承到父模块的依赖配置，又能保证子模块依赖使用的灵活性。在dependencyManagement元素下得依赖声明不会引入实际的依赖，不过它能够约束dependencies下的依赖使用。</p>
+<p>　　　　在父pom.xml中配置dependencyManagement元素</p>
+<pre><code>&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+  xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+  &lt;groupId&gt;com.youzhibing.account&lt;/groupId&gt;
+  &lt;artifactId&gt;account-aggregator&lt;/artifactId&gt;
+  &lt;version&gt;1.0.0-SNAPSHOT&lt;/version&gt;
+  &lt;packaging&gt;pom&lt;/packaging&gt;
+
+  &lt;name&gt;Account Aggrregator&lt;/name&gt;
+  &lt;url&gt;http://maven.apache.org&lt;/url&gt;
+
+  &lt;modules&gt;
+      &lt;!-- 模块都写在此处 --&gt;
+      &lt;module&gt;account-register&lt;/module&gt;
+      &lt;module&gt;account-persist&lt;/module&gt;
+  &lt;/modules&gt;
+
+  &lt;dependencyManagement&gt;
+      &lt;dependencies&gt; &lt;!-- 配置共有依赖 --&gt;
+      &lt;!-- spring 依赖 --&gt;
+      &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-core&lt;/artifactId&gt;
+        &lt;version&gt;4.0.2.RELEASE&lt;/version&gt;
+    &lt;/dependency&gt;
+      &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-beans&lt;/artifactId&gt;
+        &lt;version&gt;4.0.2.RELEASE&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-context&lt;/artifactId&gt;
+        &lt;version&gt;4.0.2.RELEASE&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-context-support&lt;/artifactId&gt;
+        &lt;version&gt;4.0.2.RELEASE&lt;/version&gt;
+    &lt;/dependency&gt;
+
+      &lt;!-- junit 依赖 --&gt;
+      &lt;dependency&gt;
+      &lt;groupId&gt;junit&lt;/groupId&gt;
+      &lt;artifactId&gt;junit&lt;/artifactId&gt;
+      &lt;version&gt;4.7&lt;/version&gt;
+      &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+  &lt;/dependencyManagement&gt;
+&lt;/project&gt;
+</code></pre><p>　　　　account-persist的pom.xml(account-register也一样) ：</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;project xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot; xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;parent&gt;
+    &lt;groupId&gt;com.youzhibing.account&lt;/groupId&gt;
+    &lt;artifactId&gt;account-aggregator&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0-SNAPSHOT&lt;/version&gt;
+  &lt;/parent&gt;
+  &lt;artifactId&gt;account-persist&lt;/artifactId&gt;
+  &lt;name&gt;account-persist&lt;/name&gt;
+  &lt;url&gt;http://maven.apache.org&lt;/url&gt;
+  &lt;properties&gt;
+    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+  &lt;/properties&gt;
+  &lt;dependencies&gt;
+      &lt;!-- spring 依赖 --&gt;
+      &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-core&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+      &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-beans&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-context&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-context-support&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+
+      &lt;!-- junit 依赖 --&gt;
+      &lt;dependency&gt;
+      &lt;groupId&gt;junit&lt;/groupId&gt;
+      &lt;artifactId&gt;junit&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-jdbc&lt;/artifactId&gt;
+        &lt;version&gt;4.0.2.RELEASE&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+        &lt;artifactId&gt;druid&lt;/artifactId&gt;
+        &lt;version&gt;1.0.16&lt;/version&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+&lt;/project&gt;
+</code></pre><p> 　　　　使用这种依赖管理机制似乎不能减少太多的POM配置，就少了version(junit还少了个scope)，感觉没啥作用呀；其实作用还是挺大的，父POM使用dependencyManagement能够统一项目范围中依赖的版本，当依赖版本在父POM中声明后，子模块在使用依赖的时候就无须声明版本，也就不会发生多个子模块使用版本不一致的情况，帮助降低依赖冲突的几率。如果子模块不声明依赖的使用，即使该依赖在父POM中的dependencyManagement中声明了，也不会产生任何效果。</p>
+<h3 id="import"><a href="#import" class="headerlink" title="import"></a>import</h3><p>　　import只在dependencyManagement元素下才有效果，作用是将目标POM中的dependencyManagement配置导入并合并到当前POM的dependencyManagement元素中，如下就是讲account-aggregator中的dependencyManagement配置导入并合并到当前POM中。</p>
+<pre><code>&lt;dependencyManagement&gt;
+      &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.youzhibing.account&lt;/groupId&gt;
+              &lt;artifactId&gt;account-aggregator&lt;/artifactId&gt;
+              &lt;version&gt;1.0.0-SNAPSHOT&lt;/version&gt;
+            &lt;type&gt;pom&lt;/type&gt;
+              &lt;scope&gt;import&lt;/scope&gt;
+        &lt;/dependency&gt;
+      &lt;/dependencies&gt;
+  &lt;/dependencyManagement&gt;
+</code></pre><h3 id="properties-Maven属性"><a href="#properties-Maven属性" class="headerlink" title="properties(Maven属性)"></a>properties(Maven属性)</h3><p>　　通过<properties>元素用户可以自定义一个或多个Maven属性，然后在POM的其他地方使用${属性名}的方式引用该属性，这种做法的最大意义在于消除重复和统一管理。</properties></p>
+<p>　　Maven总共有6类属性，内置属性、POM属性、自定义属性、Settings属性、java系统属性和环境变量属性；</p>
+<p>####　　1.内置属性</p>
+<p>　　　　两个常用内置属性 ${basedir} 表示项目跟目录，即包含pom.xml文件的目录；${version} 表示项目版本</p>
+<p>####　　2.POM属性</p>
+<p>　　　　用户可以使用该类属性引用POM文件中对应元素的值。如${project.artifactId}就对应了<project> <artifactid>元素的值，常用的POM属性包括：</artifactid></project></p>
+<p>　　　　${project.build.sourceDirectory}:项目的主源码目录，默认为src/main/java/</p>
+<p>　　　　${project.build.testSourceDirectory}:项目的测试源码目录，默认为src/test/java/</p>
+<p>　　　　${project.build.directory} ： 项目构建输出目录，默认为target/</p>
+<p>　　　　${project.outputDirectory} : 项目主代码编译输出目录，默认为target/classes/</p>
+<p>　　　　${project.testOutputDirectory}：项目测试主代码输出目录，默认为target/testclasses/</p>
+<p>　　　　${project.groupId}：项目的groupId</p>
+<p>　　　　${project.artifactId}：项目的artifactId</p>
+<p>　　　　${project.version}：项目的version,与${version} 等价</p>
+<p>　　　　${project.build.finalName}：项目打包输出文件的名称，默认为${project.artifactId}-${project.version}</p>
+<p>####　　3.自定义属性</p>
+<p>　　　　如下account-aggregator的pom.xml，那么继承了此pom.xml的子模块也可以用此自定义属性</p>
+<pre><code>&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+  xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+  &lt;groupId&gt;com.youzhibing.account&lt;/groupId&gt;
+  &lt;artifactId&gt;account-aggregator&lt;/artifactId&gt;
+  &lt;version&gt;1.0.0-SNAPSHOT&lt;/version&gt;
+  &lt;packaging&gt;pom&lt;/packaging&gt;
+
+  &lt;name&gt;Account Aggrregator&lt;/name&gt;
+  &lt;url&gt;http://maven.apache.org&lt;/url&gt;
+
+  &lt;modules&gt;
+      &lt;!-- 模块都写在此处 --&gt;
+      &lt;module&gt;account-register&lt;/module&gt;
+      &lt;module&gt;account-persist&lt;/module&gt;
+      &lt;module&gt;account-another&lt;/module&gt;
+  &lt;/modules&gt;
+
+  &lt;properties&gt;
+      &lt;!-- 定义 spring版本号 --&gt;
+    &lt;spring.version&gt;4.0.2.RELEASE&lt;/spring.version&gt;
+    &lt;junit.version&gt;4.7&lt;/junit.version&gt;
+  &lt;/properties&gt;
+
+  &lt;dependencyManagement&gt;
+      &lt;dependencies&gt; &lt;!-- 配置共有依赖 --&gt;
+      &lt;!-- spring 依赖 --&gt;
+      &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-core&lt;/artifactId&gt;
+        &lt;version&gt;${spring.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+      &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-beans&lt;/artifactId&gt;
+        &lt;version&gt;${spring.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-context&lt;/artifactId&gt;
+        &lt;version&gt;${spring.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-context-support&lt;/artifactId&gt;
+        &lt;version&gt;${spring.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+
+      &lt;!-- junit 依赖 --&gt;
+      &lt;dependency&gt;
+      &lt;groupId&gt;junit&lt;/groupId&gt;
+      &lt;artifactId&gt;junit&lt;/artifactId&gt;
+      &lt;version&gt;${junit.version}&lt;/version&gt;
+      &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+  &lt;/dependencyManagement&gt;
+&lt;/project&gt;
+</code></pre><p>####　　4.Settings属性</p>
+<p>　　　　与POM属性同理，用户使用以settings. 开头的属性引用settings.xml文件中的XML元素的值。</p>
+<p>####　　5.Java系统属性</p>
+<p>　　　　所有java系统属性都可以用Maven属性引用，如${user.home}指向了用户目录。</p>
+<p>####　　6.环境变量属性</p>
+<p>　　　　所有环境变量属性都可以使用以env. 开头的Maven属性引用，如${env.JAVA_HOME}指代了JAVA_HOME环境变量的的值。</p>
+<h3 id="聚合与继承的关系"><a href="#聚合与继承的关系" class="headerlink" title="聚合与继承的关系"></a>聚合与继承的关系</h3><p>　　1.聚合主要是为了方便快速构建项目，继承主要是为了消除重复配置；</p>
+<p>　　2.对于聚合模块而言，它知道有哪些被聚合的模块，但那些被聚合的模块不知道这个聚合模块的存在；对于继承的父pom而言，它不知道有哪些子模块继承它，但那些子模块都必须知道自己的父POM是什么；</p>
+<p>　　3.聚合POM与继承中的父POM的packaging都必须是pom；同时，聚合模块与继承中的父模块除了POM外，都没有实际的内容</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/11/pom/" rel="next" title="maven POM.xml 标签详解">
+                <i class="fa fa-chevron-left"></i> maven POM.xml 标签详解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="Xing Shuchen" />
+            
+              <p class="site-author-name" itemprop="name">Xing Shuchen</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/xingsc" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://plus.google.com/yourname" target="_blank" title="Google">
+                    
+                      <i class="fa fa-fw fa-google"></i>Google</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#modules"><span class="nav-number">2.</span> <span class="nav-text">modules</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-需求场景"><span class="nav-number">2.1.</span> <span class="nav-text">1.需求场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-具体实现"><span class="nav-number">2.2.</span> <span class="nav-text">2.具体实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parent"><span class="nav-number">3.</span> <span class="nav-text">parent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#import"><span class="nav-number">4.</span> <span class="nav-text">import</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#properties-Maven属性"><span class="nav-number">5.</span> <span class="nav-text">properties(Maven属性)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聚合与继承的关系"><span class="nav-number">6.</span> <span class="nav-text">聚合与继承的关系</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+    </div>
+    <object type="application/x-shockwave-flash" title="小白饿了，请大哥大姐施舍点吧。。。" style="outline: none;border:3px" data="http://cdn.abowman.com/widgets/hamster/hamster.swf?" width="330" height="290">
+            <param name="movie" value="http://cdn.abowman.com/widgets/hamster/hamster.swf?">
+            <param name="AllowScriptAccess" value="always">
+            <param name="wmode" value="opaque">
+    </object>
+    <div id="xsc">
+        <embed src="//music.163.com/style/swf/widget.swf?sid=442760&type=2&auto=0&width=320&height=66" width="340" height="86"  allowNetworking="all"></embed>
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xing Shuchen</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+<!--<canvas id="canvas" style="position:fixed;z-index:-1"></canvas>-->
+<!--<script>-->
+    <!--var ca = document.getElementById("canvas");-->
+    <!--ca.style.width = window.innerWidth + "px";-->
+    <!--ca.style.height = window.innerHeight + "px";-->
+    <!--class Circle {-->
+
+        <!--constructor(x, y) {-->
+            <!--this.x = x;-->
+            <!--this.y = y;-->
+            <!--this.r = 5.5 ;-->
+            <!--this._mx = Math.random() ;-->
+            <!--this._my = Math.random() ;-->
+
+        <!--}-->
+
+
+        <!--drawCircle(ctx) {-->
+            <!--ctx.beginPath();-->
+            <!--ctx.arc(this.x, this.y, this.r, 0, 360)-->
+            <!--ctx.closePath();-->
+            <!--ctx.fillStyle = 'rgba(204, 204, 204, 0.3)';-->
+            <!--ctx.fill();-->
+        <!--}-->
+
+        <!--drawLine(ctx, _circle) {-->
+            <!--let dx = this.x - _circle.x;-->
+            <!--let dy = this.y - _circle.y;-->
+            <!--let d = Math.sqrt(dx * dx + dy * dy)-->
+            <!--if (d < 150) {-->
+                <!--ctx.beginPath();-->
+                <!--ctx.moveTo(this.x, this.y);   //???-->
+                <!--ctx.lineTo(_circle.x, _circle.y);   //??-->
+                <!--ctx.closePath();-->
+                <!--ctx.strokeStyle = 'rgba(204, 204, 204, 0.3)';-->
+                <!--ctx.stroke();-->
+            <!--}-->
+        <!--}-->
+
+        <!--move(w, h) {-->
+            <!--this._mx = (this.x < w && this.x > 0) ? this._mx : (-this._mx);-->
+            <!--this._my = (this.y < h && this.y > 0) ? this._my : (-this._my);-->
+            <!--this.x += this._mx / 2;-->
+            <!--this.y += this._my / 2;-->
+        <!--}-->
+    <!--}-->
+    <!--class currentCirle extends Circle {-->
+        <!--constructor(x, y) {-->
+            <!--super(x, y)-->
+        <!--}-->
+
+        <!--drawCircle(ctx) {-->
+            <!--ctx.beginPath();-->
+            <!--this.r = 7;-->
+            <!--ctx.arc(this.x, this.y, this.r, 0, 360);-->
+            <!--ctx.closePath();-->
+            <!--//ctx.fillStyle = 'rgba(0,0,0,' + (parseInt(Math.random() * 100) / 100) + ')'-->
+            <!--ctx.fillStyle = 'rgba(255, 77, 54, 0.3)'-->
+            <!--ctx.fill();-->
+
+        <!--}-->
+    <!--}-->
+    <!--window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;-->
+
+    <!--let canvas = document.getElementById('canvas');-->
+    <!--let ctx = canvas.getContext('2d');-->
+    <!--let w = canvas.width = canvas.offsetWidth;-->
+    <!--let h = canvas.height = canvas.offsetHeight;-->
+    <!--let circles = [];-->
+    <!--let current_circle = new currentCirle(0, 0)-->
+
+    <!--let draw = function () {-->
+        <!--ctx.clearRect(0, 0, w, h);-->
+        <!--for (let i = 0; i < circles.length; i++) {-->
+            <!--circles[i].move(w, h);-->
+            <!--circles[i].drawCircle(ctx);-->
+            <!--for (j = i + 1; j < circles.length; j++) {-->
+                <!--circles[i].drawLine(ctx, circles[j])-->
+            <!--}-->
+        <!--}-->
+        <!--if (current_circle.x) {-->
+            <!--current_circle.drawCircle(ctx);-->
+            <!--for (var k = 1; k < circles.length; k++) {-->
+                <!--current_circle.drawLine(ctx, circles[k])-->
+            <!--}-->
+        <!--}-->
+        <!--requestAnimationFrame(draw)-->
+    <!--}-->
+
+    <!--let init = function (num) {-->
+        <!--for (var i = 0; i < num; i++) {-->
+            <!--circles.push(new Circle(Math.random() * w, Math.random() * h));-->
+        <!--}-->
+        <!--draw();-->
+    <!--}-->
+    <!--window.addEventListener('load', init(130));-->
+    <!--window.onmousemove = function (e) {-->
+        <!--e = e || window.event;-->
+        <!--current_circle.x = e.clientX;-->
+        <!--current_circle.y = e.clientY;-->
+    <!--}-->
+    <!--window.onmouseout = function () {-->
+        <!--current_circle.x = null;-->
+        <!--current_circle.y = null;-->
+
+    <!--};-->
+<!--</script>-->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+</body>
+</html>
